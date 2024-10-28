@@ -3,215 +3,448 @@
 <head>
     <meta charset="UTF-8">
     <title>Creating Demo Organization - Okta Guide</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #00297A;
+            --secondary-color: #007DC1;
+            --accent-color: #6e46ae;
+            --text-color: #333;
+            --background-color: #f5f5f5;
+            --section-bg: #ffffff;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+            --danger-color: #dc3545;
+            --sidebar-width: 280px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .layout-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            border-right: 1px solid #dee2e6;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-nav {
+            padding: 1rem;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-item:hover {
+            background: #f8f9fa;
+        }
+
+        .nav-item.active {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-number {
+            width: 3rem;
+            height: 3rem;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .prerequisites, .important, .tip, .note {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .important {
+            border-left: 4px solid var(--warning-color);
+            background: #fff3cd;
+        }
+
+        .tip {
+            border-left: 4px solid var(--info-color);
+            background: #e3f2fd;
+        }
+
+        .note {
+            border-left: 4px solid var(--accent-color);
+            background: #f8f9fa;
+        }
+
+        .steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .authentication-options {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .option {
+            margin-bottom: 1rem;
+        }
+
+        .verification-list, .troubleshooting, .next-steps {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .navigation-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .nav-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .layout-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Okta Workforce Identity Implementation Guide</h1>
-    </header>
+    <div class="layout-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <div>0. Overview</div>
+                </a>
+                <a href="section1.html" class="nav-item active">
+                    <div>1. Demo Organization</div>
+                </a>
+                <a href="section2.html" class="nav-item">
+                    <div>2. AD Integration</div>
+                </a>
+                <a href="section3.html" class="nav-item">
+                    <div>3. Users & Groups</div>
+                </a>
+                <a href="section4.html" class="nav-item">
+                    <div>4. Applications</div>
+                </a>
+                <a href="section5.html" class="nav-item">
+                    <div>5. Authentication</div>
+                </a>
+            </nav>
+        </aside>
 
-    <div class="container">
-        <div class="progress-indicator">
-            <a href="index.html" class="progress-step">
-                <div class="progress-number">0</div>
-                <span>Overview</span>
-            </a>
-            <a href="section1.html" class="progress-step active">
-                <div class="progress-number">1</div>
-                <span>Demo Org</span>
-            </a>
-            <a href="section2.html" class="progress-step">
-                <div class="progress-number">2</div>
-                <span>AD Integration</span>
-            </a>
-            <a href="section3.html" class="progress-step">
-                <div class="progress-number">3</div>
-                <span>Users & Groups</span>
-            </a>
-            <a href="section4.html" class="progress-step">
-                <div class="progress-number">4</div>
-                <span>Applications</span>
-            </a>
-            <a href="section5.html" class="progress-step">
-                <div class="progress-number">5</div>
-                <span>Authentication</span>
-            </a>
-        </div>
+        <main class="main-content">
+            <header>
+                <h1>Okta Workforce Identity Implementation Guide</h1>
+            </header>
 
-        <div class="section">
-            <div class="section-header">
-                <div class="section-number">1</div>
-                <h2>Creating Demo Organization</h2>
-                <span class="estimated-time">⏱️ 10-15 minutes</span>
-            </div>
+            <div class="content">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h2>Creating Demo Organization</h2>
+                    <span class="estimated-time">⏱️ 10-15 minutes</span>
+                </div>
 
-            <div class="prerequisites">
-                <h3>Section Prerequisites</h3>
-                <ul>
-                    <li>Access to CL03 machine</li>
-                    <li>Your Okta Partner Portal credentials</li>
-                    <li>Access to your business email</li>
-                    <li>Modern web browser (Chrome or Firefox recommended)</li>
-                    <li>Internet connectivity</li>
-                </ul>
-            </div>
+                <div class="prerequisites">
+                    <h3>Section Prerequisites</h3>
+                    <ul>
+                        <li>Access to CL03 machine</li>
+                        <li>Your Okta Partner Portal credentials</li>
+                        <li>Access to your business email</li>
+                        <li>Modern web browser (Chrome or Firefox recommended)</li>
+                        <li>Internet connectivity</li>
+                    </ul>
+                </div>
 
-            <div class="important">
-                Before starting: Ensure you have your Okta Partner Portal credentials ready. You will also receive demo organization credentials via email after creation.
-            </div>
+                <div class="important">
+                    Before starting: Ensure you have your Okta Partner Portal credentials ready. You will also receive demo organization credentials via email after creation.
+                </div>
 
-            <ol class="steps">
-                <li class="step">
-                    <div class="step-title">Access Demo Portal</div>
-                    <p>On CL03, open your browser and navigate to:</p>
-                    <code>https://demo.okta.com/</code>
-                    <div class="tip">
-                        Bookmark this URL for future access to the demo portal.
-                    </div>
-                </li>
-
-                <li class="step">
-                    <div class="step-title">Partner Portal Authentication</div>
-                    <p>Click "Continue with Okta Partners"</p>
-                    
-                    <div class="authentication-options">
-                        <h4>Choose your authentication method:</h4>
-                        <div class="option">
-                            <h5>Option 1: Standard Password Login</h5>
-                            <ol>
-                                <li>Enter your Okta Partner username</li>
-                                <li>Enter your password</li>
-                                <li>Click "Sign In"</li>
-                            </ol>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Access Demo Portal</div>
+                        <p>On CL03, open your browser and navigate to:</p>
+                        <code>https://demo.okta.com/</code>
+                        <div class="tip">
+                            Bookmark this URL for future access to the demo portal.
                         </div>
-                        <div class="option">
-                            <h5>Option 2: FastPass Authentication (if enabled)</h5>
-                            <ol>
-                                <li>Click "Sign in with Okta FastPass"</li>
-                                <li>Complete the verification prompt</li>
-                            </ol>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Partner Portal Authentication</div>
+                        <p>Click "Continue with Okta Partners"</p>
+                        
+                        <div class="authentication-options">
+                            <h4>Choose your authentication method:</h4>
+                            <div class="option">
+                                <h5>Option 1: Standard Password Login</h5>
+                                <ol>
+                                    <li>Enter your Okta Partner username</li>
+                                    <li>Enter your password</li>
+                                    <li>Click "Sign In"</li>
+                                </ol>
+                            </div>
+                            <div class="option">
+                                <h5>Option 2: FastPass Authentication (if enabled)</h5>
+                                <ol>
+                                    <li>Click "Sign in with Okta FastPass"</li>
+                                    <li>Complete the verification prompt</li>
+                                </ol>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
 
-                <li class="step">
-                    <div class="step-title">Access Demo Creation</div>
-                    <p>On the demo portal dashboard:</p>
-                    <ol>
-                        <li>Locate "Workforce Identity" section</li>
-                        <li>Click "In just one click launch a new hands on Workforce Identity demo"</li>
-                    </ol>
-                </li>
+                    <li class="step">
+                        <div class="step-title">Access Demo Creation</div>
+                        <p>On the demo portal dashboard:</p>
+                        <ol>
+                            <li>Locate "Workforce Identity" section</li>
+                            <li>Click "In just one click launch a new hands on Workforce Identity demo"</li>
+                        </ol>
+                    </li>
 
-                <li class="step">
-                    <div class="step-title">Initialize Demo Organization</div>
-                    <p>Click "Create" to begin the demo organization setup</p>
-                    <div class="important">
-                        After clicking Create, you will receive an email with your demo organization credentials. Keep an eye on your inbox.
-                    </div>
-                </li>
+                    <li class="step">
+                        <div class="step-title">Initialize Demo Organization</div>
+                        <p>Click "Create" to begin the demo organization setup</p>
+                        <div class="important">
+                            After clicking Create, you will receive an email with your demo organization credentials. Keep an eye on your inbox.
+                        </div>
+                    </li>
 
-                <li class="step">
-                    <div class="step-title">Configure Demo Settings</div>
-                    <ol>
-                        <li>When prompted for additional options, select "None"</li>
-                        <li>Click "Apply" to confirm your settings</li>
-                    </ol>
-                    <div class="note">
-                        Basic settings are sufficient for this implementation guide.
-                    </div>
-                </li>
+                    <li class="step">
+                        <div class="step-title">Configure Demo Settings</div>
+                        <ol>
+                            <li>When prompted for additional options, select "None"</li>
+                            <li>Click "Apply" to confirm your settings</li>
+                        </ol>
+                        <div class="note">
+                            Basic settings are sufficient for this implementation guide.
+                        </div>
+                    </li>
 
-                <li class="step">
-                    <div class="step-title">Launch Your Demo</div>
-                    <p>Click "Launch" to access your new demo environment</p>
-                    <div class="important">
-                        Check your email for demo organization credentials, which include:
-                        <ul>
-                            <li>Your unique demo organization URL</li>
-                            <li>Administrator username</li>
-                            <li>Temporary password</li>
-                        </ul>
-                    </div>
-                </li>
+                    <li class="step">
+                        <div class="step-title">Launch Your Demo</div>
+                        <p>Click "Launch" to access your new demo environment</p>
+                        <div class="important">
+                            Check your email for demo organization credentials, which include:
+                            <ul>
+                                <li>Your unique demo organization URL</li>
+                                <li>Administrator username</li>
+                                <li>Temporary password</li>
+                            </ul>
+                        </div>
+                    </li>
 
-                <li class="step">
-                    <div class="step-title">Access Demo Organization</div>
-                    <p>Using the credentials from your email:</p>
-                    <ol>
-                        <li>Navigate to your demo organization URL</li>
-                        <li>Log in with the provided administrator credentials</li>
-                        <li>Change your temporary password when prompted</li>
-                    </ol>
-                </li>
-            </ol>
+                    <li class="step">
+                        <div class="step-title">Access Demo Organization</div>
+                        <p>Using the credentials from your email:</p>
+                        <ol>
+                            <li>Navigate to your demo organization URL</li>
+                            <li>Log in with the provided administrator credentials</li>
+                            <li>Change your temporary password when prompted</li>
+                        </ol>
+                    </li>
+                </ol>
 
-            <div class="verification-list">
-                <h4>Verification Checklist</h4>
-                <ul class="checklist">
-                    <li>Successfully logged into partner portal</li>
-                    <li>Created demo organization</li>
-                    <li>Received demo credentials email</li>
-                    <li>Accessed demo organization admin console</li>
-                    <li>Changed temporary password</li>
-                    <li>Bookmarked important URLs</li>
-                </ul>
+                <div class="verification-list">
+                    <h4>Verification Checklist</h4>
+                    <ul class="checklist">
+                        <li>Successfully logged into partner portal</li>
+                        <li>Created demo organization</li>
+                        <li>Received demo credentials email</li>
+                        <li>Accessed demo organization admin console</li>
+                        <li>Changed temporary password</li>
+                        <li>Bookmarked important URLs</li>
+                    </ul>
+                </div>
+
+                <div class="troubleshooting">
+                    <h4>Common Issues</h4>
+                    <table>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Solution</th>
+                        </tr>
+                        <tr>
+                            <td>Partner Portal login issues</td>
+                            <td>Verify credentials or contact partner support</td>
+                        </tr>
+                        <tr>
+                            <td>Demo credentials email not received</td>
+                            <td>Check spam folder, wait 5 minutes, or restart process</td>
+                        </tr>
+                        <tr>
+                            <td>Unable to access demo organization</td>
+                            <td>Ensure you're using the correct URL and credentials from the email</td>
+                        </tr>
+                        <tr>
+                            <td>Password change fails</td>
+                            <td>Verify new password meets complexity requirements</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="next-steps">
+                    <h4>Proceeding to Next Section</h4>
+                    <p>Before moving on, ensure you have:</p>
+                    <ul>
+                        <li>Saved your demo organization URL</li>
+                        <li>Documented your admin credentials</li>
+                        <li>Successfully accessed the admin console</li>
+                        <li>Changed your temporary password</li>
+                    </ul>
+                </div>
+
+                <div class="navigation-links">
+                    <a href="index.html" class="nav-link">← Back to Overview</a>
+                    <a href="section2.html" class="nav-link">Next: Active Directory Integration →</a>
+                </div>
             </div>
-
-            <div class="troubleshooting">
-                <h4>Common Issues</h4>
-                <table>
-                    <tr>
-                        <th>Issue</th>
-                        <th>Solution</th>
-                    </tr>
-                    <tr>
-                        <td>Partner Portal login issues</td>
-                        <td>Verify credentials or contact partner support</td>
-                    </tr>
-                    <tr>
-                        <td>Demo credentials email not received</td>
-                        <td>Check spam folder, wait 5 minutes, or restart process</td>
-                    </tr>
-                    <tr>
-                        <td>Unable to access demo organization</td>
-                        <td>Ensure you're using the correct URL and credentials from the email</td>
-                    </tr>
-                    <tr>
-                        <td>Password change fails</td>
-                        <td>Verify new password meets complexity requirements</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="next-steps">
-                <h4>Proceeding to Next Section</h4>
-                <p>Before moving on, ensure you have:</p>
-                <ul>
-                    <li>Saved your demo organization URL</li>
-                    <li>Documented your admin credentials</li>
-                    <li>Successfully accessed the admin console</li>
-                    <li>Changed your temporary password</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="navigation-links">
-            <a href="index.html" class="nav-link">← Back to Overview</a>
-            <a href="section2.html" class="nav-link">Next: Active Directory Integration →</a>
-        </div>
+        </main>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const progressSteps = document.querySelectorAll('.progress-step');
-            progressSteps.forEach(step => {
-                if (step.getAttribute('href') === currentPage) {
-                    step.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
