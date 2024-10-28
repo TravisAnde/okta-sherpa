@@ -618,80 +618,17 @@
                 </div>
 
                 <div class="section-part">
-                    <h3>Part 3: Creating Okta-Managed Groups</h3>
+                    <h3>Part 3: Test Login on CL03</h3>
                     <ol class="steps">
                         <li class="step">
-                            <div class="step-title">Access Group Management</div>
-                            <p>Navigate to Directory > Groups</p>
-                            <img src="images/group-management.png" alt="Okta Group Management Console" class="step-image">
+                            <div class="step-title">Change to the CL03 Machine</div>
+                            <p>Navigate to your okta org in your browser on CL03</p>
+                            <p>Login as adam.wally@cyberlab-au.com</p>
+                            <img src="images/group-management.png" alt="Okta Test Login" class="step-image">
                         </li>
 
                         <li class="step">
-                            <div class="step-title">Create IT-Admin Group</div>
-                            <p>Click "Add Group" and configure:</p>
-                            <ul>
-                                <li>Name: IT-Admin</li>
-                                <li>Description: IT Administrators group for elevated access</li>
-                                <li>Group Type: Okta Managed</li>
-                            </ul>
-                            <img src="images/create-admin-group.png" alt="Creating IT-Admin Group" class="step-image">
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Create General-Users Group</div>
-                            <p>Add another group:</p>
-                            <ul>
-                                <li>Name: General-Users</li>
-                                <li>Description: Standard users with basic access</li>
-                                <li>Group Type: Okta Managed</li>
-                            </ul>
-                            <img src="images/create-users-group.png" alt="Creating General-Users Group" class="step-image">
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Assign Users to Groups</div>
-                            <ol>
-                                <li>Add Test1 User to IT-Admin group:
-                                    <ul>
-                                        <li>Select IT-Admin group</li>
-                                        <li>Click "Manage People"</li>
-                                        <li>Search and add Test1 User</li>
-                                    </ul>
-                                    <img src="images/assign-admin-group.png" alt="Assigning User to IT-Admin Group" class="step-image">
-                                </li>
-                                <li>Add Test2 User to General-Users group:
-                                    <ul>
-                                        <li>Select General-Users group</li>
-                                        <li>Click "Manage People"</li>
-                                        <li>Search and add Test2 User</li>
-                                    </ul>
-                                    <img src="images/assign-users-group.png" alt="Assigning User to General-Users Group" class="step-image">
-                                </li>
-                            </ol>
-                        </li>
-                    </ol>
-                </div>
-
-                <div class="section-part">
-                    <h3>Part 4: Group Rules and Automation</h3>
-                    <ol class="steps">
-                        <li class="step">
-                            <div class="step-title">Create Group Rules</div>
-                            <p>Set up automated group assignments:</p>
-                            <ol>
-                                <li>Navigate to Directory > Groups > Rules</li>
-                                <li>Click "Add Rule"</li>
-                                <li>Configure rule conditions:
-                                    <div class="code-block">
-                                        <code>
-                                            IF User Profile Property "Department"
-                                            EQUALS "Information Technology"
-                                            THEN Add to Group "IT-Admin"
-                                        </code>
-                                    </div>
-                                </li>
-                            </ol>
-                            <img src="images/group-rules.png" alt="Creating Group Rules" class="step-image">
+                            <div class="step-title">Confirm Security Question Enrollment</div>
                         </li>
                     </ol>
                 </div>
