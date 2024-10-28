@@ -381,310 +381,427 @@
             <header>
                 <h1>Okta Workforce Identity Cloud - Sherpa</h1>
             </header>
+<div class="content">
+    <div class="section-header">
+        <div class="section-number">3</div>
+        <h2>User and Group Management</h2>
+        <span class="estimated-time">⏱️ 20-30 minutes</span>
+    </div>
 
-            <div class="content">
-                <div class="section-header">
-                    <div class="section-number">3</div>
-                    <h2>User and Group Management</h2>
-                    <span class="estimated-time">⏱️ 20-30 minutes</span>
+    <div class="prerequisites">
+        <h3>Section Prerequisites</h3>
+        <ul>
+            <li>Completed AD integration</li>
+            <li>Okta Administrator access</li>
+            <li>Access to CL03 machine (for testing)</li>
+            <li>Active Directory credentials (for testing)</li>
+        </ul>
+    </div>
+
+    <div class="important">
+        <h4>Key Information</h4>
+        <ul>
+            <li>All configuration will be done on CL03</li>
+            <li>We will be using Microsoft Edge browser</li>
+            <li>Default AD domain is cyberlab-au.com</li>
+            <li>Test user will be adam.wally@cyberlab-au.com</li>
+        </ul>
+    </div>
+
+    <div class="section-part">
+        <h3>Part 1: Configure AD Import Settings</h3>
+        <ol class="steps">
+            <li class="step">
+                <div class="step-title">Access Import Settings</div>
+                <ol>
+                    <li>Navigate to Directory > Directory Integrations</li>
+                    <li>Click Active Directory</li>
+                    <li>Select the Provisioning tab</li>
+                    <li>Click Integration in the Settings list</li>
+                </ol>
+                <img src="images/section3/import-settings.png" alt="AD Import Settings" class="step-image">
+                <div class="note">
+                    Ensure you're logged in as an administrator with directory management permissions.
                 </div>
+            </li>
 
-                <div class="prerequisites">
-                    <h3>Section Prerequisites</h3>
-                    <ul>
-                        <li>Completed AD integration</li>
-                        <li>Okta Administrator access</li>
-                        <li>Planned user structure</li>
-                        <li>Group naming convention</li>
-                    </ul>
-                </div>
-
-                <div class="section-part">
-                    <h3>Part 1: Configure AD Import Settings</h3>
-                    <ol class="steps">
-                        <li class="step">
-                            <div class="step-title">Access Import Settings</div>
-                            <ol>
-                                <li>Navigate to Directory > Directory Integrations</li>
-                                <li>Click Active Directory</li>
-                                <li>Select the Provisioning tab</li>
-                                <li>Click Integration in the Settings list</li>
-                            </ol>
-                            <img src="images/section3/import-settings.png" alt="AD Import Settings" class="step-image">
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Configure User Import Settings</div>
-                            <ol>
-                                <li>In the Import Settings area:
-                                    <ul>
-                                        <li>Verify "User OUs connected to Okta" settings</li>
-                                        <li>Verify Group OUs connected to Okta</li>
-                                    </ul>
-                                </li>
-                            </ol>
-                            <div class="important">
-                                Changing default filter queries can result in deprovisioning users. Only modify filters if absolutely necessary.
-                            </div>
-                            <img src="images/section3/import-filters.png" alt="Import Filter Settings" class="step-image">
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Configure Import Schedule</div>
-                            <ol>
-                                <li>Click "To Okta" in the Settings list</li>
-                                <li>Click Edit in the General area</li>
-                                <li>Set Schedule Import to daily</li>
-                                <li>Keep Username format as User Principal Name (UPN)</li>
-                                <li>Select "Create and update users on login" for JIT Provisioning</li>
-                            </ol>
-                            <div class="note">
-                                Import notifications will be sent to administrators when changes are detected during scheduled imports.
-                            </div>
-                            <img src="images/section3/import-schedule.png" alt="Import Schedule Configuration" class="step-image">
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Configure Matching Rules</div>
-                            <ol>
-                                <li>In User Creation & Matching section, click Edit</li>
-                                <li>Select matching criteria:
-                                    <ul>
-                                        <li>Match by Okta username format</li>
-                                        <li>Enable "Auto-confirm exact matches"</li>
-                                    </ul>
-                                </li>
-                            </ol>
-                            <div class="tip">
-                                Matching rules prevent duplicate user accounts when importing from AD.
-                            </div>
-                            <img src="images/section3/matching-rules.png" alt="User Matching Configuration" class="step-image">
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Start Initial Import</div>
-                            <ol>
-                                <li>Go to the Import tab</li>
-                                <li>Click "Import Now" to start the process</li>
-                                <li>Select Full Import</li>
-                                <li>Monitor the import progress</li>
-                            </ol>
-                            <img src="images/section3/import-progress1.png" alt="Import Progress Monitoring" class="step-image">
-                            <img src="images/section3/import-progress2.png" alt="Import Progress Monitoring" class="step-image">
-                        </li>
-                    </ol>
-
-                    <div class="verification-list">
-                        <h4>Import Verification Checklist</h4>
-                        <ul class="checklist">
-                            <li>Correct OUs selected for import</li>
-                            <li>Import filters properly configured</li>
-                            <li>Schedule settings confirmed</li>
-                            <li>Matching rules verified</li>
-                            <li>Initial import completed successfully</li>
-                            <li>Users appearing in Okta directory</li>
-                            <li>Group memberships correct</li>
+            <li class="step">
+                <div class="step-title">Configure User Import Settings</div>
+                <ol>
+                    <li>In the Import Settings area:
+                        <ul>
+                            <li>Verify "User OUs connected to Okta" includes cyberlab-au.com</li>
+                            <li>Keep default User Filter settings</li>
+                            <li>Verify Group OUs are correctly set</li>
                         </ul>
-                    </div>
-
-                    <div class="troubleshooting">
-                        <h4>Common Import Issues</h4>
-                        <table>
-                            <tr>
-                                <th>Issue</th>
-                                <th>Solution</th>
-                            </tr>
-                            <tr>
-                                <td>Missing users</td>
-                                <td>Check OU selection and user filters</td>
-                            </tr>
-                            <tr>
-                                <td>Duplicate users</td>
-                                <td>Review matching rules configuration</td>
-                            </tr>
-                            <tr>
-                                <td>Incorrect attributes</td>
-                                <td>Verify AD attribute mappings</td>
-                            </tr>
-                            <tr>
-                                <td>Import errors</td>
-                                <td>Check import logs for specific error messages</td>
-                            </tr>
-                        </table>
-                    </div>
+                    </li>
+                </ol>
+                <div class="important">
+                    Do not modify the default filters unless specifically required. Changes can affect user provisioning.
                 </div>
-
-                <div class="section-part">
-                    <h3>Part 2: Adding a authenticator</h3>
-                    <ol class="steps">
-                        <li class="step">
-                            <div class="step-title">Access Authenticators</div>
-                            <p>Navigate to Security > Authenticators in the Okta admin console</p>
-                            <img src="images/section3/Authenticators.png" alt="Okta Authenticators Console" class="step-image">
-                            <div class="tip">
-                                We need to add another authenticator to replace email, for this we will choose security question.
-                            </div>
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Add Security Question</div>
-                            <p>Click "Add Authenticator" and scroll down Security Question</p>
-                            <p>Click on "Add"</p>
-                            <img src="images/section3/security-question.png" alt="Adding First Test User" class="step-image">
-                            <div class="note">
-                                Ensure "User must change password on first login" is checked.
-                            </div>
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Changing the Default Enrollment Policy</div>
-                            <p>Select the tab "Enrollment"</p>
-                            <p>Select "Default Policy"</p>
-                            <p>Click on Actions > Edit</p>
-                            <p>Set the folowing:</p>
-                            <table>
-                                <tr>
-                                    <th>Authenticator</th>
-                                    <th>Setting</th>
-                                </tr>
-                                <tr>
-                                    <td>Okta Verify</td>
-                                    <td>Optional</td>
-                                </tr>
-                                <tr>
-                                    <td>Password</td>
-                                    <td>Required</td>
-                                </tr>
-                                <tr>
-                                    <td>Security Question</td>
-                                    <td>Required</td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </table>
-                            <img src="images/enrollment-policy.png" alt="Enrollment Policy" class="step-image">
-                            </div>
-                        </li>
-                    </ol>
+                <img src="images/section3/import-filters.png" alt="Import Filter Settings" class="step-image">
+            </li>
+            <li class="step">
+                <div class="step-title">Configure Import Schedule</div>
+                <ol>
+                    <li>Click "To Okta" in the Settings list</li>
+                    <li>Click Edit in the General area</li>
+                    <li>Configure the following settings:
+                        <ul>
+                            <li>Schedule Import: Daily</li>
+                            <li>Username format: User Principal Name (UPN)</li>
+                            <li>Enable "Create and update users on login"</li>
+                        </ul>
+                    </li>
+                </ol>
+                <div class="important">
+                    JIT Provisioning ("Create and update users on login") is essential for our setup as it will create Okta accounts automatically when AD users first log in.
                 </div>
-                
-                <div class="section-part">
-                    <h3>Part 2: Creating Okta-Managed Users</h3>
-                    <ol class="steps">
-                        <li class="step">
-                            <div class="step-title">Access User Management</div>
-                            <p>Navigate to Directory > People in the Okta admin console</p>
-                            <img src="images/user-management.png" alt="Okta User Management Console" class="step-image">
-                            <div class="tip">
-                                Use the bulk import template if you need to create multiple users at once.
-                            </div>
-                        </li>
+                <img src="images/section3/import-schedule.png" alt="Import Schedule Configuration" class="step-image">
+            </li>
 
-                        <li class="step">
-                            <div class="step-title">Create First Test User</div>
-                            <p>Click "Add Person" and enter details for Test User 1:</p>
-                            <div class="code-block">
-                                <code>
-                                    First Name: Test1
-                                    Last Name: User1
-                                    Username: test1@yourdomain.com
-                                    Primary email: test1@yourdomain.com
-                                    Password: Set by admin
-                                </code>
-                            </div>
-                            <img src="images/add-user1.png" alt="Adding First Test User" class="step-image">
-                            <div class="note">
-                                Ensure "User must change password on first login" is checked.
-                            </div>
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Create Second Test User</div>
-                            <p>Repeat the process for Test User 2:</p>
-                            <div class="code-block">
-                                <code>
-                                    First Name: Test2
-                                    Last Name: User2
-                                    Username: test2@yourdomain.com
-                                    Primary email: test2@yourdomain.com
-                                    Password: Set by admin
-                                </code>
-                            </div>
-                            <img src="images/add-user2.png" alt="Adding Second Test User" class="step-image">
-                        </li>
-                    </ol>
+            <li class="step">
+                <div class="step-title">Configure Matching Rules</div>
+                <ol>
+                    <li>In User Creation & Matching section, click Edit</li>
+                    <li>Configure these settings:
+                        <ul>
+                            <li>Select "Match by Okta username format"</li>
+                            <li>Enable "Auto-confirm exact matches"</li>
+                            <li>Leave other settings as default</li>
+                        </ul>
+                    </li>
+                </ol>
+                <div class="tip">
+                    These settings ensure that users are correctly matched between AD and Okta, preventing duplicates.
                 </div>
+                <img src="images/section3/matching-rules.png" alt="User Matching Configuration" class="step-image">
+            </li>
 
-                <div class="section-part">
-                    <h3>Part 3: Test Login on CL03</h3>
-                    <ol class="steps">
-                        <li class="step">
-                            <div class="step-title">Change to the CL03 Machine</div>
-                            <p>Navigate to your okta org in your browser on CL03</p>
-                            <p>Login as adam.wally@cyberlab-au.com</p>
-                            <p>make this a note: Because of the previous steps when setting up the AD JIT Provisioning, We set "Create and update users on login". This means that the user logging in with thier AD credentials will be automatically added to our directory on logging in.</p>
-                            <img src="images/group-management.png" alt="Okta Test Login" class="step-image">
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Confirm Security Question Enrollment</div>
-                        </li>
-                    </ol>
+            <li class="step">
+                <div class="step-title">Run Initial Import</div>
+                <ol>
+                    <li>Navigate to the Import tab</li>
+                    <li>Click "Import Now"</li>
+                    <li>Select "Full Import" when prompted</li>
+                    <li>Wait for import to complete</li>
+                    <li>Verify users appear in Directory > People</li>
+                </ol>
+                <div class="note">
+                    The initial import may take several minutes depending on the number of users.
                 </div>
+                <img src="images/section3/import-progress1.png" alt="Starting Import Process" class="step-image">
+                <img src="images/section3/import-progress2.png" alt="Import Progress Monitoring" class="step-image">
+            </li>
+        </ol>
 
-                <div class="verification-list">
-                    <h4>Verification Checklist</h4>
-                    <ul class="checklist">
-                        <li>Test1 User created successfully</li>
-                        <li>Test2 User created successfully</li>
-                        <li>IT-Admin group created</li>
-                        <li>General-Users group created</li>
-                        <li>Users assigned to correct groups</li>
-                        <li>Group rules functioning as expected</li>
-                        <li>Users can log in successfully</li>
-                    </ul>
+        <div class="verification-list">
+            <h4>Import Configuration Checklist</h4>
+            <ul class="checklist">
+                <li>AD integration shows as Active</li>
+                <li>Correct OUs are selected</li>
+                <li>Import schedule is set to Daily</li>
+                <li>JIT Provisioning is enabled</li>
+                <li>Username format is set to UPN</li>
+                <li>Initial import completed successfully</li>
+            </ul>
+        </div>
+    </div>
+     <div class="section-part">
+        <h3>Part 2: Configure Authentication Requirements</h3>
+        <ol class="steps">
+            <li class="step">
+                <div class="step-title">Access Authenticator Settings</div>
+                <ol>
+                    <li>Navigate to Security > Authenticators</li>
+                    <li>Review current authenticators</li>
+                    <li>Note that Password and Email are enabled by default</li>
+                </ol>
+                <img src="images/section3/authenticators.png" alt="Okta Authenticators Console" class="step-image">
+                <div class="tip">
+                    We'll add Security Question as an additional authentication factor and adjust the email settings.
                 </div>
+            </li>
 
-                <div class="troubleshooting">
-                    <h4>Common Issues</h4>
-                    <table>
-                        <tr>
-                            <th>Issue</th>
-                            <th>Solution</th>
-                        </tr>
-                        <tr>
-                            <td>User creation fails</td>
-                            <td>Check for duplicate usernames or email addresses</td>
-                        </tr>
-                        <tr>
-                            <td>Group assignment issues</td>
-                            <td>Verify group rule conditions and user attributes</td>
-                        </tr>
-                        <tr>
-                            <td>User cannot log in</td>
-                            <td>Check user status and password requirements</td>
-                        </tr>
-                    </table>
+            <li class="step">
+                <div class="step-title">Add Security Question Authenticator</div>
+                <ol>
+                    <li>Click "Add Authenticator"</li>
+                    <li>Scroll to find "Security Question"</li>
+                    <li>Click "Add" next to Security Question</li>
+                    <li>Review default settings</li>
+                    <li>Click "Add" to confirm</li>
+                </ol>
+                <img src="images/section3/security-question.png" alt="Adding Security Question Authenticator" class="step-image">
+                <div class="note">
+                    Security questions provide a backup authentication method when other factors are unavailable.
                 </div>
+            </li>
 
-                <div class="best-practices">
-                    <h4>Best Practices</h4>
-                    <ul>
-                        <li>Use consistent naming conventions for groups</li>
-                        <li>Document group purposes and access levels</li>
-                        <li>Regularly audit group memberships</li>
-                        <li>Use group rules for automated management</li>
-                        <li>Implement principle of least privilege</li>
-                    </ul>
+            <li class="step">
+                <div class="step-title">Configure Enrollment Policy</div>
+                <ol>
+                    <li>Select the "Enrollment" tab</li>
+                    <li>Click on "Default Policy"</li>
+                    <li>Click Actions > Edit</li>
+                    <li>Configure authenticators as follows:</li>
+                </ol>
+                <table>
+                    <tr>
+                        <th>Authenticator</th>
+                        <th>Setting</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>Required</td>
+                        <td>Primary authentication method</td>
+                    </tr>
+                    <tr>
+                        <td>Security Question</td>
+                        <td>Required</td>
+                        <td>Backup authentication method</td>
+                    </tr>
+                    <tr>
+                        <td>Okta Verify</td>
+                        <td>Optional</td>
+                        <td>Available for enhanced security</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>Optional</td>
+                        <td>Reduced priority authentication method</td>
+                    </tr>
+                </table>
+                <img src="images/section3/enrollment-policy.png" alt="Enrollment Policy Configuration" class="step-image">
+                <div class="important">
+                    These settings ensure users have a backup authentication method while maintaining security.
                 </div>
+            </li>
+        </ol>
 
-                <div class="navigation-links">
-                    <a href="section2.html" class="nav-link">← Back to AD Integration</a>
-                    <a href="section4.html" class="nav-link">Next: Application Integration →</a>
+        <div class="verification-list">
+            <h4>Authenticator Configuration Checklist</h4>
+            <ul class="checklist">
+                <li>Security Question authenticator added successfully</li>
+                <li>Enrollment policy updated</li>
+                <li>Required authenticators set correctly</li>
+                <li>Optional authenticators configured</li>
+                <li>Policy changes saved and active</li>
+            </ul>
+        </div>
+    </div>
+     <div class="section-part">
+        <h3>Part 3: Test Login and Enrollment</h3>
+        <ol class="steps">
+            <li class="step">
+                <div class="step-title">Prepare for Testing</div>
+                <ol>
+                    <li>Ensure you're on the CL03 machine</li>
+                    <li>Open Microsoft Edge browser</li>
+                    <li>Clear browser cache if needed</li>
+                </ol>
+                <div class="tip">
+                    Testing on CL03 ensures we're in the correct environment with all necessary access.
                 </div>
-            </div>
+            </li>
+
+            <li class="step">
+                <div class="step-title">Initial Login</div>
+                <ol>
+                    <li>Navigate to your Okta org URL (https://demo-xxxxxxxx.okta.com)</li>
+                    <li>Enter AD credentials:
+                        <ul>
+                            <li>Username: adam.wally@cyberlab-au.com</li>
+                            <li>Password: Your AD password</li>
+                        </ul>
+                    </li>
+                    <li>Click "Sign In"</li>
+                </ol>
+                <div class="important">
+                    Thanks to JIT Provisioning configured earlier, this first login will automatically create your Okta user account.
+                </div>
+                <img src="images/section3/login-screen.png" alt="Okta Login Screen" class="step-image">
+            </li>
+
+            <li class="step">
+                <div class="step-title">Security Question Enrollment</div>
+                <ol>
+                    <li>After successful login, you'll be prompted to set up security questions</li>
+                    <li>Select your security questions:
+                        <ul>
+                            <li>Choose questions that have answers only you would know</li>
+                            <li>Avoid using easily discoverable information</li>
+                            <li>Use clear, memorable answers</li>
+                        </ul>
+                    </li>
+                    <li>Enter your answers for each question</li>
+                    <li>Click "Finish" to complete enrollment</li>
+                </ol>
+                <div class="note">
+                    You'll need these security questions if you ever need to reset your password or verify your identity.
+                </div>
+                <img src="images/section3/security-questions-setup.png" alt="Security Questions Setup" class="step-image">
+            </li>
+
+            <li class="step">
+                <div class="step-title">Verify Account Access</div>
+                <ol>
+                    <li>Log out of your account</li>
+                    <li>Perform a second login</li>
+                    <li>Verify you can access your Okta dashboard</li>
+                    <li>Check that your profile information is correct</li>
+                </ol>
+                <img src="images/section3/okta-dashboard.png" alt="Okta Dashboard" class="step-image">
+            </li>
+        </ol>
+
+        <div class="troubleshooting">
+            <h4>Common Login Issues</h4>
+            <table>
+                <tr>
+                    <th>Issue</th>
+                    <th>Solution</th>
+                </tr>
+                <tr>
+                    <td>AD credentials not working</td>
+                    <td>Verify credentials in AD first, ensure user is not locked</td>
+                </tr>
+                <tr>
+                    <td>JIT Provisioning failed</td>
+                    <td>Check AD agent status and user permissions</td>
+                </tr>
+                <tr>
+                    <td>Security questions not appearing</td>
+                    <td>Verify enrollment policy is active and properly configured</td>
+                </tr>
+                <tr>
+                    <td>Dashboard access issues</td>
+                    <td>Check user activation status and group assignments</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="verification-list">
+            <h4>Login and Enrollment Checklist</h4>
+            <ul class="checklist">
+                <li>Successfully logged in with AD credentials</li>
+                <li>JIT Provisioning created Okta account</li>
+                <li>Security questions configured</li>
+                <li>Second login successful</li>
+                <li>Dashboard accessible</li>
+                <li>Profile information correct</li>
+            </ul>
+        </div>
+    </div>
+     <div class="section-part">
+        <h3>Implementation Best Practices</h3>
+        <div class="best-practices">
+            <h4>AD Integration</h4>
+            <ul>
+                <li>Regular monitoring of AD agent status</li>
+                <li>Review import logs weekly</li>
+                <li>Keep AD agent software updated</li>
+                <li>Document any custom attribute mappings</li>
+                <li>Maintain backup of configuration settings</li>
+            </ul>
+
+            <h4>Authentication Settings</h4>
+            <ul>
+                <li>Regular review of authentication policies</li>
+                <li>Document any policy exceptions</li>
+                <li>Test authentication flows monthly</li>
+                <li>Monitor failed authentication attempts</li>
+                <li>Keep security question guidelines updated</li>
+            </ul>
+
+            <h4>User Management</h4>
+            <ul>
+                <li>Regular audit of JIT provisioning</li>
+                <li>Monitor user activation status</li>
+                <li>Review authentication logs</li>
+                <li>Document troubleshooting procedures</li>
+                <li>Maintain user support documentation</li>
+            </ul>
+        </div>
+
+        <div class="important">
+            <h4>Key Takeaways</h4>
+            <ul>
+                <li>JIT Provisioning automatically creates Okta accounts for AD users</li>
+                <li>Security Questions provide a reliable backup authentication method</li>
+                <li>Regular monitoring ensures system health</li>
+                <li>User experience should be balanced with security requirements</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="verification-list">
+        <h4>Final Section Verification</h4>
+        <ul class="checklist">
+            <h5>AD Integration</h5>
+            <li>AD agent connected and active</li>
+            <li>Import settings configured correctly</li>
+            <li>JIT Provisioning enabled</li>
+            <li>User matching rules set</li>
+
+            <h5>Authentication</h5>
+            <li>Security Questions enabled</li>
+            <li>Enrollment policy configured</li>
+            <li>Authentication flow tested</li>
+            <li>Backup authentication methods available</li>
+
+            <h5>Testing</h5>
+            <li>Test user login successful</li>
+            <li>Security questions enrolled</li>
+            <li>Profile information accurate</li>
+            <li>Dashboard accessible</li>
+        </ul>
+    </div>
+
+    <div class="troubleshooting">
+        <h4>Section Support Resources</h4>
+        <table>
+            <tr>
+                <th>Resource</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Okta Documentation</td>
+                <td>Detailed configuration guides and troubleshooting</td>
+            </tr>
+            <tr>
+                <td>AD Agent Logs</td>
+                <td>Troubleshooting AD integration issues</td>
+            </tr>
+            <tr>
+                <td>System Log</td>
+                <td>Monitoring authentication and user activity</td>
+            </tr>
+            <tr>
+                <td>Support Contact</td>
+                <td>Escalation for unresolved issues</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="next-steps">
+        <h4>Preparing for Next Section</h4>
+        <p>Before moving to Application Integration, ensure:</p>
+        <ul>
+            <li>All users can successfully authenticate</li>
+            <li>AD synchronization is working properly</li>
+            <li>Authentication policies are tested</li>
+            <li>Any issues are documented and resolved</li>
+        </ul>
+    </div>
+
+    <div class="navigation-links">
+        <a href="section2.html" class="nav-link">← Back to AD Integration</a>
+        <a href="section4.html" class="nav-link">Next: Application Integration →</a>
+    </div>
+</div>
+
         </main>
     </div>
 
