@@ -61,7 +61,6 @@
         .nav-item.active {
             background: var(--secondary-color);
             color: white;
-            font-weight: bold;
         }
 
         .main-content {
@@ -110,7 +109,7 @@
             font-weight: bold;
         }
 
-        .prerequisites, .important, .tip, .note, .troubleshooting {
+        .prerequisites, .important, .tip, .note {
             background: white;
             padding: 1.5rem;
             border-radius: 8px;
@@ -160,10 +159,63 @@
             font-family: monospace;
         }
 
+        .authentication-options {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .option {
+            margin-bottom: 1rem;
+        }
+
+        .verification-list, .troubleshooting, .next-steps {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+        }
+
         .navigation-links {
             display: flex;
             justify-content: space-between;
-            gap: 1rem;
             margin-top: 2rem;
             padding-top: 1rem;
             border-top: 1px solid #dee2e6;
