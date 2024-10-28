@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentication Policies - Okta Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Okta Workforce Identity Implementation Guide</h1>
+    </header>
+
+    <div class="container">
+        <div class="progress-indicator">
+            <a href="index.html" class="progress-step">
+                <div class="progress-number">0</div>
+                <span>Overview</span>
+            </a>
+            <a href="section1.html" class="progress-step">
+                <div class="progress-number">1</div>
+                <span>Demo Org</span>
+            </a>
+            <a href="section2.html" class="progress-step">
+                <div class="progress-number">2</div>
+                <span>AD Integration</span>
+            </a>
+            <a href="section3.html" class="progress-step">
+                <div class="progress-number">3</div>
+                <span>Users & Groups</span>
+            </a>
+            <a href="section4.html" class="progress-step">
+                <div class="progress-number">4</div>
+                <span>Applications</span>
+            </a>
+            <a href="section5.html" class="progress-step active">
+                <div class="progress-number">5</div>
+                <span>Authentication</span>
+            </a>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2>Authentication Policies</h2>
+                <span class="estimated-time">⏱️ 30-40 minutes</span>
+            </div>
+
+            <div class="prerequisites">
+                <h3>Section Prerequisites</h3>
+                <ul>
+                    <li>Completed application integrations</li>
+                    <li>User groups configured</li>
+                    <li>MFA factors determined</li>
+                    <li>Security requirements documented</li>
+                </ul>
+            </div>
+
+            <div class="section-part">
+                <h3>Part 1: Global Session Policy</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Configure Session Settings</div>
+                        <p>Navigate to Security > Global Session Policy</p>
+                        <ul>
+                            <li>Set session lifetime:
+                                <code>
+                                Max session lifetime: 8 hours
+                                Idle timeout: 30 minutes
+                                </code>
+                            </li>
+                            <li>Configure session persistency settings</li>
+                            <li>Set refresh token lifetime</li>
+                        </ul>
+                        
+                        <div class="note">
+                            Balance security with user experience when setting timeouts.
+                        </div>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Configure Sign-On Policy</div>
+                        <p>Under Security > Authentication Policies:</p>
+                        <ul>
+                            <li>Set password complexity requirements</li>
+                            <li>Configure lockout settings</li>
+                            <li>Set password expiry rules</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section-part">
+                <h3>Part 2: MFA Configuration</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Enable MFA Factors</div>
+                        <p>Navigate to Security > Multifactor:</p>
+                        <table class="factor-table">
+                            <tr>
+                                <th>Factor</th>
+                                <th>Status</th>
+                                <th>User Groups</th>
+                            </tr>
+                            <tr>
+                                <td>Okta Verify</td>
+                                <td>Required</td>
+                                <td>All Users</td>
+                            </tr>
+                            <tr>
+                                <td>SMS Authentication</td>
+                                <td>Optional</td>
+                                <td>General-Users</td>
+                            </tr>
+                            <tr>
+                                <td>Security Question</td>
+                                <td>Required</td>
+                                <td>All Users</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Configure Enrollment Rules</div>
+                        <ol>
+                            <li>Set enrollment requirements:
+                                <ul>
+                                    <li>Required factors</li>
+                                    <li>Optional factors</li>
+                                    <li>Enrollment timeframe</li>
+                                </ul>
+                            </li>
+                            <li>Configure enrollment reminders</li>
+                            <li>Set grace period settings</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section-part">
+                <h3>Part 3: Authentication Policies</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Create High-Security Policy</div>
+                        <p>For IT-Admin group:</p>
+                        <div class="code-block">
+                            <code>
+                            Policy Name: High Security Access
+                            Applies to: IT-Admin group
+                            Requirements:
+                            - Password + Okta Verify
+                            - No remembered devices
+                            - Session timeout: 4 hours
+                            </code>
+                        </div>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Create Standard Policy</div>
+                        <p>For General-Users group:</p>
+                        <div class="code-block">
+                            <code>
+                            Policy Name: Standard Access
+                            Applies to: General-Users group
+                            Requirements:
+                            - Password + Any MFA
+                            - Allow remembered devices
+                            - Session timeout: 8 hours
+                            </code>
+                        </div>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Configure Risk-Based Authentication</div>
+                        <p>Set up adaptive policies:</p>
+                        <ul>
+                            <li>Location-based access rules</li>
+                            <li>Device context policies</li>
+                            <li>Network zone configurations</li>
+                            <li>Suspicious activity detection</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section-part">
+                <h3>Part 4: Password Policies</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Configure Password Requirements</div>
+                        <table class="password-table">
+                            <tr>
+                                <th>Requirement</th>
+                                <th>Setting</th>
+                            </tr>
+                            <tr>
+                                <td>Minimum length</td>
+                                <td>12 characters</td>
+                            </tr>
+                            <tr>
+                                <td>Character requirements</td>
+                                <td>1 upper, 1 lower, 1 number, 1 symbol</td>
+                            </tr>
+                            <tr>
+                                <td>Password age</td>
+                                <td>90 days</td>
+                            </tr>
+                            <tr>
+                                <td>Password history</td>
+                                <td>24 previous passwords</td>
+                            </tr>
+                        </table>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="verification-list">
+                <h4>Verification Checklist</h4>
+                <ul class="checklist">
+                    <li>Global session policy configured</li>
+                    <li>MFA factors enabled and tested</li>
+                    <li>Authentication policies applied to correct groups</li>
+                    <li>Password policies enforced</li>
+                    <li>Risk-based authentication configured</li>
+                    <li>Session timeouts verified</li>
+                    <li>MFA enrollment working</li>
+                </ul>
+            </div>
+
+            <div class="troubleshooting">
+                <h4>Common Issues</h4>
+                <table>
+                    <tr>
+                        <th>Issue</th>
+                        <th>Solution</th>
+                    </tr>
+                    <tr>
+                        <td>MFA not prompting</td>
+                        <td>Check policy assignment and factor status</td>
+                    </tr>
+                    <tr>
+                        <td>Session timeout issues</td>
+                        <td>Verify browser settings and cache</td>
+                    </tr>
+                    <tr>
+                        <td>Password policy conflicts</td>
+                        <td>Review policy priority order</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="best-practices">
+                <h4>Security Best Practices</h4>
+                <ul>
+                    <li>Regular policy review and updates</li>
+                    <li>Monitor authentication patterns</li>
+                    <li>Document policy exceptions</li>
+                    <li>Maintain incident response plan</li>
+                    <li>Regular security assessments</li>
+                </ul>
+            </div>
+
+            <div class="completion-message">
+                <h3>🎉 Implementation Guide Complete!</h3>
+                <p>You have completed all sections of the Okta Workforce Identity Implementation Guide. Be sure to regularly review and update your configurations as needed.</p>
+            </div>
+        </div>
+
+        <div class="navigation-links">
+            <a href="section4.html" class="nav-link">← Back to Application Integration</a>
+            <a href="index.html" class="nav-link">Return to Overview →</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const progressSteps = document.querySelectorAll('.progress-step');
+            progressSteps.forEach(step => {
+                if (step.getAttribute('href') === currentPage) {
+                    step.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
