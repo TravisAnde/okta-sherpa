@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Okta Workforce Identity Cloud - Users & Groups</title>
+    <title>Okta Workforce Identity Cloud - Applications</title>
     <style>
         :root {
             --primary-color: #00297A;
@@ -265,10 +265,10 @@
                 <a href="./section2.html" class="nav-item">
                     <div>2. AD Integration</div>
                 </a>
-                <a href="./section3.html" class="nav-item active">
+                <a href="./section3.html" class="nav-item">
                     <div>3. Users & Groups</div>
                 </a>
-                <a href="./section4.html" class="nav-item">
+                <a href="./section4.html" class="nav-item active">
                     <div>4. Applications</div>
                 </a>
                 <a href="./section5.html" class="nav-item">
@@ -284,136 +284,142 @@
 
         <div class="content">
             <div class="section-header">
-                <div class="section-number">3</div>
-                <h2>User and Group Management</h2>
-                <span class="estimated-time">⏱️ 20-30 minutes</span>
+                <div class="section-number">4</div>
+                <h2>Application Integration</h2>
+                <span class="estimated-time">⏱️ 45-60 minutes</span>
             </div>
 
             <div class="prerequisites">
                 <h3>Section Prerequisites</h3>
                 <ul>
-                    <li>Completed AD integration</li>
-                    <li>Okta Administrator access</li>
-                    <li>Planned user structure</li>
-                    <li>Group naming convention</li>
+                    <li>Administrator access to target applications</li>
+                    <li>Application credentials/licenses</li>
+                    <li>SSL certificates (if required)</li>
+                    <li>Application URLs</li>
                 </ul>
             </div>
 
             <div class="section-part">
-                <h3>Part 1: Creating Okta-Managed Users</h3>
-                <ol class="steps">
-                    <li class="step">
-                        <div class="step-title">Access User Management</div>
-                        <p>Navigate to Directory > People in the Okta admin console</p>
-                        
-                        <div class="tip">
-                            Use the bulk import template if you need to create multiple users at once.
-                        </div>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Create First Test User</div>
-                        <p>Click "Add Person" and enter details for Test User 1:</p>
-                        <div class="code-block">
-                            <code>
-                                First Name: Test1
-                                Last Name: User1
-                                Username: test1@yourdomain.com
-                                Primary email: test1@yourdomain.com
-                                Password: Set by admin
-                            </code>
-                        </div>
-                        
-                        <div class="note">
-                            Ensure "User must change password on first login" is checked.
-                        </div>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Create Second Test User</div>
-                        <p>Repeat the process for Test User 2:</p>
-                        <div class="code-block">
-                            <code>
-                                First Name: Test2
-                                Last Name: User2
-                                Username: test2@yourdomain.com
-                                Primary email: test2@yourdomain.com
-                                Password: Set by admin
-                            </code>
-                        </div>
-                    </li>
-                </ol>
+                <h3>Applications to be Integrated</h3>
+                <div class="app-table">
+                    <table>
+                        <tr>
+                            <th>Application</th>
+                            <th>Integration Type</th>
+                            <th>Features</th>
+                            <th>Estimated Time</th>
+                        </tr>
+                        <tr>
+                            <td>Microsoft 365</td>
+                            <td>WS-Fed + SCIM</td>
+                            <td>SSO + Provisioning</td>
+                            <td>15 min</td>
+                        </tr>
+                        <tr>
+                            <td>Salesforce</td>
+                            <td>SAML + SCIM</td>
+                            <td>SSO + Provisioning</td>
+                            <td>10 min</td>
+                        </tr>
+                        <tr>
+                            <td>Slack</td>
+                            <td>SAML + SCIM</td>
+                            <td>SSO + Provisioning</td>
+                            <td>10 min</td>
+                        </tr>
+                        <tr>
+                            <td>Zoom</td>
+                            <td>SAML</td>
+                            <td>SSO Only</td>
+                            <td>5 min</td>
+                        </tr>
+                        <tr>
+                            <td>AWS SSO</td>
+                            <td>SAML</td>
+                            <td>SSO + Role Assignment</td>
+                            <td>15 min</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
             <div class="section-part">
-                <h3>Part 2: Creating Okta-Managed Groups</h3>
+                <h3>Microsoft 365 Integration</h3>
                 <ol class="steps">
                     <li class="step">
-                        <div class="step-title">Access Group Management</div>
-                        <p>Navigate to Directory > Groups</p>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Create IT-Admin Group</div>
-                        <p>Click "Add Group" and configure:</p>
-                        <ul>
-                            <li>Name: IT-Admin</li>
-                            <li>Description: IT Administrators group for elevated access</li>
-                            <li>Group Type: Okta Managed</li>
-                        </ul>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Create General-Users Group</div>
-                        <p>Add another group:</p>
-                        <ul>
-                            <li>Name: General-Users</li>
-                            <li>Description: Standard users with basic access</li>
-                            <li>Group Type: Okta Managed</li>
-                        </ul>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Assign Users to Groups</div>
+                        <div class="step-title">Add Microsoft 365 Integration</div>
                         <ol>
-                            <li>Add Test1 User to IT-Admin group:
-                                <ul>
-                                    <li>Select IT-Admin group</li>
-                                    <li>Click "Manage People"</li>
-                                    <li>Search and add Test1 User</li>
-                                </ul>
-                            </li>
-                            <li>Add Test2 User to General-Users group:
-                                <ul>
-                                    <li>Select General-Users group</li>
-                                    <li>Click "Manage People"</li>
-                                    <li>Search and add Test2 User</li>
-                                </ul>
-                            </li>
+                            <li>Navigate to Applications > Applications</li>
+                            <li>Click "Browse App Catalog"</li>
+                            <li>Search for "Microsoft Office 365"</li>
+                            <li>Click "Add Integration"</li>
+                        </ol>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Configure SSO Settings</div>
+                        <ol>
+                            <li>Enter Office 365 domain</li>
+                            <li>Configure WS-Federation settings</li>
+                            <li>Set up certificate</li>
+                            <li>Configure attribute mappings</li>
+                        </ol>
+                        <div class="important">
+                            Save the PowerShell commands provided for Azure AD configuration.
+                        </div>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Configure Provisioning</div>
+                        <ol>
+                            <li>Enable provisioning</li>
+                            <li>Enter Azure AD admin credentials</li>
+                            <li>Configure user attribute mappings</li>
+                            <li>Set up group push if needed</li>
                         </ol>
                     </li>
                 </ol>
             </div>
 
             <div class="section-part">
-                <h3>Part 3: Group Rules and Automation</h3>
+                <h3>Salesforce Integration</h3>
                 <ol class="steps">
                     <li class="step">
-                        <div class="step-title">Create Group Rules</div>
-                        <p>Set up automated group assignments:</p>
+                        <div class="step-title">Add Salesforce Integration</div>
                         <ol>
-                            <li>Navigate to Directory > Groups > Rules</li>
-                            <li>Click "Add Rule"</li>
-                            <li>Configure rule conditions:
-                                <div class="code-block">
-                                    <code>
-                                        IF User Profile Property "Department"
-                                        EQUALS "Information Technology"
-                                        THEN Add to Group "IT-Admin"
-                                    </code>
-                                </div>
-                            </li>
+                            <li>Browse App Catalog</li>
+                            <li>Select Salesforce</li>
+                            <li>Choose integration type</li>
                         </ol>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Configure SAML Settings</div>
+                        <ol>
+                            <li>Download Okta certificate</li>
+                            <li>Configure Salesforce SSO settings</li>
+                            <li>Set up attribute mappings</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section-part">
+                <h3>Remaining Applications</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Configure Slack Integration</div>
+                        <p>Follow Slack-specific configuration guide in the App Catalog</p>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Set up Zoom</div>
+                        <p>Configure basic SAML integration for Zoom</p>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">AWS SSO Setup</div>
+                        <p>Configure AWS SSO with role mapping</p>
                     </li>
                 </ol>
             </div>
@@ -421,13 +427,13 @@
             <div class="verification-list">
                 <h4>Verification Checklist</h4>
                 <ul class="checklist">
-                    <li>Test1 User created successfully</li>
-                    <li>Test2 User created successfully</li>
-                    <li>IT-Admin group created</li>
-                    <li>General-Users group created</li>
-                    <li>Users assigned to correct groups</li>
-                    <li>Group rules functioning as expected</li>
-                    <li>Users can log in successfully</li>
+                    <li>Microsoft 365 SSO working</li>
+                    <li>Salesforce integration complete</li>
+                    <li>Slack provisioning configured</li>
+                    <li>Zoom SSO tested</li>
+                    <li>AWS roles assigned</li>
+                    <li>User access verified for each app</li>
+                    <li>Group assignments tested</li>
                 </ul>
             </div>
 
@@ -439,16 +445,16 @@
                         <th>Solution</th>
                     </tr>
                     <tr>
-                        <td>User creation fails</td>
-                        <td>Check for duplicate usernames or email addresses</td>
+                        <td>SAML configuration errors</td>
+                        <td>Verify certificate and endpoint settings</td>
                     </tr>
                     <tr>
-                        <td>Group assignment issues</td>
-                        <td>Verify group rule conditions and user attributes</td>
+                        <td>Provisioning failures</td>
+                        <td>Check API credentials and permissions</td>
                     </tr>
                     <tr>
-                        <td>User cannot log in</td>
-                        <td>Check user status and password requirements</td>
+                        <td>Attribute mapping issues</td>
+                        <td>Compare source and target attributes</td>
                     </tr>
                 </table>
             </div>
@@ -456,18 +462,18 @@
             <div class="best-practices">
                 <h4>Best Practices</h4>
                 <ul>
-                    <li>Use consistent naming conventions for groups</li>
-                    <li>Document group purposes and access levels</li>
-                    <li>Regularly audit group memberships</li>
-                    <li>Use group rules for automated management</li>
-                    <li>Implement principle of least privilege</li>
+                    <li>Test with limited user group first</li>
+                    <li>Document all configuration settings</li>
+                    <li>Setup monitoring for SSO health</li>
+                    <li>Configure app sign-on policies</li>
+                    <li>Regular testing of SSO flows</li>
                 </ul>
             </div>
         </div>
 
         <div class="navigation-links">
-            <a href="section2.html" class="nav-link">← Back to AD Integration</a>
-            <a href="section4.html" class="nav-link">Next: Application Integration →</a>
+            <a href="section3.html" class="nav-link">← Back to User Management</a>
+            <a href="section5.html" class="nav-link">Next: Authentication Policies →</a>
         </div>
     </div>
 
