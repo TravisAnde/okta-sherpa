@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating Demo Organization - Okta Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Okta Workforce Identity Implementation Guide</h1>
+    </header>
+
+    <div class="container">
+        <div class="progress-indicator">
+            <a href="index.html" class="progress-step">
+                <div class="progress-number">0</div>
+                <span>Overview</span>
+            </a>
+            <a href="section1.html" class="progress-step active">
+                <div class="progress-number">1</div>
+                <span>Demo Org</span>
+            </a>
+            <a href="section2.html" class="progress-step">
+                <div class="progress-number">2</div>
+                <span>AD Integration</span>
+            </a>
+            <a href="section3.html" class="progress-step">
+                <div class="progress-number">3</div>
+                <span>Users & Groups</span>
+            </a>
+            <a href="section4.html" class="progress-step">
+                <div class="progress-number">4</div>
+                <span>Applications</span>
+            </a>
+            <a href="section5.html" class="progress-step">
+                <div class="progress-number">5</div>
+                <span>Authentication</span>
+            </a>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2>Creating Demo Organization</h2>
+                <span class="estimated-time">⏱️ 15-20 minutes</span>
+            </div>
+
+            <div class="prerequisites">
+                <h3>Section Prerequisites</h3>
+                <ul>
+                    <li>Access to CL03 machine</li>
+                    <li>Business email address</li>
+                    <li>Chrome or Firefox browser</li>
+                    <li>Internet connectivity</li>
+                </ul>
+            </div>
+
+            <div class="important">
+                Before starting: Ensure you have access to your business email as you'll receive important verification links.
+            </div>
+
+            <ol class="steps">
+                <li class="step">
+                    <div class="step-title">Access Okta Partner Portal</div>
+                    <p>On CL03, open your browser and navigate to:</p>
+                    <code>https://partners.okta.com</code>
+                    
+                    <div class="tip">
+                        Bookmark this URL - you'll need to access the partner portal frequently during implementation.
+                    </div>
+
+                    <div class="screenshot">
+                        Partner Portal Login Page
+                        [Screenshot placeholder showing the login interface]
+                    </div>
+                </li>
+
+                <li class="step">
+                    <div class="step-title">Partner Portal Navigation</div>
+                    <p>After logging in, locate the Demo Organization creation area:</p>
+                    <ol>
+                        <li>Look for the "Demo & Development" section in the main navigation</li>
+                        <li>Click on "Create Demo Org" button</li>
+                    </ol>
+                    
+                    <div class="note">
+                        If you don't see these options, ensure you have the correct partner portal permissions.
+                    </div>
+                </li>
+
+                <li class="step">
+                    <div class="step-title">Configure Organization Details</div>
+                    <p>Fill in the required information:</p>
+                    
+                    <div class="config-form">
+                        <table>
+                            <tr>
+                                <th>Field</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                            <tr>
+                                <td>Organization Name</td>
+                                <td>Use format: [Company]-Demo-[Date]</td>
+                                <td>Acme-Demo-20240428</td>
+                            </tr>
+                            <tr>
+                                <td>Admin Email</td>
+                                <td>Your business email address</td>
+                                <td>admin@company.com</td>
+                            </tr>
+                            <tr>
+                                <td>Region</td>
+                                <td>Choose closest geographical location</td>
+                                <td>US / EMEA / APAC</td>
+                            </tr>
+                            <tr>
+                                <td>Use Case</td>
+                                <td>Select Workforce Identity</td>
+                                <td>Workforce Identity</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="important">
+                        Organization names must be unique across all Okta tenants globally.
+                    </div>
+                </li>
+
+                <li class="step">
+                    <div class="step-title">Account Activation</div>
+                    <p>Complete the activation process:</p>
+                    <ol>
+                        <li>Check your business email for the activation link</li>
+                        <li>Click the activation link (valid for 24 hours)</li>
+                        <li>Set up your administrator password following these requirements:
+                            <ul>
+                                <li>At least 8 characters</li>
+                                <li>At least one uppercase letter</li>
+                                <li>At least one lowercase letter</li>
+                                <li>At least one number</li>
+                                <li>At least one special character</li>
+                            </ul>
+                        </li>
+                        <li>Configure security questions and answers</li>
+                    </ol>
+
+                    <div class="warning">
+                        Store your admin credentials securely - you'll need them throughout the implementation.
+                    </div>
+                </li>
+
+                <li class="step">
+                    <div class="step-title">Initial Console Access</div>
+                    <p>Access your new Okta tenant:</p>
+                    <ol>
+                        <li>Note your Okta domain: <code>https://your-org.okta.com</code></li>
+                        <li>Log in with your admin credentials</li>
+                        <li>Bookmark your admin console URL</li>
+                    </ol>
+
+                    <div class="tip">
+                        Your Okta URL will be in the format: <code>https://company-demo.okta.com</code>
+                    </div>
+                </li>
+            </ol>
+
+            <div class="verification-list">
+                <h4>Verification Checklist</h4>
+                <ul class="checklist">
+                    <li>Successfully logged into Partner Portal</li>
+                    <li>Created demo organization</li>
+                    <li>Received activation email</li>
+                    <li>Set up admin password</li>
+                    <li>Configured security questions</li>
+                    <li>Can access Okta admin console</li>
+                    <li>Bookmarked important URLs</li>
+                </ul>
+            </div>
+
+            <div class="troubleshooting">
+                <h4>Common Issues</h4>
+                <table>
+                    <tr>
+                        <th>Issue</th>
+                        <th>Solution</th>
+                    </tr>
+                    <tr>
+                        <td>No activation email received</td>
+                        <td>Check spam folder, verify email address, or request new activation link</td>
+                    </tr>
+                    <tr>
+                        <td>Organization name already taken</td>
+                        <td>Try a different organization name with unique identifier</td>
+                    </tr>
+                    <tr>
+                        <td>Activation link expired</td>
+                        <td>Return to partner portal and request new demo organization</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="navigation-links">
+            <a href="index.html" class="nav-link">← Back to Overview</a>
+            <a href="section2.html" class="nav-link">Next: Active Directory Integration →</a>
+        </div>
+    </div>
+
+    <script>
+        // Add active class to current section in progress indicator
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const progressSteps = document.querySelectorAll('.progress-step');
+            progressSteps.forEach(step => {
+                if (step.getAttribute('href') === currentPage) {
+                    step.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
