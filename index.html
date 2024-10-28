@@ -2,25 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Okta Workforce Identity Implementation Guide</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <div class="logo left-logo">
-                <img src="images/NEXTGEN.png" alt="Nextgen Logo">
-            </div>
-            <h1>Okta Workforce Identity Implementation Guide</h1>
-            <div class="logo right-logo">
-                <img src="images/Okta.png" alt="Okta Logo">
-            </div>
-        </div>
+        <h1>Okta Workforce Identity Implementation Guide</h1>
     </header>
 
-    <nav class="progress-indicator">
-        <div class="progress-wrapper">
+    <div class="container">
+        <div class="progress-indicator">
             <a href="index.html" class="progress-step active">
                 <div class="progress-number">0</div>
                 <span>Overview</span>
@@ -46,66 +37,64 @@
                 <span>Authentication</span>
             </a>
         </div>
-    </nav>
 
-    <main class="container">
         <div class="intro">
             <h2>Getting Started</h2>
             <p>Welcome to the Okta Workforce Identity Implementation Guide. This comprehensive guide will walk you through the complete setup and configuration of Okta for your organization. The guide is divided into five main sections, each focusing on a critical component of your Okta implementation.</p>
             
-            <section class="section-overview">
+            <div class="section-overview">
                 <h3>Guide Sections</h3>
                 <div class="section-cards">
                     <a href="section1.html" class="section-card">
                         <div class="card-number">1</div>
-                        <div class="card-content">
-                            <h4>Creating Demo Organization</h4>
-                            <p>Setup your Okta tenant through the Partner Portal</p>
-                            <div class="estimated-time">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <path d="M12 6v6l4 2"></path>
-                                </svg>
-                                15-20 minutes
-                            </div>
-                        </div>
+                        <h4>Creating Demo Organization</h4>
+                        <p>Setup your Okta tenant through the Partner Portal</p>
+                        <span class="estimated-time">⏱️ 15-20 minutes</span>
                     </a>
                     
                     <a href="section2.html" class="section-card">
                         <div class="card-number">2</div>
-                        <div class="card-content">
-                            <h4>Active Directory Integration</h4>
-                            <p>Connect your AD infrastructure with Okta</p>
-                            <div class="estimated-time">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <path d="M12 6v6l4 2"></path>
-                                </svg>
-                                30-45 minutes
-                            </div>
-                        </div>
+                        <h4>Active Directory Integration</h4>
+                        <p>Connect your AD infrastructure with Okta</p>
+                        <span class="estimated-time">⏱️ 30-45 minutes</span>
                     </a>
                     
-                    <!-- [Similar updates for cards 3-5] -->
+                    <a href="section3.html" class="section-card">
+                        <div class="card-number">3</div>
+                        <h4>User and Group Management</h4>
+                        <p>Configure users and groups in Okta</p>
+                        <span class="estimated-time">⏱️ 20-30 minutes</span>
+                    </a>
+                    
+                    <a href="section4.html" class="section-card">
+                        <div class="card-number">4</div>
+                        <h4>Application Integration</h4>
+                        <p>Set up and configure applications</p>
+                        <span class="estimated-time">⏱️ 45-60 minutes</span>
+                    </a>
+                    
+                    <a href="section5.html" class="section-card">
+                        <div class="card-number">5</div>
+                        <h4>Authentication Policies</h4>
+                        <p>Configure security and authentication settings</p>
+                        <span class="estimated-time">⏱️ 30-40 minutes</span>
+                    </a>
                 </div>
-            </section>
+            </div>
 
-            <section class="prerequisites">
+            <div class="prerequisites">
                 <h3>Prerequisites</h3>
-                <ul class="prerequisite-list">
-                    <li>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                        Access to all required machines (CL03, CL04, DC01, DC02)
-                    </li>
-                    <!-- [Similar updates for other prerequisites] -->
+                <ul>
+                    <li>Access to all required machines (CL03, CL04, DC01, DC02)</li>
+                    <li>Administrator credentials for Active Directory</li>
+                    <li>Outbound internet connectivity on ports 80 and 443</li>
+                    <li>Valid business email for Okta admin account</li>
+                    <li>Modern web browser (Chrome or Firefox recommended)</li>
                 </ul>
-            </section>
+            </div>
         </div>
 
-        <section class="machine-info">
+        <div class="machine-info">
             <h3>Environment Setup</h3>
             <div class="table-container">
                 <table>
@@ -124,28 +113,41 @@
                             <td>Internet Access</td>
                             <td>Used for Okta Partner Portal and admin console access</td>
                         </tr>
-                        <!-- [Other rows remain the same] -->
+                        <tr>
+                            <td><strong>CL04</strong></td>
+                            <td>Testing Machine</td>
+                            <td>Internet Access</td>
+                            <td>Used for end-user testing and verification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DC01</strong></td>
+                            <td>Primary Domain Controller</td>
+                            <td>Internet Access, Admin Rights</td>
+                            <td>Will host Okta AD agent</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DC02</strong></td>
+                            <td>Secondary Domain Controller</td>
+                            <td>Internal Network Access</td>
+                            <td>Backup domain controller</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-        </section>
+        </div>
 
-        <nav class="navigation-links">
+        <div class="navigation-links">
             <span></span>
-            <a href="section1.html" class="nav-link">
-                Start Guide: Creating Demo Organization
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
-        </nav>
-    </main>
+            <a href="section1.html" class="nav-link">Start Guide: Creating Demo Organization →</a>
+        </div>
+    </div>
 
     <script>
+        // Add active class to current section in progress indicator
         document.addEventListener('DOMContentLoaded', function() {
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('.progress-step').forEach(step => {
+            const progressSteps = document.querySelectorAll('.progress-step');
+            progressSteps.forEach(step => {
                 if (step.getAttribute('href') === currentPage) {
                     step.classList.add('active');
                 }
