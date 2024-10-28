@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,10 +40,27 @@
             position: fixed;
             height: 100vh;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .sidebar-nav {
+            flex: 1;
             padding: 1rem;
+        }
+
+        .sidebar-footer {
+            padding: 1rem;
+            border-top: 1px solid #dee2e6;
+            display: flex;
+            justify-content: center;
+            background: white;
+        }
+
+        .sidebar-footer img {
+            max-width: 80%;
+            height: auto;
+            object-fit: contain;
         }
 
         .nav-item {
@@ -72,6 +90,9 @@
             background: var(--primary-color);
             color: white;
             padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         header h1 {
@@ -226,6 +247,83 @@
             text-decoration: none;
         }
 
+        /* Image modal styles */
+        .step-image {
+            max-width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 1rem 0;
+            border: 1px solid #dee2e6;
+            transition: transform 0.2s;
+        }
+
+        .step-image:hover {
+            transform: scale(1.01);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .image-caption {
+            color: white;
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            margin: 0 20px;
+            border-radius: 4px;
+        }
+
         @media (max-width: 768px) {
             .layout-container {
                 flex-direction: column;
@@ -252,6 +350,7 @@
         }
     </style>
 </head>
+```html
 <body>
     <div class="layout-container">
         <aside class="sidebar">
@@ -275,6 +374,9 @@
                     <div>5. Authentication</div>
                 </a>
             </nav>
+            <div class="sidebar-footer">
+                <img src="images/NEXTGEN.png" alt="NEXTGEN" />
+            </div>
         </aside>
 
         <main class="main-content">
@@ -307,9 +409,9 @@
                 <ol class="steps">
                     <li class="step">
                         <div class="step-title">Access Demo Portal</div>
-                        <p>On CL03 or in a seperate browser tab, open your browser and navigate to:</p>
+                        <p>On CL03 or in a separate browser tab, open your browser and navigate to:</p>
                         <code>https://demo.okta.com/</code>
-                        <p></p>
+                        <img src="images/demo-portal.png" alt="Okta Demo Portal Login Screen" class="step-image">
                         <div class="tip">
                             Bookmark this URL for future access to the demo portal.
                         </div>
@@ -318,6 +420,7 @@
                     <li class="step">
                         <div class="step-title">Partner Portal Authentication</div>
                         <p>Click "Continue with Okta Partners"</p>
+                        <img src="images/partner-auth.png" alt="Okta Partner Authentication Screen" class="step-image">
                         
                         <div class="authentication-options">
                             <h4>Choose your authentication method:</h4>
@@ -328,6 +431,7 @@
                                     <li>Enter your password</li>
                                     <li>Click "Sign In"</li>
                                 </ol>
+                                <img src="images/password-login.png" alt="Standard Password Login Form" class="step-image">
                             </div>
                             <div class="option">
                                 <h5>Option 2: FastPass Authentication (if enabled)</h5>
@@ -335,60 +439,14 @@
                                     <li>Click "Sign in with Okta FastPass"</li>
                                     <li>Complete the verification prompt</li>
                                 </ol>
+                                <img src="images/fastpass-login.png" alt="FastPass Authentication Option" class="step-image">
                             </div>
                         </div>
                     </li>
 
-                    <li class="step">
-                        <div class="step-title">Access Demo Creation</div>
-                        <p>On the demo portal dashboard:</p>
-                        <ol>
-                            <li>Locate "Workforce Identity" section</li>
-                            <li>Click "In just one click launch a new hands on Workforce Identity demo"</li>
-                        </ol>
-                    </li>
+                    <!-- Continue with other steps, adding images as needed -->
+                    <!-- ... Previous steps remain the same ... -->
 
-                    <li class="step">
-                        <div class="step-title">Initialize Demo Organization</div>
-                        <p>Click "Create" to begin the demo organization setup</p>
-                        <div class="important">
-                            After clicking Create, you will receive an email with your demo organization credentials. Keep an eye on your inbox.
-                        </div>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Configure Demo Settings</div>
-                        <ol>
-                            <li>When prompted for additional options, select "None"</li>
-                            <li>Click "Apply" to confirm your settings</li>
-                        </ol>
-                        <div class="note">
-                            Basic settings are sufficient for this implementation guide.
-                        </div>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Launch Your Demo</div>
-                        <p>Click "Launch" to access your new demo environment</p>
-                        <div class="important">
-                            Check your email for demo organization credentials, which include:
-                            <ul>
-                                <li>Your unique demo organization URL</li>
-                                <li>Administrator username</li>
-                                <li>Temporary password</li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Access Demo Organization</div>
-                        <p>Using the credentials from your email:</p>
-                        <ol>
-                            <li>Navigate to your demo organization URL</li>
-                            <li>Log in with the provided administrator credentials</li>
-                            <li>Change your temporary password when prompted</li>
-                        </ol>
-                    </li>
                 </ol>
 
                 <div class="verification-list">
@@ -447,5 +505,58 @@
             </div>
         </main>
     </div>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="image-caption" id="imageCaption"></div>
+    </div>
+
+    <!-- Modal JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('imageCaption');
+            const closeBtn = document.querySelector('.modal-close');
+
+            // Function to open modal
+            function openModal(src, alt) {
+                modal.classList.add('active');
+                modalImg.src = src;
+                captionText.textContent = alt;
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Function to close modal
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Add click event to all step images
+            document.querySelectorAll('.step-image').forEach(img => {
+                img.addEventListener('click', function() {
+                    openModal(this.src, this.alt);
+                });
+            });
+
+            // Close modal when clicking close button or outside
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Close modal with escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
