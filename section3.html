@@ -400,12 +400,127 @@
                 </div>
 
                 <div class="section-part">
-                    <h3>Part 1: Creating Okta-Managed Users</h3>
+                    <h3>Part 1: Configure AD Import Settings</h3>
+                    <ol class="steps">
+                        <li class="step">
+                            <div class="step-title">Access Import Settings</div>
+                            <ol>
+                                <li>Navigate to Directory > Directory Integrations</li>
+                                <li>Click Active Directory</li>
+                                <li>Select the Provisioning tab</li>
+                                <li>Click Integration in the Settings list</li>
+                            </ol>
+                            <img src="images/section3/import-settings.png" alt="AD Import Settings" class="step-image">
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Configure User Import Settings</div>
+                            <ol>
+                                <li>In the Import Settings area:
+                                    <ul>
+                                        <li>Verify "User OUs connected to Okta" settings</li>
+                                        <li>Keep default User Filter: sAMAccountType=805306368</li>
+                                        <li>Verify Group OUs connected to Okta</li>
+                                        <li>Keep default Group Filter: objectCategory=group</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <div class="important">
+                                Changing default filter queries can result in deprovisioning users. Only modify filters if absolutely necessary.
+                            </div>
+                            <img src="images/section3/import-filters.png" alt="Import Filter Settings" class="step-image">
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Configure Import Schedule</div>
+                            <ol>
+                                <li>Click "To Okta" in the Settings list</li>
+                                <li>Click Edit in the General area</li>
+                                <li>Set Schedule Import to daily</li>
+                                <li>Keep Username format as User Principal Name (UPN)</li>
+                                <li>Select "Create and update users on login" for JIT Provisioning</li>
+                            </ol>
+                            <div class="note">
+                                Import notifications will be sent to administrators when changes are detected during scheduled imports.
+                            </div>
+                            <img src="images/section3/import-schedule.png" alt="Import Schedule Configuration" class="step-image">
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Configure Matching Rules</div>
+                            <ol>
+                                <li>In User Creation & Matching section, click Edit</li>
+                                <li>Select matching criteria:
+                                    <ul>
+                                        <li>Match by Okta username format</li>
+                                        <li>Enable "Auto-confirm exact matches"</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <div class="tip">
+                                Matching rules prevent duplicate user accounts when importing from AD.
+                            </div>
+                            <img src="images/section3/matching-rules.png" alt="User Matching Configuration" class="step-image">
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Start Initial Import</div>
+                            <ol>
+                                <li>Return to Directory Integrations</li>
+                                <li>Click "Import Now" to start the process</li>
+                                <li>Monitor the import progress</li>
+                                <li>Review imported users in Directory > People</li>
+                            </ol>
+                            <img src="images/section3/import-progress.png" alt="Import Progress Monitoring" class="step-image">
+                        </li>
+                    </ol>
+
+                    <div class="verification-list">
+                        <h4>Import Verification Checklist</h4>
+                        <ul class="checklist">
+                            <li>Correct OUs selected for import</li>
+                            <li>Import filters properly configured</li>
+                            <li>Schedule settings confirmed</li>
+                            <li>Matching rules verified</li>
+                            <li>Initial import completed successfully</li>
+                            <li>Users appearing in Okta directory</li>
+                            <li>Group memberships correct</li>
+                        </ul>
+                    </div>
+
+                    <div class="troubleshooting">
+                        <h4>Common Import Issues</h4>
+                        <table>
+                            <tr>
+                                <th>Issue</th>
+                                <th>Solution</th>
+                            </tr>
+                            <tr>
+                                <td>Missing users</td>
+                                <td>Check OU selection and user filters</td>
+                            </tr>
+                            <tr>
+                                <td>Duplicate users</td>
+                                <td>Review matching rules configuration</td>
+                            </tr>
+                            <tr>
+                                <td>Incorrect attributes</td>
+                                <td>Verify AD attribute mappings</td>
+                            </tr>
+                            <tr>
+                                <td>Import errors</td>
+                                <td>Check import logs for specific error messages</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="section-part">
+                    <h3>Part 2: Creating Okta-Managed Users</h3>
                     <ol class="steps">
                         <li class="step">
                             <div class="step-title">Access User Management</div>
                             <p>Navigate to Directory > People in the Okta admin console</p>
-                            <img src="images/section3/user-management.png" alt="Okta User Management Console" class="step-image">
+                            <img src="images/user-management.png" alt="Okta User Management Console" class="step-image">
                             <div class="tip">
                                 Use the bulk import template if you need to create multiple users at once.
                             </div>
@@ -423,7 +538,7 @@
                                     Password: Set by admin
                                 </code>
                             </div>
-                            <img src="images/section3/add-user1.png" alt="Adding First Test User" class="step-image">
+                            <img src="images/add-user1.png" alt="Adding First Test User" class="step-image">
                             <div class="note">
                                 Ensure "User must change password on first login" is checked.
                             </div>
@@ -441,18 +556,18 @@
                                     Password: Set by admin
                                 </code>
                             </div>
-                            <img src="images/section3/add-user2.png" alt="Adding Second Test User" class="step-image">
+                            <img src="images/add-user2.png" alt="Adding Second Test User" class="step-image">
                         </li>
                     </ol>
                 </div>
 
                 <div class="section-part">
-                    <h3>Part 2: Creating Okta-Managed Groups</h3>
+                    <h3>Part 3: Creating Okta-Managed Groups</h3>
                     <ol class="steps">
                         <li class="step">
                             <div class="step-title">Access Group Management</div>
                             <p>Navigate to Directory > Groups</p>
-                            <img src="images/section3/group-management.png" alt="Okta Group Management Console" class="step-image">
+                            <img src="images/group-management.png" alt="Okta Group Management Console" class="step-image">
                         </li>
 
                         <li class="step">
@@ -463,7 +578,7 @@
                                 <li>Description: IT Administrators group for elevated access</li>
                                 <li>Group Type: Okta Managed</li>
                             </ul>
-                            <img src="images/section3/create-admin-group.png" alt="Creating IT-Admin Group" class="step-image">
+                            <img src="images/create-admin-group.png" alt="Creating IT-Admin Group" class="step-image">
                         </li>
 
                         <li class="step">
@@ -474,7 +589,7 @@
                                 <li>Description: Standard users with basic access</li>
                                 <li>Group Type: Okta Managed</li>
                             </ul>
-                            <img src="images/section3/create-users-group.png" alt="Creating General-Users Group" class="step-image">
+                            <img src="images/create-users-group.png" alt="Creating General-Users Group" class="step-image">
                         </li>
 
                         <li class="step">
@@ -486,7 +601,7 @@
                                         <li>Click "Manage People"</li>
                                         <li>Search and add Test1 User</li>
                                     </ul>
-                                    <img src="images/section3/assign-admin-group.png" alt="Assigning User to IT-Admin Group" class="step-image">
+                                    <img src="images/assign-admin-group.png" alt="Assigning User to IT-Admin Group" class="step-image">
                                 </li>
                                 <li>Add Test2 User to General-Users group:
                                     <ul>
@@ -494,7 +609,7 @@
                                         <li>Click "Manage People"</li>
                                         <li>Search and add Test2 User</li>
                                     </ul>
-                                    <img src="images/section3/assign-users-group.png" alt="Assigning User to General-Users Group" class="step-image">
+                                    <img src="images/assign-users-group.png" alt="Assigning User to General-Users Group" class="step-image">
                                 </li>
                             </ol>
                         </li>
@@ -502,7 +617,7 @@
                 </div>
 
                 <div class="section-part">
-                    <h3>Part 3: Group Rules and Automation</h3>
+                    <h3>Part 4: Group Rules and Automation</h3>
                     <ol class="steps">
                         <li class="step">
                             <div class="step-title">Create Group Rules</div>
@@ -520,7 +635,7 @@
                                     </div>
                                 </li>
                             </ol>
-                            <img src="images/section3/group-rules.png" alt="Creating Group Rules" class="step-image">
+                            <img src="images/group-rules.png" alt="Creating Group Rules" class="step-image">
                         </li>
                     </ol>
                 </div>
