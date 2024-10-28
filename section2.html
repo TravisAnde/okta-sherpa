@@ -395,7 +395,7 @@
             <li>Administrator access to DC01 (Domain Controller)</li>
             <li>Okta Administrator account with directory management permissions</li>
             <li>Outbound connectivity from DC01 on ports 80 and 443</li>
-            <li>Modern web browser on DC01 (Chrome or Edge recommended)</li>
+            <li>Modern web browser on DC01 (Edge is installed)</li>
             <li>Latest version of Okta AD agent installer</li>
         </ul>
     </div>
@@ -421,14 +421,14 @@
                 <li>Verify browser access to Okta admin console on DC01</li>
             </ul>
             <div class="note">
-                If using a DMZ server, ensure proper port configuration. See Okta documentation for DMZ server requirements.
+                By using the CyberLAB all of these steps will be preconfigured and you do not need to worry about them, This is just for information.
             </div>
         </li>
 
         <li class="step">
             <div class="step-title">Access Agent Installation</div>
             <ol>
-                <li>Log into Okta Admin Console on DC01</li>
+                <li>Log into Okta Admin Console on DC01 using Microsoft Edge</li>
                 <li>Navigate to Directory > Directory Integrations</li>
                 <li>Click "Add Directory" and select "Add Active Directory"</li>
                 <li>Review installation requirements</li>
@@ -456,27 +456,11 @@
             <div class="step-title">Configure Service Account</div>
             <p>Choose one of these options:</p>
             <div class="option">
-                <h5>Option 1: Create OktaService Account (Recommended)</h5>
+                <h5>Option: Create OktaService Account (Recommended)</h5>
                 <ol>
                     <li>Select "Create or use the OktaService account"</li>
                     <li>Set a complex password</li>
                     <li>Account will be created with required permissions</li>
-                </ol>
-            </div>
-            <div class="option">
-                <h5>Option 2: Use Existing Account</h5>
-                <ol>
-                    <li>Select "Use an alternate account"</li>
-                    <li>Enter account credentials</li>
-                    <li>Ensure account has required permissions</li>
-                </ol>
-            </div>
-            <div class="option">
-                <h5>Option 3: Use gMSA Account</h5>
-                <ol>
-                    <li>Enter gMSA account name with $ suffix</li>
-                    <li>Example: gMSA01$@cyberlab-au.com</li>
-                    <li>Leave password field empty</li>
                 </ol>
             </div>
             <img src="images/section2/service-account.png" alt="Service Account Configuration" class="step-image">
@@ -485,30 +469,23 @@
         <li class="step">
             <div class="step-title">Configure Network Settings</div>
             <ol>
-                <li>Specify proxy settings if required</li>
-                <li>Enter Okta org URL (https://your-org.okta.com)</li>
+                <li>Keep the default proxy setting (unselected)</li>
+                <li>Enter Okta org URL (https://demo-xxxxxxxxxx.okta.com)</li>
                 <li>Click verification link</li>
                 <li>Enter displayed activation code</li>
+                <li>Click Allow Access</li>
             </ol>
-            <div class="important">
-                If you see SSL/TLS trust errors:
-                <ul>
-                    <li>Add okta.com to SSL proxy bypass list</li>
-                    <li>Or disable SSL certificate pinning</li>
-                </ul>
             </div>
         </li>
 
         <li class="step">
             <div class="step-title">Configure Import Settings</div>
             <ol>
-                <li>Select Organization Units (OUs) to import</li>
+                <li>Go back to your Okta Admin Console in Edge and Click Next</li>
+                <li>Keep all default, Organization Units (OUs) to import</li>
                 <li>Choose Username Format:
                     <ul>
-                        <li>Email address</li>
-                        <li>SAM Account Name</li>
                         <li>User Principal Name (UPN)</li>
-                        <li>Custom</li>
                     </ul>
                 </li>
             </ol>
@@ -522,8 +499,6 @@
             <div class="step-title">Configure User Attributes</div>
             <ol>
                 <li>Review default attribute mappings</li>
-                <li>Add any custom attributes needed</li>
-                <li>Verify profile mappings</li>
             </ol>
             <img src="images/section2/attribute-mapping.png" alt="Attribute Mapping Configuration" class="step-image">
         </li>
