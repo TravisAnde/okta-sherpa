@@ -42,138 +42,118 @@
             <div class="section-header">
                 <div class="section-number">1</div>
                 <h2>Creating Demo Organization</h2>
-                <span class="estimated-time">⏱️ 15-20 minutes</span>
+                <span class="estimated-time">⏱️ 10-15 minutes</span>
             </div>
 
             <div class="prerequisites">
                 <h3>Section Prerequisites</h3>
                 <ul>
                     <li>Access to CL03 machine</li>
-                    <li>Business email address</li>
-                    <li>Chrome or Firefox browser</li>
+                    <li>Your Okta Partner Portal credentials</li>
+                    <li>Access to your business email</li>
+                    <li>Modern web browser (Chrome or Firefox recommended)</li>
                     <li>Internet connectivity</li>
                 </ul>
             </div>
 
             <div class="important">
-                Before starting: Ensure you have access to your business email as you'll receive important verification links.
+                Before starting: Ensure you have your Okta Partner Portal credentials ready. You will also receive demo organization credentials via email after creation.
             </div>
 
             <ol class="steps">
                 <li class="step">
-                    <div class="step-title">Access Okta Partner Portal</div>
+                    <div class="step-title">Access Demo Portal</div>
                     <p>On CL03, open your browser and navigate to:</p>
-                    <code>https://partners.okta.com</code>
-                    
+                    <code>https://demo.okta.com/</code>
                     <div class="tip">
-                        Bookmark this URL - you'll need to access the partner portal frequently during implementation.
-                    </div>
-
-                    <div class="screenshot">
-                        Partner Portal Login Page
-                        [Screenshot placeholder showing the login interface]
+                        Bookmark this URL for future access to the demo portal.
                     </div>
                 </li>
 
                 <li class="step">
-                    <div class="step-title">Partner Portal Navigation</div>
-                    <p>After logging in, locate the Demo Organization creation area:</p>
+                    <div class="step-title">Partner Portal Authentication</div>
+                    <p>Click "Continue with Okta Partners"</p>
+                    
+                    <div class="authentication-options">
+                        <h4>Choose your authentication method:</h4>
+                        <div class="option">
+                            <h5>Option 1: Standard Password Login</h5>
+                            <ol>
+                                <li>Enter your Okta Partner username</li>
+                                <li>Enter your password</li>
+                                <li>Click "Sign In"</li>
+                            </ol>
+                        </div>
+                        <div class="option">
+                            <h5>Option 2: FastPass Authentication (if enabled)</h5>
+                            <ol>
+                                <li>Click "Sign in with Okta FastPass"</li>
+                                <li>Complete the verification prompt</li>
+                            </ol>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="step">
+                    <div class="step-title">Access Demo Creation</div>
+                    <p>On the demo portal dashboard:</p>
                     <ol>
-                        <li>Look for the "Demo & Development" section in the main navigation</li>
-                        <li>Click on "Create Demo Org" button</li>
+                        <li>Locate "Workforce Identity" section</li>
+                        <li>Click "In just one click launch a new hands on Workforce Identity demo"</li>
                     </ol>
-                    
-                    <div class="note">
-                        If you don't see these options, ensure you have the correct partner portal permissions.
-                    </div>
                 </li>
 
                 <li class="step">
-                    <div class="step-title">Configure Organization Details</div>
-                    <p>Fill in the required information:</p>
-                    
-                    <div class="config-form">
-                        <table>
-                            <tr>
-                                <th>Field</th>
-                                <th>Description</th>
-                                <th>Example</th>
-                            </tr>
-                            <tr>
-                                <td>Organization Name</td>
-                                <td>Use format: [Company]-Demo-[Date]</td>
-                                <td>Acme-Demo-20240428</td>
-                            </tr>
-                            <tr>
-                                <td>Admin Email</td>
-                                <td>Your business email address</td>
-                                <td>admin@company.com</td>
-                            </tr>
-                            <tr>
-                                <td>Region</td>
-                                <td>Choose closest geographical location</td>
-                                <td>US / EMEA / APAC</td>
-                            </tr>
-                            <tr>
-                                <td>Use Case</td>
-                                <td>Select Workforce Identity</td>
-                                <td>Workforce Identity</td>
-                            </tr>
-                        </table>
-                    </div>
-
+                    <div class="step-title">Initialize Demo Organization</div>
+                    <p>Click "Create" to begin the demo organization setup</p>
                     <div class="important">
-                        Organization names must be unique across all Okta tenants globally.
+                        After clicking Create, you will receive an email with your demo organization credentials. Keep an eye on your inbox.
                     </div>
                 </li>
 
                 <li class="step">
-                    <div class="step-title">Account Activation</div>
-                    <p>Complete the activation process:</p>
+                    <div class="step-title">Configure Demo Settings</div>
                     <ol>
-                        <li>Check your business email for the activation link</li>
-                        <li>Click the activation link (valid for 24 hours)</li>
-                        <li>Set up your administrator password following these requirements:
-                            <ul>
-                                <li>At least 8 characters</li>
-                                <li>At least one uppercase letter</li>
-                                <li>At least one lowercase letter</li>
-                                <li>At least one number</li>
-                                <li>At least one special character</li>
-                            </ul>
-                        </li>
-                        <li>Configure security questions and answers</li>
+                        <li>When prompted for additional options, select "None"</li>
+                        <li>Click "Apply" to confirm your settings</li>
                     </ol>
-
-                    <div class="warning">
-                        Store your admin credentials securely - you'll need them throughout the implementation.
+                    <div class="note">
+                        Basic settings are sufficient for this implementation guide.
                     </div>
                 </li>
 
                 <li class="step">
-                    <div class="step-title">Initial Console Access</div>
-                    <p>Access your new Okta tenant:</p>
-                    <ol>
-                        <li>Note your Okta domain: <code>https://your-org.okta.com</code></li>
-                        <li>Log in with your admin credentials</li>
-                        <li>Bookmark your admin console URL</li>
-                    </ol>
-
-                    <div class="tip">
-                        Your Okta URL will be in the format: <code>https://company-demo.okta.com</code>
+                    <div class="step-title">Launch Your Demo</div>
+                    <p>Click "Launch" to access your new demo environment</p>
+                    <div class="important">
+                        Check your email for demo organization credentials, which include:
+                        <ul>
+                            <li>Your unique demo organization URL</li>
+                            <li>Administrator username</li>
+                            <li>Temporary password</li>
+                        </ul>
                     </div>
+                </li>
+
+                <li class="step">
+                    <div class="step-title">Access Demo Organization</div>
+                    <p>Using the credentials from your email:</p>
+                    <ol>
+                        <li>Navigate to your demo organization URL</li>
+                        <li>Log in with the provided administrator credentials</li>
+                        <li>Change your temporary password when prompted</li>
+                    </ol>
                 </li>
             </ol>
 
             <div class="verification-list">
                 <h4>Verification Checklist</h4>
                 <ul class="checklist">
-                    <li>Successfully logged into Partner Portal</li>
+                    <li>Successfully logged into partner portal</li>
                     <li>Created demo organization</li>
-                    <li>Received activation email</li>
-                    <li>Set up admin password</li>
-                    <li>Configured security questions</li>
-                    <li>Can access Okta admin console</li>
+                    <li>Received demo credentials email</li>
+                    <li>Accessed demo organization admin console</li>
+                    <li>Changed temporary password</li>
                     <li>Bookmarked important URLs</li>
                 </ul>
             </div>
@@ -186,18 +166,33 @@
                         <th>Solution</th>
                     </tr>
                     <tr>
-                        <td>No activation email received</td>
-                        <td>Check spam folder, verify email address, or request new activation link</td>
+                        <td>Partner Portal login issues</td>
+                        <td>Verify credentials or contact partner support</td>
                     </tr>
                     <tr>
-                        <td>Organization name already taken</td>
-                        <td>Try a different organization name with unique identifier</td>
+                        <td>Demo credentials email not received</td>
+                        <td>Check spam folder, wait 5 minutes, or restart process</td>
                     </tr>
                     <tr>
-                        <td>Activation link expired</td>
-                        <td>Return to partner portal and request new demo organization</td>
+                        <td>Unable to access demo organization</td>
+                        <td>Ensure you're using the correct URL and credentials from the email</td>
+                    </tr>
+                    <tr>
+                        <td>Password change fails</td>
+                        <td>Verify new password meets complexity requirements</td>
                     </tr>
                 </table>
+            </div>
+
+            <div class="next-steps">
+                <h4>Proceeding to Next Section</h4>
+                <p>Before moving on, ensure you have:</p>
+                <ul>
+                    <li>Saved your demo organization URL</li>
+                    <li>Documented your admin credentials</li>
+                    <li>Successfully accessed the admin console</li>
+                    <li>Changed your temporary password</li>
+                </ul>
             </div>
         </div>
 
@@ -208,7 +203,6 @@
     </div>
 
     <script>
-        // Add active class to current section in progress indicator
         document.addEventListener('DOMContentLoaded', function() {
             const currentPage = window.location.pathname.split('/').pop();
             const progressSteps = document.querySelectorAll('.progress-step');
