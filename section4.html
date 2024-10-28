@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Integration - Okta Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Okta Workforce Identity Implementation Guide</h1>
+    </header>
+
+    <div class="container">
+        <div class="progress-indicator">
+            <a href="index.html" class="progress-step">
+                <div class="progress-number">0</div>
+                <span>Overview</span>
+            </a>
+            <a href="section1.html" class="progress-step">
+                <div class="progress-number">1</div>
+                <span>Demo Org</span>
+            </a>
+            <a href="section2.html" class="progress-step">
+                <div class="progress-number">2</div>
+                <span>AD Integration</span>
+            </a>
+            <a href="section3.html" class="progress-step">
+                <div class="progress-number">3</div>
+                <span>Users & Groups</span>
+            </a>
+            <a href="section4.html" class="progress-step active">
+                <div class="progress-number">4</div>
+                <span>Applications</span>
+            </a>
+            <a href="section5.html" class="progress-step">
+                <div class="progress-number">5</div>
+                <span>Authentication</span>
+            </a>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2>Application Integration</h2>
+                <span class="estimated-time">⏱️ 45-60 minutes</span>
+            </div>
+
+            <div class="prerequisites">
+                <h3>Section Prerequisites</h3>
+                <ul>
+                    <li>Administrator access to target applications</li>
+                    <li>Application credentials/licenses</li>
+                    <li>SSL certificates (if required)</li>
+                    <li>Application URLs</li>
+                </ul>
+            </div>
+
+            <div class="section-part">
+                <h3>Applications to be Integrated</h3>
+                <div class="app-table">
+                    <table>
+                        <tr>
+                            <th>Application</th>
+                            <th>Integration Type</th>
+                            <th>Features</th>
+                            <th>Estimated Time</th>
+                        </tr>
+                        <tr>
+                            <td>Microsoft 365</td>
+                            <td>WS-Fed + SCIM</td>
+                            <td>SSO + Provisioning</td>
+                            <td>15 min</td>
+                        </tr>
+                        <tr>
+                            <td>Salesforce</td>
+                            <td>SAML + SCIM</td>
+                            <td>SSO + Provisioning</td>
+                            <td>10 min</td>
+                        </tr>
+                        <tr>
+                            <td>Slack</td>
+                            <td>SAML + SCIM</td>
+                            <td>SSO + Provisioning</td>
+                            <td>10 min</td>
+                        </tr>
+                        <tr>
+                            <td>Zoom</td>
+                            <td>SAML</td>
+                            <td>SSO Only</td>
+                            <td>5 min</td>
+                        </tr>
+                        <tr>
+                            <td>AWS SSO</td>
+                            <td>SAML</td>
+                            <td>SSO + Role Assignment</td>
+                            <td>15 min</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section-part">
+                <h3>Microsoft 365 Integration</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Add Microsoft 365 Integration</div>
+                        <ol>
+                            <li>Navigate to Applications > Applications</li>
+                            <li>Click "Browse App Catalog"</li>
+                            <li>Search for "Microsoft Office 365"</li>
+                            <li>Click "Add Integration"</li>
+                        </ol>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Configure SSO Settings</div>
+                        <ol>
+                            <li>Enter Office 365 domain</li>
+                            <li>Configure WS-Federation settings</li>
+                            <li>Set up certificate</li>
+                            <li>Configure attribute mappings</li>
+                        </ol>
+                        <div class="important">
+                            Save the PowerShell commands provided for Azure AD configuration.
+                        </div>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Configure Provisioning</div>
+                        <ol>
+                            <li>Enable provisioning</li>
+                            <li>Enter Azure AD admin credentials</li>
+                            <li>Configure user attribute mappings</li>
+                            <li>Set up group push if needed</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section-part">
+                <h3>Salesforce Integration</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Add Salesforce Integration</div>
+                        <ol>
+                            <li>Browse App Catalog</li>
+                            <li>Select Salesforce</li>
+                            <li>Choose integration type</li>
+                        </ol>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Configure SAML Settings</div>
+                        <ol>
+                            <li>Download Okta certificate</li>
+                            <li>Configure Salesforce SSO settings</li>
+                            <li>Set up attribute mappings</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section-part">
+                <h3>Remaining Applications</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Configure Slack Integration</div>
+                        <p>Follow Slack-specific configuration guide in the App Catalog</p>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Set up Zoom</div>
+                        <p>Configure basic SAML integration for Zoom</p>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">AWS SSO Setup</div>
+                        <p>Configure AWS SSO with role mapping</p>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="verification-list">
+                <h4>Verification Checklist</h4>
+                <ul class="checklist">
+                    <li>Microsoft 365 SSO working</li>
+                    <li>Salesforce integration complete</li>
+                    <li>Slack provisioning configured</li>
+                    <li>Zoom SSO tested</li>
+                    <li>AWS roles assigned</li>
+                    <li>User access verified for each app</li>
+                    <li>Group assignments tested</li>
+                </ul>
+            </div>
+
+            <div class="troubleshooting">
+                <h4>Common Issues</h4>
+                <table>
+                    <tr>
+                        <th>Issue</th>
+                        <th>Solution</th>
+                    </tr>
+                    <tr>
+                        <td>SAML configuration errors</td>
+                        <td>Verify certificate and endpoint settings</td>
+                    </tr>
+                    <tr>
+                        <td>Provisioning failures</td>
+                        <td>Check API credentials and permissions</td>
+                    </tr>
+                    <tr>
+                        <td>Attribute mapping issues</td>
+                        <td>Compare source and target attributes</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="best-practices">
+                <h4>Best Practices</h4>
+                <ul>
+                    <li>Test with limited user group first</li>
+                    <li>Document all configuration settings</li>
+                    <li>Setup monitoring for SSO health</li>
+                    <li>Configure app sign-on policies</li>
+                    <li>Regular testing of SSO flows</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation-links">
+            <a href="section3.html" class="nav-link">← Back to User Management</a>
+            <a href="section5.html" class="nav-link">Next: Authentication Policies →</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const progressSteps = document.querySelectorAll('.progress-step');
+            progressSteps.forEach(step => {
+                if (step.getAttribute('href') === currentPage) {
+                    step.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
