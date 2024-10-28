@@ -2,254 +2,157 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Okta Workforce Identity User Guide</title>
-    <style>
-        :root {
-            --primary-color: #00297A;
-            --secondary-color: #007DC1;
-            --accent-color: #6e46ae;
-            --text-color: #333;
-            --background-color: #f5f5f5;
-            --section-bg: #ffffff;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: var(--background-color);
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            background: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-        }
-
-        header h1 {
-            margin: 0;
-            padding: 0 2rem;
-            font-size: 2.5rem;
-        }
-
-        .section {
-            background: var(--section-bg);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-        }
-
-        .steps {
-            list-style-type: none;
-            padding: 0;
-            counter-reset: step-counter;
-        }
-
-        .step {
-            margin-bottom: 1.5rem;
-            padding-left: 2.5rem;
-            position: relative;
-        }
-
-        .step::before {
-            content: counter(step-counter);
-            counter-increment: step-counter;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 1.8rem;
-            height: 1.8rem;
-            background: var(--secondary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-
-        .note {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-
-        code {
-            background: #f8f9fa;
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .machine-info {
-            background: #e9ecef;
-            padding: 1rem;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-        }
-    </style>
+    <title>Okta Workforce Identity Implementation Guide</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Okta Workforce Identity User Guide</h1>
+        <h1>Okta Workforce Identity Implementation Guide</h1>
     </header>
 
     <div class="container">
+        <div class="progress-indicator">
+            <a href="index.html" class="progress-step active">
+                <div class="progress-number">0</div>
+                <span>Overview</span>
+            </a>
+            <a href="section1.html" class="progress-step">
+                <div class="progress-number">1</div>
+                <span>Demo Org</span>
+            </a>
+            <a href="section2.html" class="progress-step">
+                <div class="progress-number">2</div>
+                <span>AD Integration</span>
+            </a>
+            <a href="section3.html" class="progress-step">
+                <div class="progress-number">3</div>
+                <span>Users & Groups</span>
+            </a>
+            <a href="section4.html" class="progress-step">
+                <div class="progress-number">4</div>
+                <span>Applications</span>
+            </a>
+            <a href="section5.html" class="progress-step">
+                <div class="progress-number">5</div>
+                <span>Authentication</span>
+            </a>
+        </div>
+
+        <div class="intro">
+            <h2>Getting Started</h2>
+            <p>Welcome to the Okta Workforce Identity Implementation Guide. This comprehensive guide will walk you through the complete setup and configuration of Okta for your organization. The guide is divided into five main sections, each focusing on a critical component of your Okta implementation.</p>
+            
+            <div class="section-overview">
+                <h3>Guide Sections</h3>
+                <div class="section-cards">
+                    <a href="section1.html" class="section-card">
+                        <div class="card-number">1</div>
+                        <h4>Creating Demo Organization</h4>
+                        <p>Setup your Okta tenant through the Partner Portal</p>
+                        <span class="estimated-time">⏱️ 15-20 minutes</span>
+                    </a>
+                    
+                    <a href="section2.html" class="section-card">
+                        <div class="card-number">2</div>
+                        <h4>Active Directory Integration</h4>
+                        <p>Connect your AD infrastructure with Okta</p>
+                        <span class="estimated-time">⏱️ 30-45 minutes</span>
+                    </a>
+                    
+                    <a href="section3.html" class="section-card">
+                        <div class="card-number">3</div>
+                        <h4>User and Group Management</h4>
+                        <p>Configure users and groups in Okta</p>
+                        <span class="estimated-time">⏱️ 20-30 minutes</span>
+                    </a>
+                    
+                    <a href="section4.html" class="section-card">
+                        <div class="card-number">4</div>
+                        <h4>Application Integration</h4>
+                        <p>Set up and configure applications</p>
+                        <span class="estimated-time">⏱️ 45-60 minutes</span>
+                    </a>
+                    
+                    <a href="section5.html" class="section-card">
+                        <div class="card-number">5</div>
+                        <h4>Authentication Policies</h4>
+                        <p>Configure security and authentication settings</p>
+                        <span class="estimated-time">⏱️ 30-40 minutes</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="prerequisites">
+                <h3>Prerequisites</h3>
+                <ul>
+                    <li>Access to all required machines (CL03, CL04, DC01, DC02)</li>
+                    <li>Administrator credentials for Active Directory</li>
+                    <li>Outbound internet connectivity on ports 80 and 443</li>
+                    <li>Valid business email for Okta admin account</li>
+                    <li>Modern web browser (Chrome or Firefox recommended)</li>
+                </ul>
+            </div>
+        </div>
+
         <div class="machine-info">
             <h3>Environment Setup</h3>
-            <p>This guide uses the following machines:</p>
-            <ul>
-                <li><strong>CL03:</strong> General client machine</li>
-                <li><strong>CL04:</strong> General client machine</li>
-                <li><strong>DC01:</strong> Primary Domain Controller (AD Agent)</li>
-                <li><strong>DC02:</strong> Secondary Domain Controller</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Section 1: Creating Demo Organization</h2>
-            <ol class="steps">
-                <li class="step">Log into CL03 with your provided credentials</li>
-                <li class="step">Navigate to the Okta Partner Portal (https://partners.okta.com)</li>
-                <li class="step">Click on "Create Demo Org" in the dashboard</li>
-                <li class="step">Fill in the required information:
-                    <ul>
-                        <li>Organization name</li>
-                        <li>Primary administrator email</li>
-                        <li>Region selection</li>
-                        <li>Use case selection</li>
-                    </ul>
-                </li>
-                <li class="step">Submit the form and wait for confirmation email</li>
-                <li class="step">Follow the activation link in the email to set up your administrator password</li>
-            </ol>
-            <div class="note">
-                Note: Keep your administrator credentials secure. You'll need them for the following sections.
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Machine</th>
+                            <th>Role</th>
+                            <th>Required Access</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CL03</strong></td>
+                            <td>Primary Setup Machine</td>
+                            <td>Internet Access</td>
+                            <td>Used for Okta Partner Portal and admin console access</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CL04</strong></td>
+                            <td>Testing Machine</td>
+                            <td>Internet Access</td>
+                            <td>Used for end-user testing and verification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DC01</strong></td>
+                            <td>Primary Domain Controller</td>
+                            <td>Internet Access, Admin Rights</td>
+                            <td>Will host Okta AD agent</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DC02</strong></td>
+                            <td>Secondary Domain Controller</td>
+                            <td>Internal Network Access</td>
+                            <td>Backup domain controller</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div class="section">
-            <h2>Section 2: Active Directory Integration</h2>
-            <ol class="steps">
-                <li class="step">Log into your Okta admin console</li>
-                <li class="step">Navigate to Directory > Directory Integrations</li>
-                <li class="step">Click "Add Directory" and select "Active Directory"</li>
-                <li class="step">Download the Okta AD agent installer</li>
-                <li class="step">On DC01, run the AD agent installer with administrator privileges</li>
-                <li class="step">During installation, provide:
-                    <ul>
-                        <li>Your Okta tenant URL</li>
-                        <li>Admin credentials</li>
-                        <li>AD service account details</li>
-                    </ul>
-                </li>
-                <li class="step">Verify the connection in Okta admin console</li>
-                <li class="step">Configure AD synchronization settings</li>
-            </ol>
-            <div class="note">
-                Note: Ensure DC01 has outbound connectivity to your Okta tenant.
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Section 3: User and Group Management</h2>
-            <ol class="steps">
-                <li class="step">Creating Okta-Managed Users:
-                    <ul>
-                        <li>Navigate to Directory > People</li>
-                        <li>Click "Add Person"</li>
-                        <li>Create user 1 with details:
-                            <code>First Name: Test1
-                            Last Name: User1
-                            Username: test1@yourdomain.com</code>
-                        </li>
-                        <li>Repeat for user 2</li>
-                    </ul>
-                </li>
-                <li class="step">Creating Okta-Managed Groups:
-                    <ul>
-                        <li>Navigate to Directory > Groups</li>
-                        <li>Click "Add Group"</li>
-                        <li>Create "IT-Admin" group</li>
-                        <li>Create "General-Users" group</li>
-                    </ul>
-                </li>
-                <li class="step">Assign users to groups</li>
-            </ol>
-        </div>
-
-        <div class="section">
-            <h2>Section 4: Application Integration</h2>
-            <ol class="steps">
-                <li class="step">Navigate to Applications > Applications</li>
-                <li class="step">Click "Browse App Catalog"</li>
-                <li class="step">Add the following applications:
-                    <ul>
-                        <li>Microsoft 365</li>
-                        <li>Salesforce</li>
-                        <li>Slack</li>
-                        <li>Zoom</li>
-                        <li>AWS Single Sign-On</li>
-                    </ul>
-                </li>
-                <li class="step">For each application:
-                    <ul>
-                        <li>Configure SSO settings</li>
-                        <li>Set up provisioning (if applicable)</li>
-                        <li>Assign to appropriate groups</li>
-                    </ul>
-                </li>
-            </ol>
-            <div class="note">
-                Note: Each application may require specific configuration details from the service provider.
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Section 5: Authentication Policies</h2>
-            <ol class="steps">
-                <li class="step">Navigate to Security > Authentication</li>
-                <li class="step">Configure Global Session Policy:
-                    <ul>
-                        <li>Set session lifetime</li>
-                        <li>Configure sign-on requirements</li>
-                    </ul>
-                </li>
-                <li class="step">Create Authentication Policies:
-                    <ul>
-                        <li>High-security policy for IT-Admin group</li>
-                        <li>Standard policy for General-Users group</li>
-                    </ul>
-                </li>
-                <li class="step">Configure MFA Settings:
-                    <ul>
-                        <li>Enable Okta Verify</li>
-                        <li>Set up factor enrollment requirements</li>
-                        <li>Configure factor enrollment policy</li>
-                    </ul>
-                </li>
-                <li class="step">Test authentication flows</li>
-            </ol>
+        <div class="navigation-links">
+            <span></span>
+            <a href="section1.html" class="nav-link">Start Guide: Creating Demo Organization →</a>
         </div>
     </div>
+
+    <script>
+        // Add active class to current section in progress indicator
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const progressSteps = document.querySelectorAll('.progress-step');
+            progressSteps.forEach(step => {
+                if (step.getAttribute('href') === currentPage) {
+                    step.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
