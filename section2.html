@@ -413,7 +413,7 @@
                         <div class="step-title">Prepare Active Directory Service Account</div>
                         <p>On DC01, create a new service account:</p>
                         <code>New-ADUser -Name "svc-okta-sync" -AccountPassword (Read-Host -AsSecureString "Input Password") -Enabled $true -PasswordNeverExpires $true -CannotChangePassword $true</code>
-                        <img src="images/ad-service-account.png" alt="Creating Service Account in Active Directory" class="step-image">
+                        <img src="images/section2/ad-service-account.png" alt="Creating Service Account in Active Directory" class="step-image">
                         
                         <div class="note">
                             Required AD Permissions for service account:
@@ -435,7 +435,7 @@
                             <li>Download the Okta AD agent installer</li>
                             <li>Transfer the installer to DC01</li>
                         </ol>
-                        <img src="images/download-agent.png" alt="Downloading Okta AD Agent" class="step-image">
+                        <img src="images/section2/download-agent.png" alt="Downloading Okta AD Agent" class="step-image">
                     </li>
 
                     <li class="step">
@@ -452,7 +452,7 @@
                                 </ul>
                             </li>
                         </ol>
-                        <img src="images/agent-install.png" alt="Installing AD Agent" class="step-image">
+                        <img src="images/section2/agent-install.png" alt="Installing AD Agent" class="step-image">
 
                         <div class="important">
                             Ensure DC01 can reach these URLs:
@@ -475,7 +475,7 @@
                                     <li>Set group filter rules</li>
                                 </ul>
                             </li>
-                            <img src="images/import-settings.png" alt="AD Import Settings Configuration" class="step-image">
+                            <img src="images/section2/import-settings.png" alt="AD Import Settings Configuration" class="step-image">
                             <li>Configure provisioning settings:
                                 <ul>
                                     <li>Enable/disable password sync</li>
@@ -483,7 +483,7 @@
                                     <li>Configure attribute mapping</li>
                                 </ul>
                             </li>
-                            <img src="images/provisioning-settings.png" alt="AD Provisioning Settings Configuration" class="step-image">
+                            <img src="images/section2/provisioning-settings.png" alt="AD Provisioning Settings Configuration" class="step-image">
                         </ol>
                     </li>
 
@@ -495,7 +495,7 @@
                             <li>Verify Directory > Groups for imported groups</li>
                             <li>Review import errors in System Log</li>
                         </ol>
-                        <img src="images/verify-import.png" alt="Verifying AD Import Results" class="step-image">
+                        <img src="images/section2/verify-import.png" alt="Verifying AD Import Results" class="step-image">
                     </li>
                 </ol>
 
