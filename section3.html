@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User and Group Management - Okta Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Okta Workforce Identity Implementation Guide</h1>
+    </header>
+
+    <div class="container">
+        <div class="progress-indicator">
+            <a href="index.html" class="progress-step">
+                <div class="progress-number">0</div>
+                <span>Overview</span>
+            </a>
+            <a href="section1.html" class="progress-step">
+                <div class="progress-number">1</div>
+                <span>Demo Org</span>
+            </a>
+            <a href="section2.html" class="progress-step">
+                <div class="progress-number">2</div>
+                <span>AD Integration</span>
+            </a>
+            <a href="section3.html" class="progress-step active">
+                <div class="progress-number">3</div>
+                <span>Users & Groups</span>
+            </a>
+            <a href="section4.html" class="progress-step">
+                <div class="progress-number">4</div>
+                <span>Applications</span>
+            </a>
+            <a href="section5.html" class="progress-step">
+                <div class="progress-number">5</div>
+                <span>Authentication</span>
+            </a>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2>User and Group Management</h2>
+                <span class="estimated-time">⏱️ 20-30 minutes</span>
+            </div>
+
+            <div class="prerequisites">
+                <h3>Section Prerequisites</h3>
+                <ul>
+                    <li>Completed AD integration</li>
+                    <li>Okta Administrator access</li>
+                    <li>Planned user structure</li>
+                    <li>Group naming convention</li>
+                </ul>
+            </div>
+
+            <div class="section-part">
+                <h3>Part 1: Creating Okta-Managed Users</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Access User Management</div>
+                        <p>Navigate to Directory > People in the Okta admin console</p>
+                        
+                        <div class="tip">
+                            Use the bulk import template if you need to create multiple users at once.
+                        </div>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Create First Test User</div>
+                        <p>Click "Add Person" and enter details for Test User 1:</p>
+                        <div class="code-block">
+                            <code>
+                                First Name: Test1
+                                Last Name: User1
+                                Username: test1@yourdomain.com
+                                Primary email: test1@yourdomain.com
+                                Password: Set by admin
+                            </code>
+                        </div>
+                        
+                        <div class="note">
+                            Ensure "User must change password on first login" is checked.
+                        </div>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Create Second Test User</div>
+                        <p>Repeat the process for Test User 2:</p>
+                        <div class="code-block">
+                            <code>
+                                First Name: Test2
+                                Last Name: User2
+                                Username: test2@yourdomain.com
+                                Primary email: test2@yourdomain.com
+                                Password: Set by admin
+                            </code>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section-part">
+                <h3>Part 2: Creating Okta-Managed Groups</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Access Group Management</div>
+                        <p>Navigate to Directory > Groups</p>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Create IT-Admin Group</div>
+                        <p>Click "Add Group" and configure:</p>
+                        <ul>
+                            <li>Name: IT-Admin</li>
+                            <li>Description: IT Administrators group for elevated access</li>
+                            <li>Group Type: Okta Managed</li>
+                        </ul>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Create General-Users Group</div>
+                        <p>Add another group:</p>
+                        <ul>
+                            <li>Name: General-Users</li>
+                            <li>Description: Standard users with basic access</li>
+                            <li>Group Type: Okta Managed</li>
+                        </ul>
+                    </li>
+
+                    <li class="step">
+                        <div class="step-title">Assign Users to Groups</div>
+                        <ol>
+                            <li>Add Test1 User to IT-Admin group:
+                                <ul>
+                                    <li>Select IT-Admin group</li>
+                                    <li>Click "Manage People"</li>
+                                    <li>Search and add Test1 User</li>
+                                </ul>
+                            </li>
+                            <li>Add Test2 User to General-Users group:
+                                <ul>
+                                    <li>Select General-Users group</li>
+                                    <li>Click "Manage People"</li>
+                                    <li>Search and add Test2 User</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="section-part">
+                <h3>Part 3: Group Rules and Automation</h3>
+                <ol class="steps">
+                    <li class="step">
+                        <div class="step-title">Create Group Rules</div>
+                        <p>Set up automated group assignments:</p>
+                        <ol>
+                            <li>Navigate to Directory > Groups > Rules</li>
+                            <li>Click "Add Rule"</li>
+                            <li>Configure rule conditions:
+                                <div class="code-block">
+                                    <code>
+                                        IF User Profile Property "Department"
+                                        EQUALS "Information Technology"
+                                        THEN Add to Group "IT-Admin"
+                                    </code>
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="verification-list">
+                <h4>Verification Checklist</h4>
+                <ul class="checklist">
+                    <li>Test1 User created successfully</li>
+                    <li>Test2 User created successfully</li>
+                    <li>IT-Admin group created</li>
+                    <li>General-Users group created</li>
+                    <li>Users assigned to correct groups</li>
+                    <li>Group rules functioning as expected</li>
+                    <li>Users can log in successfully</li>
+                </ul>
+            </div>
+
+            <div class="troubleshooting">
+                <h4>Common Issues</h4>
+                <table>
+                    <tr>
+                        <th>Issue</th>
+                        <th>Solution</th>
+                    </tr>
+                    <tr>
+                        <td>User creation fails</td>
+                        <td>Check for duplicate usernames or email addresses</td>
+                    </tr>
+                    <tr>
+                        <td>Group assignment issues</td>
+                        <td>Verify group rule conditions and user attributes</td>
+                    </tr>
+                    <tr>
+                        <td>User cannot log in</td>
+                        <td>Check user status and password requirements</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="best-practices">
+                <h4>Best Practices</h4>
+                <ul>
+                    <li>Use consistent naming conventions for groups</li>
+                    <li>Document group purposes and access levels</li>
+                    <li>Regularly audit group memberships</li>
+                    <li>Use group rules for automated management</li>
+                    <li>Implement principle of least privilege</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation-links">
+            <a href="section2.html" class="nav-link">← Back to AD Integration</a>
+            <a href="section4.html" class="nav-link">Next: Application Integration →</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const progressSteps = document.querySelectorAll('.progress-step');
+            progressSteps.forEach(step => {
+                if (step.getAttribute('href') === currentPage) {
+                    step.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
