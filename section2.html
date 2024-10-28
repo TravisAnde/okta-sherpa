@@ -382,173 +382,201 @@
                 <h1>Okta Workforce Identity Cloud - Sherpa</h1>
             </header>
 
-            <div class="content">
-                <div class="section-header">
-                    <div class="section-number">2</div>
-                    <h2>Active Directory Integration</h2>
-                    <span class="estimated-time">⏱️ 30-45 minutes</span>
-                </div>
-
-                <div class="prerequisites">
-                    <h3>Section Prerequisites</h3>
-                    <ul>
-                        <li>Domain Administrator access to DC01</li>
-                        <li>Okta Administrator access</li>
-                        <li>Outbound connectivity from DC01 to Okta</li>
-                        <li>Service Account for AD integration</li>
-                    </ul>
-                </div>
-
-                <div class="important">
-                    Create a dedicated service account in Active Directory before proceeding. This account will need:
-                    <ul>
-                        <li>Password never expires</li>
-                        <li>Cannot change password</li>
-                        <li>User cannot be locked out</li>
-                    </ul>
-                </div>
-
-                <ol class="steps">
-                    <li class="step">
-                        <div class="step-title">Prepare Active Directory Service Account</div>
-                        <p>On DC01, create a new service account:</p>
-                        <code>New-ADUser -Name "svc-okta-sync" -AccountPassword (Read-Host -AsSecureString "Input Password") -Enabled $true -PasswordNeverExpires $true -CannotChangePassword $true</code>
-                        <img src="images/section2/ad-service-account.png" alt="Creating Service Account in Active Directory" class="step-image">
-                        
-                        <div class="note">
-                            Required AD Permissions for service account:
-                            <ul>
-                                <li>Read all user attributes</li>
-                                <li>Read all group attributes</li>
-                                <li>Read all computer attributes</li>
-                                <li>Reset passwords (if password sync is required)</li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Download Okta AD Agent</div>
-                        <p>In your Okta admin console:</p>
-                        <ol>
-                            <li>Navigate to Directory > Directory Integrations</li>
-                            <li>Click "Add Active Directory"</li>
-                            <li>Download the Okta AD agent installer</li>
-                            <li>Transfer the installer to DC01</li>
-                        </ol>
-                        <img src="images/section2/download-agent.png" alt="Downloading Okta AD Agent" class="step-image">
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Install AD Agent on DC01</div>
-                        <p>On DC01:</p>
-                        <ol>
-                            <li>Run the installer with Administrator privileges</li>
-                            <li>Select default installation path</li>
-                            <li>When prompted, provide:
-                                <ul>
-                                    <li>Your Okta org URL</li>
-                                    <li>Admin credentials</li>
-                                    <li>Service account credentials</li>
-                                </ul>
-                            </li>
-                        </ol>
-                        <img src="images/section2/agent-install.png" alt="Installing AD Agent" class="step-image">
-
-                        <div class="important">
-                            Ensure DC01 can reach these URLs:
-                            <code>
-                                *.okta.com
-                                *.oktacdn.com
-                                *.cloudflare.com
-                            </code>
-                        </div>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Configure AD Agent Settings</div>
-                        <p>In the Okta admin console:</p>
-                        <ol>
-                            <li>Set import settings:
-                                <ul>
-                                    <li>Select OUs to import</li>
-                                    <li>Configure user matching rules</li>
-                                    <li>Set group filter rules</li>
-                                </ul>
-                            </li>
-                            <img src="images/section2/import-settings.png" alt="AD Import Settings Configuration" class="step-image">
-                            <li>Configure provisioning settings:
-                                <ul>
-                                    <li>Enable/disable password sync</li>
-                                    <li>Set account deactivation rules</li>
-                                    <li>Configure attribute mapping</li>
-                                </ul>
-                            </li>
-                            <img src="images/section2/provisioning-settings.png" alt="AD Provisioning Settings Configuration" class="step-image">
-                        </ol>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Verify Initial Import</div>
-                        <p>Monitor the initial synchronization:</p>
-                        <ol>
-                            <li>Check Directory > People for imported users</li>
-                            <li>Verify Directory > Groups for imported groups</li>
-                            <li>Review import errors in System Log</li>
-                        </ol>
-                        <img src="images/section2/verify-import.png" alt="Verifying AD Import Results" class="step-image">
-                    </li>
-                </ol>
-
-                <div class="verification-list">
-                    <h4>Verification Checklist</h4>
-                    <ul class="checklist">
-                        <li>Service account created with correct permissions</li>
-                        <li>AD agent installed successfully on DC01</li>
-                        <li>Agent showing as "Active" in Okta console</li>
-                        <li>Users imported successfully</li>
-                        <li>Groups imported successfully</li>
-                        <li>Attribute mappings verified</li>
-                        <li>No critical errors in System Log</li>
-                    </ul>
-                </div>
-
-                <div class="troubleshooting">
-                    <h4>Common Issues</h4>
-                    <table>
-                        <tr>
-                            <th>Issue</th>
-                            <th>Solution</th>
-                        </tr>
-                        <tr>
-                            <td>Agent fails to connect</td>
-                            <td>Check firewall rules and proxy settings</td>
-                        </tr>
-                        <tr>
-                            <td>Import errors</td>
-                            <td>Verify service account permissions and OU access</td>
-                        </tr>
-                        <tr>
-                            <td>Password sync issues</td>
-                            <td>Ensure service account has password reset rights</td>
-                        </tr>
-                        <tr>
-                            <td>Missing users/groups</td>
-                            <td>Review import filters and OU selection</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="note">
-                    Best Practice: Install a second AD agent on DC02 for redundancy after verifying the primary agent is working correctly.
-                </div>
-
-                <div class="navigation-links">
-                    <a href="section1.html" class="nav-link">← Back to Demo Organization</a>
-                    <a href="section3.html" class="nav-link">Next: User and Group Management →</a>
-                </div>
-            </div>
-        </main>
+<div class="content">
+    <div class="section-header">
+        <div class="section-number">2</div>
+        <h2>Active Directory Integration</h2>
+        <span class="estimated-time">⏱️ 30-45 minutes</span>
     </div>
+
+    <div class="prerequisites">
+        <h3>Section Prerequisites</h3>
+        <ul>
+            <li>Administrator access to DC01 (Domain Controller)</li>
+            <li>Okta Administrator account with directory management permissions</li>
+            <li>Outbound connectivity from DC01 on ports 80 and 443</li>
+            <li>Modern web browser on DC01 (Chrome or Edge recommended)</li>
+            <li>Latest version of Okta AD agent installer</li>
+        </ul>
+    </div>
+
+    <div class="important">
+        <h4>Version Requirements</h4>
+        <p>If running multiple AD agents, all agents must be the same version. Running different versions within a domain will cause all agents to function at the level of the oldest agent.</p>
+    </div>
+
+    <ol class="steps">
+        <li class="step">
+            <div class="step-title">Prepare Environment</div>
+            <p>Before starting the installation:</p>
+            <ul>
+                <li>Verify outbound connectivity from DC01</li>
+                <li>Ensure access to these domains:
+                    <code>
+                        *.okta.com
+                        *.oktacdn.com
+                        *.cloudflare.com
+                    </code>
+                </li>
+                <li>Verify browser access to Okta admin console on DC01</li>
+            </ul>
+            <div class="note">
+                If using a DMZ server, ensure proper port configuration. See Okta documentation for DMZ server requirements.
+            </div>
+        </li>
+
+        <li class="step">
+            <div class="step-title">Access Agent Installation</div>
+            <ol>
+                <li>Log into Okta Admin Console on DC01</li>
+                <li>Navigate to Directory > Directory Integrations</li>
+                <li>Click "Add Directory" and select "Add Active Directory"</li>
+                <li>Review installation requirements</li>
+                <li>Click "Set Up Active Directory"</li>
+            </ol>
+            <img src="images/section2/add-directory.png" alt="Adding Active Directory Integration" class="step-image">
+        </li>
+
+        <li class="step">
+            <div class="step-title">Download and Start Installation</div>
+            <ol>
+                <li>Click "Download Agent"</li>
+                <li>Locate the downloaded .exe file</li>
+                <li>Run as Administrator</li>
+                <li>Accept UAC prompt</li>
+                <li>Click "Next" at the welcome screen</li>
+            </ol>
+            <img src="images/section2/agent-download.png" alt="Downloading AD Agent" class="step-image">
+            <div class="tip">
+                Default installation location is recommended, but can be changed if needed.
+            </div>
+        </li>
+
+        <li class="step">
+            <div class="step-title">Configure Service Account</div>
+            <p>Choose one of these options:</p>
+            <div class="option">
+                <h5>Option 1: Create OktaService Account (Recommended)</h5>
+                <ol>
+                    <li>Select "Create or use the OktaService account"</li>
+                    <li>Set a complex password</li>
+                    <li>Account will be created with required permissions</li>
+                </ol>
+            </div>
+            <div class="option">
+                <h5>Option 2: Use Existing Account</h5>
+                <ol>
+                    <li>Select "Use an alternate account"</li>
+                    <li>Enter account credentials</li>
+                    <li>Ensure account has required permissions</li>
+                </ol>
+            </div>
+            <div class="option">
+                <h5>Option 3: Use gMSA Account</h5>
+                <ol>
+                    <li>Enter gMSA account name with $ suffix</li>
+                    <li>Example: gMSA01$@cyberlab-au.com</li>
+                    <li>Leave password field empty</li>
+                </ol>
+            </div>
+            <img src="images/section2/service-account.png" alt="Service Account Configuration" class="step-image">
+        </li>
+
+        <li class="step">
+            <div class="step-title">Configure Network Settings</div>
+            <ol>
+                <li>Specify proxy settings if required</li>
+                <li>Enter Okta org URL (https://your-org.okta.com)</li>
+                <li>Click verification link</li>
+                <li>Enter displayed activation code</li>
+            </ol>
+            <div class="important">
+                If you see SSL/TLS trust errors:
+                <ul>
+                    <li>Add okta.com to SSL proxy bypass list</li>
+                    <li>Or disable SSL certificate pinning</li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="step">
+            <div class="step-title">Configure Import Settings</div>
+            <ol>
+                <li>Select Organization Units (OUs) to import</li>
+                <li>Choose Username Format:
+                    <ul>
+                        <li>Email address</li>
+                        <li>SAM Account Name</li>
+                        <li>User Principal Name (UPN)</li>
+                        <li>Custom</li>
+                    </ul>
+                </li>
+            </ol>
+            <div class="important">
+                Username format cannot be changed after initial import without causing user issues.
+            </div>
+            <img src="images/section2/import-settings.png" alt="Import Settings Configuration" class="step-image">
+        </li>
+
+        <li class="step">
+            <div class="step-title">Configure User Attributes</div>
+            <ol>
+                <li>Review default attribute mappings</li>
+                <li>Add any custom attributes needed</li>
+                <li>Verify profile mappings</li>
+            </ol>
+            <img src="images/section2/attribute-mapping.png" alt="Attribute Mapping Configuration" class="step-image">
+        </li>
+    </ol>
+
+    <div class="verification-list">
+        <h4>Verification Checklist</h4>
+        <ul class="checklist">
+            <li>Agent installed and running</li>
+            <li>Service account configured correctly</li>
+            <li>Network connectivity verified</li>
+            <li>SSL/TLS issues resolved</li>
+            <li>OUs selected correctly</li>
+            <li>Username format configured</li>
+            <li>Attributes mapped properly</li>
+        </ul>
+    </div>
+
+    <div class="troubleshooting">
+        <h4>Common Issues</h4>
+        <table>
+            <tr>
+                <th>Issue</th>
+                <th>Solution</th>
+            </tr>
+            <tr>
+                <td>SSL/TLS Trust Error</td>
+                <td>Add okta.com to proxy bypass or disable certificate pinning</td>
+            </tr>
+            <tr>
+                <td>Agent Connection Failed</td>
+                <td>Verify network connectivity and proxy settings</td>
+            </tr>
+            <tr>
+                <td>Service Account Issues</td>
+                <td>Verify permissions and password complexity</td>
+            </tr>
+            <tr>
+                <td>Import Errors</td>
+                <td>Check OU access and attribute mappings</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="important">
+        After successful installation, consider installing a second agent on DC02 for redundancy.
+    </div>
+
+    <div class="navigation-links">
+        <a href="section1.html" class="nav-link">← Back to Demo Organization</a>
+        <a href="section3.html" class="nav-link">Next: User and Group Management →</a>
+    </div>
+</div>
 
     <!-- Image Modal -->
     <div class="modal" id="imageModal">
