@@ -513,6 +513,63 @@
                         </table>
                     </div>
                 </div>
+
+                <div class="section-part">
+                    <h3>Part 2: Adding a authenticator</h3>
+                    <ol class="steps">
+                        <li class="step">
+                            <div class="step-title">Access Authenticators</div>
+                            <p>Navigate to Security > Authenticators in the Okta admin console</p>
+                            <img src="images/section3/Authenticators.png" alt="Okta Authenticators Console" class="step-image">
+                            <div class="tip">
+                                We need to add another authenticator to replace email, for this we will choose security question.
+                            </div>
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Add Security Question</div>
+                            <p>Click "Add Authenticator" and scroll down Security Question</p>
+                            <p>Click on "Add"</p>
+                            <img src="images/section3/security-question.png" alt="Adding First Test User" class="step-image">
+                            <div class="note">
+                                Ensure "User must change password on first login" is checked.
+                            </div>
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Changing the Default Enrollment Policy</div>
+                            <p>Select the tab "Enrollment"</p>
+                            <p>Select "Default Policy"</p>
+                            <p>Click on Actions > Edit</p>
+                            <p>Set the folowing:</p>
+                            <table>
+                                <tr>
+                                    <th>Authenticator</th>
+                                    <th>Setting</th>
+                                </tr>
+                                <tr>
+                                    <td>Okta Verify</td>
+                                    <td>Optional</td>
+                                </tr>
+                                <tr>
+                                    <td>Password</td>
+                                    <td>Required</td>
+                                </tr>
+                                <tr>
+                                    <td>Security Question</td>
+                                    <td>Required</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </table>
+                            </div>
+                            <img src="images/enrollment-policy.png" alt="Adding Second Test User" class="step-image">
+                        </li>
+                    </ol>
+                </div>
+                
                 <div class="section-part">
                     <h3>Part 2: Creating Okta-Managed Users</h3>
                     <ol class="steps">
