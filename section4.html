@@ -372,6 +372,9 @@
                     <div>5. Authentication</div>
                 </a>
             </nav>
+            <div class="sidebar-footer">
+                <img src="images/NEXTGEN.png" alt="NEXTGEN" />
+            </div>
         </aside>
 
         <main class="main-content">
@@ -379,208 +382,254 @@
                 <h1>Okta Workforce Identity Cloud - Sherpa</h1>
             </header>
 
-        <div class="content">
-            <div class="section-header">
-                <div class="section-number">4</div>
-                <h2>Application Integration</h2>
-                <span class="estimated-time">⏱️ 45-60 minutes</span>
-            </div>
+            <div class="content">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h2>Application Integration</h2>
+                    <span class="estimated-time">⏱️ 45-60 minutes</span>
+                </div>
 
-            <div class="prerequisites">
-                <h3>Section Prerequisites</h3>
-                <ul>
-                    <li>Administrator access to target applications</li>
-                    <li>Application credentials/licenses</li>
-                    <li>SSL certificates (if required)</li>
-                    <li>Application URLs</li>
-                </ul>
-            </div>
+                <div class="prerequisites">
+                    <h3>Section Prerequisites</h3>
+                    <ul>
+                        <li>Administrator access to target applications</li>
+                        <li>Application credentials/licenses</li>
+                        <li>SSL certificates (if required)</li>
+                        <li>Application URLs</li>
+                    </ul>
+                </div>
 
-            <div class="section-part">
-                <h3>Applications to be Integrated</h3>
-                <div class="app-table">
+                <div class="section-part">
+                    <h3>Applications to be Integrated</h3>
+                    <div class="app-table">
+                        <table>
+                            <tr>
+                                <th>Application</th>
+                                <th>Integration Type</th>
+                                <th>Features</th>
+                                <th>Estimated Time</th>
+                            </tr>
+                            <tr>
+                                <td>Microsoft 365</td>
+                                <td>WS-Fed + SCIM</td>
+                                <td>SSO + Provisioning</td>
+                                <td>15 min</td>
+                            </tr>
+                            <tr>
+                                <td>Salesforce</td>
+                                <td>SAML + SCIM</td>
+                                <td>SSO + Provisioning</td>
+                                <td>10 min</td>
+                            </tr>
+                            <tr>
+                                <td>Slack</td>
+                                <td>SAML + SCIM</td>
+                                <td>SSO + Provisioning</td>
+                                <td>10 min</td>
+                            </tr>
+                            <tr>
+                                <td>Zoom</td>
+                                <td>SAML</td>
+                                <td>SSO Only</td>
+                                <td>5 min</td>
+                            </tr>
+                            <tr>
+                                <td>AWS SSO</td>
+                                <td>SAML</td>
+                                <td>SSO + Role Assignment</td>
+                                <td>15 min</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section-part">
+                    <h3>Microsoft 365 Integration</h3>
+                    <ol class="steps">
+                        <li class="step">
+                            <div class="step-title">Add Microsoft 365 Integration</div>
+                            <ol>
+                                <li>Navigate to Applications > Applications</li>
+                                <li>Click "Browse App Catalog"</li>
+                                <li>Search for "Microsoft Office 365"</li>
+                                <li>Click "Add Integration"</li>
+                            </ol>
+                            <img src="images/m365-catalog.png" alt="Adding Microsoft 365 from App Catalog" class="step-image">
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Configure SSO Settings</div>
+                            <ol>
+                                <li>Enter Office 365 domain</li>
+                                <li>Configure WS-Federation settings</li>
+                                <li>Set up certificate</li>
+                                <li>Configure attribute mappings</li>
+                            </ol>
+                            <img src="images/m365-sso-config.png" alt="Microsoft 365 SSO Configuration" class="step-image">
+                            <div class="important">
+                                Save the PowerShell commands provided for Azure AD configuration.
+                            </div>
+                            <img src="images/m365-powershell.png" alt="Microsoft 365 PowerShell Commands" class="step-image">
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Configure Provisioning</div>
+                            <ol>
+                                <li>Enable provisioning</li>
+                                <li>Enter Azure AD admin credentials</li>
+                                <li>Configure user attribute mappings</li>
+                                <li>Set up group push if needed</li>
+                            </ol>
+                            <img src="images/m365-provisioning.png" alt="Microsoft 365 Provisioning Setup" class="step-image">
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="section-part">
+                    <h3>Salesforce Integration</h3>
+                    <ol class="steps">
+                        <li class="step">
+                            <div class="step-title">Add Salesforce Integration</div>
+                            <ol>
+                                <li>Browse App Catalog</li>
+                                <li>Select Salesforce</li>
+                                <li>Choose integration type</li>
+                            </ol>
+                            <img src="images/salesforce-add.png" alt="Adding Salesforce Integration" class="step-image">
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Configure SAML Settings</div>
+                            <ol>
+                                <li>Download Okta certificate</li>
+                                <li>Configure Salesforce SSO settings</li>
+                                <li>Set up attribute mappings</li>
+                            </ol>
+                            <img src="images/salesforce-saml.png" alt="Salesforce SAML Configuration" class="step-image">
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="section-part">
+                    <h3>Remaining Applications</h3>
+                    <ol class="steps">
+                        <li class="step">
+                            <div class="step-title">Configure Slack Integration</div>
+                            <p>Follow Slack-specific configuration guide in the App Catalog</p>
+                            <img src="images/slack-setup.png" alt="Slack Integration Setup" class="step-image">
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">Set up Zoom</div>
+                            <p>Configure basic SAML integration for Zoom</p>
+                            <img src="images/zoom-setup.png" alt="Zoom SSO Configuration" class="step-image">
+                        </li>
+
+                        <li class="step">
+                            <div class="step-title">AWS SSO Setup</div>
+                            <p>Configure AWS SSO with role mapping</p>
+                            <img src="images/aws-setup.png" alt="AWS SSO Configuration" class="step-image">
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="verification-list">
+                    <h4>Verification Checklist</h4>
+                    <ul class="checklist">
+                        <li>Microsoft 365 SSO working</li>
+                        <li>Salesforce integration complete</li>
+                        <li>Slack provisioning configured</li>
+                        <li>Zoom SSO tested</li>
+                        <li>AWS roles assigned</li>
+                        <li>User access verified for each app</li>
+                        <li>Group assignments tested</li>
+                    </ul>
+                </div>
+
+                <div class="troubleshooting">
+                    <h4>Common Issues</h4>
                     <table>
                         <tr>
-                            <th>Application</th>
-                            <th>Integration Type</th>
-                            <th>Features</th>
-                            <th>Estimated Time</th>
+                            <th>Issue</th>
+                            <th>Solution</th>
                         </tr>
                         <tr>
-                            <td>Microsoft 365</td>
-                            <td>WS-Fed + SCIM</td>
-                            <td>SSO + Provisioning</td>
-                            <td>15 min</td>
+                            <td>SAML configuration errors</td>
+                            <td>Verify certificate and endpoint settings</td>
                         </tr>
                         <tr>
-                            <td>Salesforce</td>
-                            <td>SAML + SCIM</td>
-                            <td>SSO + Provisioning</td>
-                            <td>10 min</td>
+                            <td>Provisioning failures</td>
+                            <td>Check API credentials and permissions</td>
                         </tr>
                         <tr>
-                            <td>Slack</td>
-                            <td>SAML + SCIM</td>
-                            <td>SSO + Provisioning</td>
-                            <td>10 min</td>
-                        </tr>
-                        <tr>
-                            <td>Zoom</td>
-                            <td>SAML</td>
-                            <td>SSO Only</td>
-                            <td>5 min</td>
-                        </tr>
-                        <tr>
-                            <td>AWS SSO</td>
-                            <td>SAML</td>
-                            <td>SSO + Role Assignment</td>
-                            <td>15 min</td>
+                            <td>Attribute mapping issues</td>
+                            <td>Compare source and target attributes</td>
                         </tr>
                     </table>
                 </div>
+
+                <div class="best-practices">
+                    <h4>Best Practices</h4>
+                    <ul>
+                        <li>Test with limited user group first</li>
+                        <li>Document all configuration settings</li>
+                        <li>Setup monitoring for SSO health</li>
+                        <li>Configure app sign-on policies</li>
+                        <li>Regular testing of SSO flows</li>
+                    </ul>
+                </div>
+
+                <div class="navigation-links">
+                    <a href="section3.html" class="nav-link">← Back to User Management</a>
+                    <a href="section5.html" class="nav-link">Next: Authentication Policies →</a>
+                </div>
             </div>
-
-            <div class="section-part">
-                <h3>Microsoft 365 Integration</h3>
-                <ol class="steps">
-                    <li class="step">
-                        <div class="step-title">Add Microsoft 365 Integration</div>
-                        <ol>
-                            <li>Navigate to Applications > Applications</li>
-                            <li>Click "Browse App Catalog"</li>
-                            <li>Search for "Microsoft Office 365"</li>
-                            <li>Click "Add Integration"</li>
-                        </ol>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Configure SSO Settings</div>
-                        <ol>
-                            <li>Enter Office 365 domain</li>
-                            <li>Configure WS-Federation settings</li>
-                            <li>Set up certificate</li>
-                            <li>Configure attribute mappings</li>
-                        </ol>
-                        <div class="important">
-                            Save the PowerShell commands provided for Azure AD configuration.
-                        </div>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Configure Provisioning</div>
-                        <ol>
-                            <li>Enable provisioning</li>
-                            <li>Enter Azure AD admin credentials</li>
-                            <li>Configure user attribute mappings</li>
-                            <li>Set up group push if needed</li>
-                        </ol>
-                    </li>
-                </ol>
-            </div>
-
-            <div class="section-part">
-                <h3>Salesforce Integration</h3>
-                <ol class="steps">
-                    <li class="step">
-                        <div class="step-title">Add Salesforce Integration</div>
-                        <ol>
-                            <li>Browse App Catalog</li>
-                            <li>Select Salesforce</li>
-                            <li>Choose integration type</li>
-                        </ol>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Configure SAML Settings</div>
-                        <ol>
-                            <li>Download Okta certificate</li>
-                            <li>Configure Salesforce SSO settings</li>
-                            <li>Set up attribute mappings</li>
-                        </ol>
-                    </li>
-                </ol>
-            </div>
-
-            <div class="section-part">
-                <h3>Remaining Applications</h3>
-                <ol class="steps">
-                    <li class="step">
-                        <div class="step-title">Configure Slack Integration</div>
-                        <p>Follow Slack-specific configuration guide in the App Catalog</p>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">Set up Zoom</div>
-                        <p>Configure basic SAML integration for Zoom</p>
-                    </li>
-
-                    <li class="step">
-                        <div class="step-title">AWS SSO Setup</div>
-                        <p>Configure AWS SSO with role mapping</p>
-                    </li>
-                </ol>
-            </div>
-
-            <div class="verification-list">
-                <h4>Verification Checklist</h4>
-                <ul class="checklist">
-                    <li>Microsoft 365 SSO working</li>
-                    <li>Salesforce integration complete</li>
-                    <li>Slack provisioning configured</li>
-                    <li>Zoom SSO tested</li>
-                    <li>AWS roles assigned</li>
-                    <li>User access verified for each app</li>
-                    <li>Group assignments tested</li>
-                </ul>
-            </div>
-
-            <div class="troubleshooting">
-                <h4>Common Issues</h4>
-                <table>
-                    <tr>
-                        <th>Issue</th>
-                        <th>Solution</th>
-                    </tr>
-                    <tr>
-                        <td>SAML configuration errors</td>
-                        <td>Verify certificate and endpoint settings</td>
-                    </tr>
-                    <tr>
-                        <td>Provisioning failures</td>
-                        <td>Check API credentials and permissions</td>
-                    </tr>
-                    <tr>
-                        <td>Attribute mapping issues</td>
-                        <td>Compare source and target attributes</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="best-practices">
-                <h4>Best Practices</h4>
-                <ul>
-                    <li>Test with limited user group first</li>
-                    <li>Document all configuration settings</li>
-                    <li>Setup monitoring for SSO health</li>
-                    <li>Configure app sign-on policies</li>
-                    <li>Regular testing of SSO flows</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="navigation-links">
-            <a href="section3.html" class="nav-link">← Back to User Management</a>
-            <a href="section5.html" class="nav-link">Next: Authentication Policies →</a>
-        </div>
+        </main>
     </div>
 
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="image-caption" id="imageCaption"></div>
+    </div>
+
+    <!-- Modal JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const progressSteps = document.querySelectorAll('.progress-step');
-            progressSteps.forEach(step => {
-                if (step.getAttribute('href') === currentPage) {
-                    step.classList.add('active');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('imageCaption');
+            const closeBtn = document.querySelector('.modal-close');
+
+            function openModal(src, alt) {
+                modal.classList.add('active');
+                modalImg.src = src;
+                captionText.textContent = alt;
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.step-image').forEach(img => {
+                img.addEventListener('click', function() {
+                    openModal(this.src, this.alt);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
                 }
             });
         });
