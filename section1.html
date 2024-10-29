@@ -347,6 +347,28 @@
                 text-align: center;
             }
         }
+        .machine-indicator {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.machine-indicator:before {
+    content: "🖥️";
+    margin-right: 0.5rem;
+}
+
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
     </style>
 </head>
 <body>
@@ -441,6 +463,10 @@
                     </li>
 
                    <li class="step">
+                       <div class="step-header">
+        <div class="step-title">Access Demo Portal</div>
+        <div class="machine-indicator">CL03</div>
+    </div>
                         <div class="step-title">Access Demo Creation</div>
                         <p>On the demo portal dashboard:</p>
                         <ol>
