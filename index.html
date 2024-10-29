@@ -230,14 +230,29 @@
 
             <div class="content">
                 <div class="intro">
-                    <h2>Getting Started</h2>
-                    <p>Welcome to the Okta Workforce Identity Cloud Partner Active Directory (AD) Demo Guide. This comprehensive guide will walk you through the complete setup and configuration of Okta Workforce Identity Cloud integrated with AD. The guide is divided into five main sections, each focusing on a critical component of the Okta Demo setup.</p>
-                    <p>If you would like to open this guide in a seperate tab in your browser please go to: </p>
-                        <p>https://travisande.github.io/okta-sherpa/</p>
+                    <h2>Welcome to Base Camp</h2>
+                    <p>Welcome to the Okta Workforce Identity Cloud - Sherpa Base Camp Lab. This hands-on lab environment will guide you through implementing a complete Okta identity solution integrated with Active Directory.</p>
+                    
+                    <div class="important">
+                        <h4>Getting Started</h4>
+                        <ul>
+                            <li>Your lab environment will take approximately 4-5 minutes to initialize</li>
+                            <li>You can monitor the build progress in the status bar at the top of this window</li>
+                            <li>All machines will be ready for use once the initialization is complete</li>
+                        </ul>
+                    </div>
+
+                    <div class="note">
+                        <h4>Quick Access</h4>
+                        <p>Access this guide in a separate browser tab at:</p>
+                        <code>https://travisande.github.io/okta-sherpa/</code>
+                        <p>Bookmark this URL for easy reference throughout the lab.</p>
+                    </div>
                 </div>
 
-                <div class="section-overview">
-                    <h3>Guide Sections</h3>
+<div class="section-overview">
+                    <h3>Lab Journey</h3>
+                    <p>Your implementation journey is divided into five core sections, each building upon the previous:</p>
                     <div class="section-cards">
                         <div class="section-card">
                             <div class="card-number">1</div>
@@ -277,31 +292,43 @@
                 </div>
 
                 <div class="environment-details">
-                    <h3>Environment Details</h3>
+                    <h3>Lab Environment</h3>
+                    
                     <div class="domain-info">
-                        <h4>Domain Information</h4>
+                        <div class="step-header">
+                            <h4>Active Directory Structure</h4>
+                            <div class="machine-indicator">All Machines</div>
+                        </div>
                         <ul>
                             <li>Domain Name: cyberlab-au.com</li>
                             <li>Forest Functional Level: Windows Server 2019</li>
                             <li>Primary DNS: DC01.cyberlab-au.com</li>
                             <li>Secondary DNS: DC02.cyberlab-au.com</li>
+                            <li>Group Policy: Pre-configured for lab environment</li>
+                            <li>Sites and Services: Single site configuration</li>
                         </ul>
-                </div>
+                    </div>
 
-                <div class="important-notes">
-    <h3>Important Notes</h3>
-    <ul>
-        <li>All client machines are joined to the cyberlab-au.com domain</li>
-        <li>All machines will automatically login</li>
-        <li>Test users have standard non-admin domain accounts</li>
-        <li>Local administrator access is available if needed (credentials provided separately)</li>
-        <li>Both DC01 and DC02 are running Windows Server</li>
-        <li>Client machines (CL03, CL04) are running Windows 10</li>
-    </ul>
-</div>
+                    <div class="important-notes">
+                        <div class="step-header">
+                            <h4>Environment Configuration</h4>
+                            <div class="machine-indicator">All Machines</div>
+                        </div>
+                        <ul>
+                            <li>All machines are domain-joined to cyberlab-au.com</li>
+                            <li>Automatic login is configured for all machines</li>
+                            <li>Required software is pre-installed</li>
+                            <li>Internet access is pre-configured</li>
+                            <li>Time synchronization is enabled</li>
+                            <li>Network connectivity is pre-established</li>
+                        </ul>
+                    </div>
                     
                 <div class="machine-info">
-                    <h3>Environment Setup</h3>
+                        <div class="step-header">
+                            <h4>Lab Resources</h4>
+                            <div class="machine-indicator">All Machines</div>
+                        </div>
                     <div class="table-container">
                         <table>
                             <thead>
@@ -344,6 +371,17 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="tip">
+                        <h4>Lab Best Practices</h4>
+                        <ul>
+                            <li>Follow sections in order for best results</li>
+                            <li>Complete each verification checklist before proceeding</li>
+                            <li>Use the specified machines for their designated tasks</li>
+                            <li>Document any custom configurations you make</li>
+                            <li>Test thoroughly after each major change</li>
+                        </ul>
                     </div>
                 </div>
             </div>
