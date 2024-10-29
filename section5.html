@@ -448,7 +448,6 @@
                         <li class="step">
                             <div class="step-title">Enable Factors</div>
                             <p>Navigate to Security > Authenticators:</p>
-                            <img src="images/section5/mfa-factors.png" alt="MFA Factors Configuration" class="step-image">
                             <table class="factor-table">
                                 <tr>
                                     <th>Factor</th>
@@ -531,30 +530,30 @@ Recovery</td>
                 <li>Configure Rule Settings:
                     <ul>
                         <li>Rule Name: IT Admin Access</li>
-                        <li>Under "AND User is a member of":</li>
-                        <li>Select Groups: IT-Admin</li>
+                        <li>Under "AND User's group membership includes" At least one of the following groups:</li>
+                        <li>Select Groups: IT-Admins</li>
                     </ul>
                 </li>
                 <li>Configure Authentication Requirements:
                     <ul>
-                        <li>Select: Password + Okta Verify</li>
-                        <li>Uncheck "Allow remembered device"</li>
-                        <li>Set Session expires after: 4 hours</li>
+                        <li>AND Authentication methods "Allow specific authentication methods"</li>
+                        <li>Select: Okta Verify - Push</li>
                     </ul>
                 </li>
                 <li>Click "Save"</li>
             </ol>
-            <img src="images/section5/rule-config.png" alt="Rule Configuration" class="step-image">
+            <img src="images/section5/rule-config1.png" alt="Rule Configuration" class="step-image">
+            <img src="images/section5/rule-config2.png" alt="Rule Configuration" class="step-image">
         </li>
 
         <li class="step">
             <div class="step-title">Assign Applications</div>
             <ol>
                 <li>Click on the "Applications" tab in the policy</li>
-                <li>Click "Assign Applications"</li>
+                <li>Click "Add App"</li>
                 <li>Select target applications:
                     <ul>
-                        <li>Flights Bookmark App</li>
+                        <li>Flights</li>
                     </ul>
                 </li>
                 <li>Click "Done"</li>
