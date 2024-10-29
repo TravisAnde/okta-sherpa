@@ -642,21 +642,24 @@
         <h3>Part 3: Test Login and Enrollment</h3>
         <ol class="steps">
             <li class="step">
-                <div class="step-title">Prepare for Testing</div>
+                <div class="step-header">
+        <div class="step-title">Prepare for Testing</div>
+        <div class="machine-indicator">CL03</div>
+    </div
                 <ol>
                     <li>Ensure you're on the CL03 machine</li>
-                    <li>Open Microsoft Edge browser</li>
+                    <li>Open browser</li>
                     <li>Clear browser cache if needed</li>
                 </ol>
                 <div class="tip">
-                    Testing on CL03 ensures we're in the correct environment with all necessary access.
+                    Testing on CL03 ensures we're logging in with the user (adam.wally) machine.
                 </div>
             </li>
 
             <li class="step">
                 <div class="step-header">
         <div class="step-title">Initial Login</div>
-        <div class="machine-indicator">DC01</div>
+        <div class="machine-indicator">CL03</div>
     </div>
                 <ol>
                     <li>Navigate to your Okta org URL (https://demo-xxxxxxxx.okta.com)</li>
@@ -675,7 +678,10 @@
             </li>
 
             <li class="step">
-                <div class="step-title">Security Question Enrollment</div>
+                <div class="step-header">
+        <div class="step-title">Security Question Enrollment</div>
+        <div class="machine-indicator">CL03</div>
+    </div>
                 <ol>
                     <li>After successful login, you'll be prompted to set up security questions</li>
                     <li>Select your security questions:
@@ -695,7 +701,10 @@
             </li>
 
             <li class="step">
-                <div class="step-title">Verify Account Access</div>
+                <div class="step-header">
+        <div class="step-title">Verify Account Access</div>
+        <div class="machine-indicator">CL03</div>
+    </div>
                 <ol>
                     <li>Log out of your account</li>
                     <li>Perform a second login</li>
@@ -710,7 +719,10 @@
             <h3>Part 4: Create IT-Admins Group</h3>
             <ol class="steps">
                 <li class="step">
-                    <div class="step-title">Access Group Management</div>
+                    <div class="step-header">
+        <div class="step-title">Access Group Management</div>
+        <div class="machine-indicator">DC01</div>
+    </div>
                     <ol>
                         <li>In the Okta Admin Console</li>
                         <li>Navigate to Directory > Groups</li>
@@ -720,7 +732,10 @@
                 </li>
 
                 <li class="step">
-                    <div class="step-title">Create IT-Admins Group</div>
+                    <div class="step-header">
+        <div class="step-title">Create IT-Admins Group</div>
+        <div class="machine-indicator">DC01</div>
+    </div>
                     <ol>
                         <li>Configure group settings:
                             <ul>
@@ -737,7 +752,10 @@
                 </li>
 
                 <li class="step">
-                    <div class="step-title">Add User to IT-Admins Group</div>
+                    <div class="step-header">
+        <div class="step-title">Add User to IT-Admins Group</div>
+        <div class="machine-indicator">DC01</div>
+    </div>
                     <ol>
                         <li>Click on the new IT-Admins group</li>
                         <li>Select "Assign People"</li>
@@ -751,7 +769,10 @@
                 </li>
 
                 <li class="step">
-                    <div class="step-title">Verify Group Assignment</div>
+                    <div class="step-header">
+        <div class="step-title">Verify Group Assignment</div>
+        <div class="machine-indicator">DC01</div>
+    </div>
                     <ol>
                         <li>Navigate to Directory > People</li>
                         <li>Search for adam.wally@cyberlab-au.com</li>
