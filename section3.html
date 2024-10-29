@@ -638,151 +638,163 @@
             </ul>
         </div>
     </div>
+    
      <div class="section-part">
         <h3>Part 3: Test Login and Enrollment</h3>
-        <ol class="steps">
-            <li class="step">
-                <div class="step-header">
-        <div class="step-title">Prepare for Testing</div>
-        <div class="machine-indicator">CL03</div>
-    </div
-                <ol>
-                    <li>Ensure you're on the CL03 machine</li>
-                    <li>Open browser</li>
-                    <li>Clear browser cache if needed</li>
-                </ol>
-                <div class="tip">
-                    Testing on CL03 ensures we're logging in with the user (adam.wally) machine.
-                </div>
-            </li>
-
-            <li class="step">
-                <div class="step-header">
-        <div class="step-title">Initial Login</div>
-        <div class="machine-indicator">CL03</div>
-    </div>
-                <ol>
-                    <li>Navigate to your Okta org URL (https://demo-xxxxxxxx.okta.com)</li>
-                    <li>Enter AD credentials:
-                        <ul>
-                            <li>Username: adam.wally@cyberlab-au.com</li>
-                            <li>Password: Your AD password</li>
-                        </ul>
-                    </li>
-                    <li>Click "Sign In"</li>
-                </ol>
-                <div class="important">
-                    Thanks to JIT Provisioning configured earlier, this first login will automatically create your Okta user account.
-                </div>
-                <img src="images/section3/login-screen.png" alt="Okta Login Screen" class="step-image">
-            </li>
-
-            <li class="step">
-                <div class="step-header">
-        <div class="step-title">Security Question Enrollment</div>
-        <div class="machine-indicator">CL03</div>
-    </div>
-                <ol>
-                    <li>After successful login, you'll be prompted to set up security questions</li>
-                    <li>Select your security questions:
-                        <ul>
-                            <li>Choose questions that have answers only you would know</li>
-                            <li>Avoid using easily discoverable information</li>
-                            <li>Use clear, memorable answers</li>
-                        </ul>
-                    </li>
-                    <li>Enter your answers your question</li>
-                    <li>Click "Finish" to complete enrollment</li>
-                </ol>
-                <div class="note">
-                    You'll need this security question if you ever need to reset your password or verify your identity.
-                </div>
-                <img src="images/section3/security-questions-setup.png" alt="Security Questions Setup" class="step-image">
-            </li>
-
-            <li class="step">
-                <div class="step-header">
-        <div class="step-title">Verify Account Access</div>
-        <div class="machine-indicator">CL03</div>
-    </div>
-                <ol>
-                    <li>Log out of your account</li>
-                    <li>Perform a second login</li>
-                    <li>Verify you can access your Okta dashboard</li>
-                    <li>Check that your profile information is correct</li>
-                </ol>
-                <img src="images/section3/okta-dashboard.png" alt="Okta Dashboard" class="step-image">
-            </li>
+<ol class="steps">
+    <li class="step">
+        <div class="step-header">
+            <div class="step-title">Prepare for Testing</div>
+            <div class="machine-indicator">CL03</div>
+        </div>
+        <ol>
+            <li>Ensure you're on the CL03 machine</li>
+            <li>Open browser</li>
+            <li>Clear browser cache if needed</li>
         </ol>
+        <div class="tip">
+            Testing on CL03 ensures we're logging in with the user (adam.wally) machine.
+        </div>
+    </li>
 
-         <div class="section-part">
-            <h3>Part 4: Create IT-Admins Group</h3>
-            <ol class="steps">
-                <li class="step">
-                    <div class="step-header">
-        <div class="step-title">Access Group Management</div>
-        <div class="machine-indicator">DC01</div>
-    </div>
-                    <ol>
-                        <li>In the Okta Admin Console</li>
-                        <li>Navigate to Directory > Groups</li>
-                        <li>Click "Add Group"</li>
-                    </ol>
-                    <img src="images/section3/groups-menu.png" alt="Groups Menu" class="step-image">
-                </li>
+    <li class="step">
+        <div class="step-header">
+            <div class="step-title">Initial Login</div>
+            <div class="machine-indicator">CL03</div>
+        </div>
+        <ol>
+            <li>Navigate to your Okta org URL (https://demo-xxxxxxxx.okta.com)</li>
+            <li>Enter AD credentials:
+                <ul>
+                    <li>Username: adam.wally@cyberlab-au.com</li>
+                    <li>Password: Your AD password</li>
+                </ul>
+            </li>
+            <li>Click "Sign In"</li>
+        </ol>
+        <div class="important">
+            Thanks to JIT Provisioning configured earlier, this first login will automatically create your Okta user account.
+        </div>
+        <img src="images/section3/login-screen.png" alt="Okta Login Screen" class="step-image">
+    </li>
 
-                <li class="step">
-                    <div class="step-header">
-        <div class="step-title">Create IT-Admins Group</div>
-        <div class="machine-indicator">DC01</div>
-    </div>
-                    <ol>
-                        <li>Configure group settings:
-                            <ul>
-                                <li>Name: IT-Admins</li>
-                                <li>Description: IT Administration team with elevated access</li>
-                            </ul>
-                        </li>
-                        <li>Click "Save"</li>
-                    </ol>
-                    <div class="tip">
-                        Use clear, descriptive names for groups to make management easier.
-                    </div>
-                    <img src="images/section3/create-group.png" alt="Create IT-Admins Group" class="step-image">
-                </li>
+    <li class="step">
+        <div class="step-header">
+            <div class="step-title">Security Question Enrollment</div>
+            <div class="machine-indicator">CL03</div>
+        </div>
+        <ol>
+            <li>After successful login, you'll be prompted to set up security questions</li>
+            <li>Select your security questions:
+                <ul>
+                    <li>Choose questions that have answers only you would know</li>
+                    <li>Avoid using easily discoverable information</li>
+                    <li>Use clear, memorable answers</li>
+                </ul>
+            </li>
+            <li>Enter your answers for your questions</li>
+            <li>Click "Finish" to complete enrollment</li>
+        </ol>
+        <div class="note">
+            You'll need this security question if you ever need to reset your password or verify your identity.
+        </div>
+        <img src="images/section3/security-questions-setup.png" alt="Security Questions Setup" class="step-image">
+    </li>
 
-                <li class="step">
-                    <div class="step-header">
-        <div class="step-title">Add User to IT-Admins Group</div>
-        <div class="machine-indicator">DC01</div>
-    </div>
-                    <ol>
-                        <li>Click on the new IT-Admins group</li>
-                        <li>Select "Assign People"</li>
-                        <li>In the search field, enter: adam.wally@cyberlab-au.com</li>
-                        <li>Click the (+) icon next to the user</li>
-                    </ol>
-                    <div class="important">
-                        You may need to refresh the group page to see your newly added group.
-                    </div>
-                    <img src="images/section3/assign-user.png" alt="Assign User to Group" class="step-image">
-                </li>
+    <li class="step">
+        <div class="step-header">
+            <div class="step-title">Verify Account Access</div>
+            <div class="machine-indicator">CL03</div>
+        </div>
+        <ol>
+            <li>Log out of your account</li>
+            <li>Perform a second login</li>
+            <li>Verify you can access your Okta dashboard</li>
+            <li>Check that your profile information is correct</li>
+        </ol>
+        <img src="images/section3/okta-dashboard.png" alt="Okta Dashboard" class="step-image">
+    </li>
+</ol>
 
-                <li class="step">
-                    <div class="step-header">
-        <div class="step-title">Verify Group Assignment</div>
-        <div class="machine-indicator">DC01</div>
-    </div>
-                    <ol>
-                        <li>Navigate to Directory > People</li>
-                        <li>Search for adam.wally@cyberlab-au.com</li>
-                        <li>Click on the user profile</li>
-                        <li>Check the Groups tab</li>
-                        <li>Verify IT-Admins group is listed</li>
-                    </ol>
-                    <img src="images/section3/verify-group.png" alt="Verify Group Assignment" class="step-image">
-                </li>
-            </ol>
+<div class="verification-list">
+    <h4>Login and Enrollment Checklist</h4>
+    <ul class="checklist">
+        <li>Successfully logged in with AD credentials</li>
+        <li>JIT Provisioning created Okta account</li>
+        <li>Security questions configured</li>
+        <li>Second login successful</li>
+        <li>Dashboard accessible</li>
+        <li>Profile information correct</li>
+    </ul>
+</div>
+
+<h3>Part 4: Create IT-Admins Group</h3>
+<ol class="steps">
+    <li class="step">
+        <div class="step-header">
+            <div class="step-title">Access Group Management</div>
+            <div class="machine-indicator">CL03</div>
+        </div>
+        <ol>
+            <li>In the Okta Admin Console</li>
+            <li>Navigate to Directory > Groups</li>
+            <li>Click "Add Group"</li>
+        </ol>
+        <img src="images/section3/groups-menu.png" alt="Groups Menu" class="step-image">
+    </li>
+
+    <li class="step">
+        <div class="step-header">
+            <div class="step-title">Create IT-Admins Group</div>
+            <div class="machine-indicator">CL03</div>
+        </div>
+        <ol>
+            <li>Configure group settings:
+                <ul>
+                    <li>Name: IT-Admins</li>
+                    <li>Description: IT Administration team with elevated access</li>
+                </ul>
+            </li>
+            <li>Click "Save"</li>
+        </ol>
+        <div class="tip">
+            Use clear, descriptive names for groups to make management easier.
+        </div>
+        <img src="images/section3/create-group.png" alt="Create IT-Admins Group" class="step-image">
+    </li>
+
+    <li class="step">
+        <div class="step-header">
+            <div class="step-title">Add User to IT-Admins Group</div>
+            <div class="machine-indicator">CL03</div>
+        </div>
+        <ol>
+            <li>Click on the new IT-Admins group</li>
+            <li>Select "Assign People"</li>
+            <li>In the search field, enter: adam.wally@cyberlab-au.com</li>
+            <li>Click the (+) icon next to the user</li>
+        </ol>
+        <div class="important">
+            You may need to refresh the group page to see your newly added group.
+        </div>
+        <img src="images/section3/assign-user.png" alt="Assign User to Group" class="step-image">
+    </li>
+
+    <li class="step">
+        <div class="step-header">
+            <div class="step-title">Verify Group Assignment</div>
+            <div class="machine-indicator">CL03</div>
+        </div>
+        <ol>
+            <li>Navigate to Directory > People</li>
+            <li>Search for adam.wally@cyberlab-au.com</li>
+            <li>Click on the user profile</li>
+            <li>Check the Groups tab</li>
+            <li>Verify IT-Admins group is listed</li>
+        </ol>
+        <img src="images/section3/verify-group.png" alt="Verify Group Assignment" class="step-image">
+    </li>
+</ol>
 
             <div class="verification-list">
                 <h4>Group Setup Checklist</h4>
