@@ -383,207 +383,266 @@
             </header>
 
             <div class="content">
-                <div class="section-header">
-                    <div class="section-number">4</div>
-                    <h2>Application Integration</h2>
-                    <span class="estimated-time">⏱️ 45-60 minutes</span>
+    <div class="section-header">
+        <div class="section-number">4</div>
+        <h2>Application Integration</h2>
+        <span class="estimated-time">⏱️ 25-30 minutes</span>
+    </div>
+
+    <div class="prerequisites">
+        <h3>Section Prerequisites</h3>
+        <ul>
+            <li>Access to CL03 machine</li>
+            <li>Okta Administrator access</li>
+            <li>LinkedIn account credentials (will be created)</li>
+            <li>Microsoft Edge browser</li>
+        </ul>
+    </div>
+
+    <div class="important">
+        <h4>Key Information</h4>
+        <ul>
+            <li>All configuration will be done on CL03</li>
+            <li>LinkedIn account should be created with a demo email</li>
+            <li>Bookmark apps will be used for security policies later</li>
+            <li>Test all applications using the End User Dashboard</li>
+        </ul>
+    </div>
+
+    <div class="section-part">
+        <h3>Applications Overview</h3>
+        <div class="app-table">
+            <table>
+                <tr>
+                    <th>Application</th>
+                    <th>Integration Type</th>
+                    <th>Purpose</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>LinkedIn</td>
+                    <td>SWA</td>
+                    <td>Shared Account Access</td>
+                    <td>10 min</td>
+                </tr>
+                <tr>
+                    <td>Weather Bookmark</td>
+                    <td>Bookmark</td>
+                    <td>Device Assurance Demo</td>
+                    <td>5 min</td>
+                </tr>
+                <tr>
+                    <td>Flights Bookmark</td>
+                    <td>Bookmark</td>
+                    <td>Phishing Resistance Demo</td>
+                    <td>5 min</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-part">
+        <h3>Part 1: LinkedIn Integration</h3>
+        <ol class="steps">
+            <li class="step">
+                <div class="step-title">Create LinkedIn Account</div>
+                <ol>
+                    <li>Open Microsoft Edge on CL03</li>
+                    <li>Navigate to https://www.linkedin.com/signup</li>
+                    <li>Create a new account using a demo email</li>
+                    <li>Complete phone & email verification</li>
+                </ol>
+                <div class="important">
+                    Do not use your personal LinkedIn account. Create a new demo account specifically for this integration.
                 </div>
+                <img src="images/section4/linkedin-signup.png" alt="LinkedIn Signup Page" class="step-image">
+            </li>
 
-                <div class="prerequisites">
-                    <h3>Section Prerequisites</h3>
-                    <ul>
-                        <li>Administrator access to target applications</li>
-                        <li>Application credentials/licenses</li>
-                        <li>SSL certificates (if required)</li>
-                        <li>Application URLs</li>
-                    </ul>
+            <li class="step">
+                <div class="step-title">Add LinkedIn Integration in Okta</div>
+                <ol>
+                    <li>Navigate to Applications > Applications</li>
+                    <li>Click "Browse App Catalog"</li>
+                    <li>Search for "LinkedIn"</li>
+                    <li>Select "LinkedIn (SWA)"</li>
+                    <li>Click "Add Integration"</li>
+                </ol>
+                <img src="images/section4/linkedin-add.png" alt="Adding LinkedIn Integration" class="step-image">
+            </li>
+
+            <li class="step">
+                <div class="step-title">Configure LinkedIn SSO</div>
+                <ol>
+                    <li>On the General Settings page:
+                        <ul>
+                            <li>Uncheck "Automatically log in when user lands on login page"</li>
+                            <li>Click Next</li>
+                        </ul>
+                    </li>
+                    <li>Select Authentication Method:
+                        <ul>
+                            <li>Choose "Secure Web Authentication"</li>
+                            <li>Select "Users share a single username and password set by administrator"</li>
+                        </ul>
+                    </li>
+                    <li>Enter your demo LinkedIn credentials</li>
+                    <li>Ensure "Password reveal" is unchecked</li>
+                    <li>Click Done</li>
+                </ol>
+                <div class="tip">
+                    Shared credentials allow multiple users to access LinkedIn without knowing the actual login details.
                 </div>
+                <img src="images/section4/linkedin-sso.png" alt="LinkedIn SSO Configuration" class="step-image">
+            </li>
 
-                <div class="section-part">
-                    <h3>Applications to be Integrated</h3>
-                    <div class="app-table">
-                        <table>
-                            <tr>
-                                <th>Application</th>
-                                <th>Integration Type</th>
-                                <th>Features</th>
-                                <th>Estimated Time</th>
-                            </tr>
-                            <tr>
-                                <td>Microsoft 365</td>
-                                <td>WS-Fed + SCIM</td>
-                                <td>SSO + Provisioning</td>
-                                <td>15 min</td>
-                            </tr>
-                            <tr>
-                                <td>Salesforce</td>
-                                <td>SAML + SCIM</td>
-                                <td>SSO + Provisioning</td>
-                                <td>10 min</td>
-                            </tr>
-                            <tr>
-                                <td>Slack</td>
-                                <td>SAML + SCIM</td>
-                                <td>SSO + Provisioning</td>
-                                <td>10 min</td>
-                            </tr>
-                            <tr>
-                                <td>Zoom</td>
-                                <td>SAML</td>
-                                <td>SSO Only</td>
-                                <td>5 min</td>
-                            </tr>
-                            <tr>
-                                <td>AWS SSO</td>
-                                <td>SAML</td>
-                                <td>SSO + Role Assignment</td>
-                                <td>15 min</td>
-                            </tr>
-                        </table>
-                    </div>
+            <li class="step">
+                <div class="step-title">Test LinkedIn Integration</div>
+                <ol>
+                    <li>Assign the application:
+                        <ul>
+                            <li>Navigate to Directory > People</li>
+                            <li>Search for your admin user</li>
+                            <li>Click "Assign Applications"</li>
+                            <li>Select LinkedIn</li>
+                            <li>Click "Save and go back"</li>
+                        </ul>
+                    </li>
+                    <li>Test the integration:
+                        <ul>
+                            <li>Click the "My Apps" icon (four squares)</li>
+                            <li>Select "My end user dashboard"</li>
+                            <li>Click the LinkedIn tile</li>
+                            <li>Verify successful LinkedIn login</li>
+                        </ul>
+                    </li>
+                </ol>
+                <div class="important">
+                    Always sign out of LinkedIn after testing to avoid session conflicts when testing with different users.
                 </div>
+                <img src="images/section4/linkedin-test.png" alt="LinkedIn Integration Test" class="step-image">
+            </li>
+        </ol>
 
-                <div class="section-part">
-                    <h3>Microsoft 365 Integration</h3>
-                    <ol class="steps">
-                        <li class="step">
-                            <div class="step-title">Add Microsoft 365 Integration</div>
-                            <ol>
-                                <li>Navigate to Applications > Applications</li>
-                                <li>Click "Browse App Catalog"</li>
-                                <li>Search for "Microsoft Office 365"</li>
-                                <li>Click "Add Integration"</li>
-                            </ol>
-                            <img src="images/section4/m365-catalog.png" alt="Adding Microsoft 365 from App Catalog" class="step-image">
-                        </li>
+        <div class="verification-list">
+            <h4>LinkedIn Integration Checklist</h4>
+            <ul class="checklist">
+                <li>LinkedIn demo account created</li>
+                <li>SWA integration configured</li>
+                <li>Shared credentials set up</li>
+                <li>Application assigned to test user</li>
+                <li>SSO login successful</li>
+            </ul>
+        </div>
+    </div>
 
-                        <li class="step">
-                            <div class="step-title">Configure SSO Settings</div>
-                            <ol>
-                                <li>Enter Office 365 domain</li>
-                                <li>Configure WS-Federation settings</li>
-                                <li>Set up certificate</li>
-                                <li>Configure attribute mappings</li>
-                            </ol>
-                            <img src="images/section4/m365-sso-config.png" alt="Microsoft 365 SSO Configuration" class="step-image">
-                            <div class="important">
-                                Save the PowerShell commands provided for Azure AD configuration.
-                            </div>
-                            <img src="images/section4/m365-powershell.png" alt="Microsoft 365 PowerShell Commands" class="step-image">
-                        </li>
+    <div class="section-part">
+        <h3>Part 2: Bookmark Applications</h3>
+        <div class="note">
+            Bookmark apps will be used later to demonstrate Device Assurance and Phishing Resistant authentication policies.
+        </div>
 
-                        <li class="step">
-                            <div class="step-title">Configure Provisioning</div>
-                            <ol>
-                                <li>Enable provisioning</li>
-                                <li>Enter Azure AD admin credentials</li>
-                                <li>Configure user attribute mappings</li>
-                                <li>Set up group push if needed</li>
-                            </ol>
-                            <img src="images/section4/m365-provisioning.png" alt="Microsoft 365 Provisioning Setup" class="step-image">
-                        </li>
-                    </ol>
+        <ol class="steps">
+            <li class="step">
+                <div class="step-title">Create Weather Bookmark App</div>
+                <ol>
+                    <li>Navigate to Applications > Applications</li>
+                    <li>Click "Browse App Catalog"</li>
+                    <li>Search for "Bookmark"</li>
+                    <li>Click "Add Integration"</li>
+                    <li>Configure the following:
+                        <ul>
+                            <li>Application label: Forecast</li>
+                            <li>URL: https://weather.com/</li>
+                            <li>Uncheck "Request Integration"</li>
+                            <li>Uncheck "Application Visibility"</li>
+                        </ul>
+                    </li>
+                    <li>Click Done</li>
+                </ol>
+                <div class="tip">
+                    This app will be used to demonstrate Device Assurance policies in later sections.
                 </div>
+                <img src="images/section4/weather-bookmark.png" alt="Weather Bookmark Configuration" class="step-image">
+            </li>
 
-                <div class="section-part">
-                    <h3>Salesforce Integration</h3>
-                    <ol class="steps">
-                        <li class="step">
-                            <div class="step-title">Add Salesforce Integration</div>
-                            <ol>
-                                <li>Browse App Catalog</li>
-                                <li>Select Salesforce</li>
-                                <li>Choose integration type</li>
-                            </ol>
-                            <img src="images/section4/salesforce-add.png" alt="Adding Salesforce Integration" class="step-image">
-                        </li>
-
-                        <li class="step">
-                            <div class="step-title">Configure SAML Settings</div>
-                            <ol>
-                                <li>Download Okta certificate</li>
-                                <li>Configure Salesforce SSO settings</li>
-                                <li>Set up attribute mappings</li>
-                            </ol>
-                            <img src="images/section4/salesforce-saml.png" alt="Salesforce SAML Configuration" class="step-image">
-                        </li>
-                    </ol>
+            <li class="step">
+                <div class="step-title">Create Flights Bookmark App</div>
+                <ol>
+                    <li>Navigate to Applications > Applications</li>
+                    <li>Click "Browse App Catalog"</li>
+                    <li>Search for "Bookmark"</li>
+                    <li>Click "Add Integration"</li>
+                    <li>Configure the following:
+                        <ul>
+                            <li>Application label: Flights</li>
+                            <li>URL: https://webtrak.emsbk.com/syd3</li>
+                            <li>Uncheck "Request Integration"</li>
+                            <li>Uncheck "Application Visibility"</li>
+                        </ul>
+                    </li>
+                    <li>Click Done</li>
+                </ol>
+                <div class="tip">
+                    This app will be used to demonstrate Phishing Resistant authentication policies in later sections.
                 </div>
+                <img src="images/section4/flights-bookmark.png" alt="Flights Bookmark Configuration" class="step-image">
+            </li>
+        </ol>
 
-                <div class="section-part">
-                    <h3>Remaining Applications</h3>
-                    <ol class="steps">
-                        <li class="step">
-                            <div class="step-title">Configure Slack Integration</div>
-                            <p>Follow Slack-specific configuration guide in the App Catalog</p>
-                            <img src="images/section4/slack-setup.png" alt="Slack Integration Setup" class="step-image">
-                        </li>
+        <div class="verification-list">
+            <h4>Bookmark Apps Checklist</h4>
+            <ul class="checklist">
+                <li>Weather bookmark app created</li>
+                <li>Flights bookmark app created</li>
+                <li>URLs configured correctly</li>
+                <li>Application labels set</li>
+                <li>Integration settings verified</li>
+            </ul>
+        </div>
+    </div>
 
-                        <li class="step">
-                            <div class="step-title">Set up Zoom</div>
-                            <p>Configure basic SAML integration for Zoom</p>
-                            <img src="images/section4/zoom-setup.png" alt="Zoom SSO Configuration" class="step-image">
-                        </li>
+    <div class="troubleshooting">
+        <h4>Common Issues</h4>
+        <table>
+            <tr>
+                <th>Issue</th>
+                <th>Solution</th>
+            </tr>
+            <tr>
+                <td>LinkedIn session conflicts</td>
+                <td>Sign out of LinkedIn completely between tests</td>
+            </tr>
+            <tr>
+                <td>Bookmark apps not appearing</td>
+                <td>Verify application visibility settings</td>
+            </tr>
+            <tr>
+                <td>SSO not working</td>
+                <td>Check shared credential configuration</td>
+            </tr>
+            <tr>
+                <td>End User Dashboard access</td>
+                <td>Verify user has application assignments</td>
+            </tr>
+        </table>
+    </div>
 
-                        <li class="step">
-                            <div class="step-title">AWS SSO Setup</div>
-                            <p>Configure AWS SSO with role mapping</p>
-                            <img src="images/section4/aws-setup.png" alt="AWS SSO Configuration" class="step-image">
-                        </li>
-                    </ol>
-                </div>
+    <div class="best-practices">
+        <h4>Implementation Best Practices</h4>
+        <ul>
+            <li>Use dedicated demo accounts for testing</li>
+            <li>Document all application credentials</li>
+            <li>Test integrations with multiple users</li>
+            <li>Keep bookmark URLs up to date</li>
+            <li>Regularly verify SSO functionality</li>
+        </ul>
+    </div>
 
-                <div class="verification-list">
-                    <h4>Verification Checklist</h4>
-                    <ul class="checklist">
-                        <li>Microsoft 365 SSO working</li>
-                        <li>Salesforce integration complete</li>
-                        <li>Slack provisioning configured</li>
-                        <li>Zoom SSO tested</li>
-                        <li>AWS roles assigned</li>
-                        <li>User access verified for each app</li>
-                        <li>Group assignments tested</li>
-                    </ul>
-                </div>
-
-                <div class="troubleshooting">
-                    <h4>Common Issues</h4>
-                    <table>
-                        <tr>
-                            <th>Issue</th>
-                            <th>Solution</th>
-                        </tr>
-                        <tr>
-                            <td>SAML configuration errors</td>
-                            <td>Verify certificate and endpoint settings</td>
-                        </tr>
-                        <tr>
-                            <td>Provisioning failures</td>
-                            <td>Check API credentials and permissions</td>
-                        </tr>
-                        <tr>
-                            <td>Attribute mapping issues</td>
-                            <td>Compare source and target attributes</td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="best-practices">
-                    <h4>Best Practices</h4>
-                    <ul>
-                        <li>Test with limited user group first</li>
-                        <li>Document all configuration settings</li>
-                        <li>Setup monitoring for SSO health</li>
-                        <li>Configure app sign-on policies</li>
-                        <li>Regular testing of SSO flows</li>
-                    </ul>
-                </div>
-
-                <div class="navigation-links">
-                    <a href="section3.html" class="nav-link">← Back to User Management</a>
-                    <a href="section5.html" class="nav-link">Next: Authentication Policies →</a>
-                </div>
-            </div>
+    <div class="navigation-links">
+        <a href="section3.html" class="nav-link">← Back to User Management</a>
+        <a href="section5.html" class="nav-link">Next: Authentication Policies →</a>
+    </div>
+</div>
         </main>
     </div>
 
