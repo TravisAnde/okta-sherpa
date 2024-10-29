@@ -457,7 +457,7 @@
                                 </tr>
                                 <tr>
                                     <td>Okta Verify</td>
-                                    <td>Authentication
+                                    <td>Authentication and
 Recovery (Push only)</td>
                                     <td>Active</td>
                                 </tr>
@@ -468,14 +468,14 @@ Recovery (Push only)</td>
                                 </tr>
                                 <tr>
                                     <td>Security Question</td>
-                                    <td>Authentication
+                                    <td>Authentication and
 Recovery</td>
                                     <td>Active
 </td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td>Authentication
+                                    <td>Authentication and
 Recovery</td>
                                     <td>Active</td>
                                 </tr>
@@ -488,66 +488,107 @@ Recovery</td>
                             <ol>
                                 <li>Set enrollment requirements:
                                     <ul>
-                                        <li>Required factors</li>
-                                        <li>Optional factors</li>
-                                        <li>Enrollment timeframe</li>
+                                        <li>Passwordless Users</li>
+                                        <li>Default Policy</li>
                                     </ul>
                                 </li>
-                                <li>Configure enrollment reminders</li>
-                                <li>Set grace period settings</li>
+                                <li>Observe the different enrollment policies and rules</li>
                             </ol>
                         </li>
                     </ol>
                 </div>
 
                 <div class="section-part">
-                    <h3>Part 3: Authentication Policies</h3>
-                    <ol class="steps">
-                        <li class="step">
-                            <div class="step-title">Create High-Security Policy</div>
-                            <p>For IT-Admin group:</p>
-                            <img src="images/section5/high-security-policy.png" alt="High Security Policy Configuration" class="step-image">
-                            <div class="code-block">
-                                <code>
-                                Policy Name: High Security Access
-                                Applies to: IT-Admin group
-                                Requirements:
-                                - Password + Okta Verify
-                                - No remembered devices
-                                - Session timeout: 4 hours
-                                </code>
-                            </div>
-                        </li>
+    <h3>Part 3: Authentication Policies</h3>
+    <ol class="steps">
+        <li class="step">
+            <div class="step-title">Access Authentication Policies</div>
+            <ol>
+                <li>Navigate to Security > Authentication Policies</li>
+                <li>Click on "Add Policy"</li>
+            </ol>
+            <img src="images/section5/auth-policies.png" alt="Authentication Policies Menu" class="step-image">
+        </li>
 
-                        <li class="step">
-                            <div class="step-title">Create Standard Policy</div>
-                            <p>For General-Users group:</p>
-                            <img src="images/section5/standard-policy.png" alt="Standard Policy Configuration" class="step-image">
-                            <div class="code-block">
-                                <code>
-                                Policy Name: Standard Access
-                                Applies to: General-Users group
-                                Requirements:
-                                - Password + Any MFA
-                                - Allow remembered devices
-                                - Session timeout: 8 hours
-                                </code>
-                            </div>
-                        </li>
+        <li class="step">
+            <div class="step-title">Create High Security Policy</div>
+            <ol>
+                <li>Configure Policy Details:
+                    <ul>
+                        <li>Policy Name: High Security Access</li>
+                        <li>Policy Description: Enhanced security requirements for IT administrators</li>
+                    </ul>
+                </li>
+                <li>Click "Save</li>
+            </ol>
+            <img src="images/section5/policy-details.png" alt="Policy Creation Details" class="step-image">
+        </li>
 
-                        <li class="step">
-                            <div class="step-title">Configure Risk-Based Authentication</div>
-                            <img src="images/section5/risk-based-auth.png" alt="Risk-Based Authentication Setup" class="step-image">
-                            <p>Set up adaptive policies:</p>
-                            <ul>
-                                <li>Location-based access rules</li>
-                                <li>Device context policies</li>
-                                <li>Network zone configurations</li>
-                                <li>Suspicious activity detection</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
+        <li class="step">
+            <div class="step-title">Add Authentication Rule</div>
+            <ol>
+                <li>Click "Add Rule"</li>
+                <li>Configure Rule Settings:
+                    <ul>
+                        <li>Rule Name: IT Admin Access</li>
+                        <li>Under "AND User is a member of":</li>
+                        <li>Select Groups: IT-Admin</li>
+                    </ul>
+                </li>
+                <li>Configure Authentication Requirements:
+                    <ul>
+                        <li>Select: Password + Okta Verify</li>
+                        <li>Uncheck "Allow remembered device"</li>
+                        <li>Set Session expires after: 4 hours</li>
+                    </ul>
+                </li>
+                <li>Click "Save"</li>
+            </ol>
+            <img src="images/section5/rule-config.png" alt="Rule Configuration" class="step-image">
+        </li>
+
+        <li class="step">
+            <div class="step-title">Assign Applications</div>
+            <ol>
+                <li>Click on the "Applications" tab in the policy</li>
+                <li>Click "Assign Applications"</li>
+                <li>Select target applications:
+                    <ul>
+                        <li>LinkedIn</li>
+                        <li>Weather Bookmark App</li>
+                        <li>Flights Bookmark App</li>
+                    </ul>
+                </li>
+                <li>Click "Done"</li>
+            </ol>
+            <img src="images/section5/app-assignment.png" alt="Application Assignment" class="step-image">
+            <div class="important">
+                Ensure all relevant applications are assigned to ensure proper security enforcement.
+            </div>
+        </li>
+    </ol>
+
+    <div class="verification-list">
+        <h4>Policy Configuration Checklist</h4>
+        <ul class="checklist">
+            <li>Policy created with correct name</li>
+            <li>Rule configured with correct group</li>
+            <li>Authentication requirements set</li>
+            <li>Session timeout configured</li>
+            <li>Applications assigned</li>
+            <li>Policy activated</li>
+        </ul>
+    </div>
+
+    <div class="tip">
+        Create similar policies for other user groups with appropriate security levels. For example:
+        <ul>
+            <li>Standard Users: Password + Any MFA, 8-hour sessions</li>
+            <li>Contractors: Password + Okta Verify, 4-hour sessions</li>
+            <li>External Users: Password + Email, 2-hour sessions</li>
+        </ul>
+    </div>
+</div>
 
                 <div class="section-part">
                     <h3>Part 4: Password Policies</h3>
