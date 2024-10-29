@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Okta Workforce Identity Cloud - Sherpa</title>
+    <style>
+        :root {
+            --primary-color: #00297A;
+            --secondary-color: #007DC1;
+            --accent-color: #6e46ae;
+            --text-color: #333;
+            --background-color: #f5f5f5;
+            --section-bg: #ffffff;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+            --danger-color: #dc3545;
+            --sidebar-width: 280px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .layout-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            border-right: 1px solid #dee2e6;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column; /* Added to enable footer positioning */
+        }
+
+        .sidebar-nav {
+            padding: 1rem;
+            flex: 1; /* Takes up available space */
+        }
+
+        .nav-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-item:hover {
+            background: #f8f9fa;
+        }
+
+        .nav-item.active {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .section-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .card-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 2rem;
+            height: 2rem;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .layout-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+        }
+        .logo-container {
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+                .sidebar-footer {
+            padding: 1rem;
+            border-top: 1px solid #dee2e6;
+            display: flex;
+            justify-content: center;
+            background: white;
+        }
+
+        .sidebar-footer img {
+            max-width: 80%;
+            height: auto;
+            object-fit: contain;
+        }
+        @media (max-width: 768px) {
+            .sidebar-footer {
+                position: static;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="./index.html" class="nav-item active">
+                    <div>0. Overview</div>
+                </a>
+                <a href="./section1.html" class="nav-item">
+                    <div>1. Demo Organization</div>
+                </a>
+                <a href="./section2.html" class="nav-item">
+                    <div>2. AD Integration</div>
+                </a>
+                <a href="./section3.html" class="nav-item">
+                    <div>3. Users & Groups</div>
+                </a>
+                <a href="./section4.html" class="nav-item">
+                    <div>4. Applications</div>
+                </a>
+                <a href="./section5.html" class="nav-item">
+                    <div>5. Authentication</div>
+                </a>
+              <a href="./complete.html" class="nav-item">
+                    <div>6. Complete</div>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <img src="images/NEXTGEN.png" alt="NEXTGEN" />
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="logo-container">
+                    <img src="images/CyberLAB.png" alt="CyberLAB" />
+                </div>
+                <h1>Okta Workforce Identity Cloud - Sherpa</h1>
+            </header>
+
+            <div class="content">
+    <div class="intro">
+        <h2>Complete Configuration Summary</h2>
+        <p>This page provides a comprehensive overview of the entire Okta Workforce Identity Cloud implementation. It summarizes all configurations, settings, and best practices established throughout the guide.</p>
+        <p>If you would like to open this guide in a separate tab in your browser please go to: </p>
+        <p>https://travisande.github.io/okta-sherpa/</p>
+    </div>
+
+    <div class="environment-details">
+        <h3>Environment Overview</h3>
+        <div class="domain-info">
+            <div class="step-header">
+                <h4>Domain Configuration</h4>
+                <div class="machine-indicator">All Machines</div>
+            </div>
+            <ul>
+                <li>Domain Name: cyberlab-au.com</li>
+                <li>Forest Functional Level: Windows Server 2019</li>
+                <li>Primary DNS: DC01.cyberlab-au.com</li>
+                <li>Secondary DNS: DC02.cyberlab-au.com</li>
+            </ul>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Machine</th>
+                        <th>User</th>
+                        <th>Role</th>
+                        <th>Configurations Complete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CL03</strong></td>
+                        <td>adam.wally</td>
+                        <td>Primary Setup Machine</td>
+                        <td>
+                            <ul>
+                                <li>Okta Admin Console Access</li>
+                                <li>AD Integration Complete</li>
+                                <li>Security Questions Configured</li>
+                                <li>Group Memberships Set</li>
+                                <li>Application Access Tested</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>CL04</strong></td>
+                        <td>jack.welcher</td>
+                        <td>Testing Machine</td>
+                        <td>
+                            <ul>
+                                <li>End-User Experience Verified</li>
+                                <li>Application Access Tested</li>
+                                <li>Authentication Flows Confirmed</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>DC01</strong></td>
+                        <td>administrator</td>
+                        <td>Primary Domain Controller</td>
+                        <td>
+                            <ul>
+                                <li>AD Agent Installed</li>
+                                <li>Service Account Configured</li>
+                                <li>Directory Sync Active</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>DC02</strong></td>
+                        <td>administrator</td>
+                        <td>Secondary Domain Controller</td>
+                        <td>
+                            <ul>
+                                <li>Backup Domain Controller</li>
+                                <li>Replication Verified</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-overview">
+        <h3>Completed Configurations</h3>
+        <div class="section-cards">
+            <div class="section-card">
+                <div class="card-number">1</div>
+                <h4>Demo Organization</h4>
+                <ul>
+                    <li>Partner Portal Access Configured</li>
+                    <li>Demo Org Created</li>
+                    <li>Admin Access Verified</li>
+                </ul>
+            </div>
+            
+            <div class="section-card">
+                <div class="card-number">2</div>
+                <h4>AD Integration</h4>
+                <ul>
+                    <li>AD Agent Installed on DC01</li>
+                    <li>Service Account Created</li>
+                    <li>Directory Sync Active</li>
+                </ul>
+            </div>
+            
+            <div class="section-card">
+                <div class="card-number">3</div>
+                <h4>Users & Groups</h4>
+                <ul>
+                    <li>JIT Provisioning Enabled</li>
+                    <li>Security Questions Set</li>
+                    <li>IT-Admins Group Created</li>
+                </ul>
+            </div>
+            
+            <div class="section-card">
+                <div class="card-number">4</div>
+                <h4>Applications</h4>
+                <ul>
+                    <li>LinkedIn Integration Complete</li>
+                    <li>Weather App Configured</li>
+                    <li>Flights App Ready</li>
+                </ul>
+            </div>
+            
+            <div class="section-card">
+                <div class="card-number">5</div>
+                <h4>Authentication</h4>
+                <ul>
+                    <li>Security Policies Active</li>
+                    <li>MFA Configured</li>
+                    <li>Access Rules Set</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="configuration-details">
+        <h3>Detailed Configuration Summary</h3>
+
+        <div class="config-section">
+            <div class="step-header">
+                <h4>Active Directory Integration</h4>
+                <div class="machine-indicator">DC01</div>
+            </div>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Configuration</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>AD Agent</td>
+                    <td>
+                        <ul>
+                            <li>Installed on DC01</li>
+                            <li>Service Account: svc-okta-sync</li>
+                            <li>Auto-provisioning enabled</li>
+                        </ul>
+                    </td>
+                    <td>✓ Active</td>
+                </tr>
+                <tr>
+                    <td>Directory Sync</td>
+                    <td>
+                        <ul>
+                            <li>Full import completed</li>
+                            <li>Daily sync scheduled</li>
+                            <li>JIT provisioning active</li>
+                        </ul>
+                    </td>
+                    <td>✓ Syncing</td>
+                </tr>
+                <tr>
+                    <td>User Import</td>
+                    <td>
+                        <ul>
+                            <li>UPN matching enabled</li>
+                            <li>Auto-confirm matches</li>
+                            <li>Profile sourcing active</li>
+                        </ul>
+                    </td>
+                    <td>✓ Configured</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="config-section">
+            <div class="step-header">
+                <h4>Authentication Configuration</h4>
+                <div class="machine-indicator">CL03</div>
+            </div>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Settings</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Security Questions</td>
+                    <td>
+                        <ul>
+                            <li>Required for all users</li>
+                            <li>Custom questions enabled</li>
+                            <li>Used for password recovery</li>
+                        </ul>
+                    </td>
+                    <td>✓ Active</td>
+                </tr>
+                <tr>
+                    <td>Okta Verify</td>
+                    <td>
+                        <ul>
+                            <li>Optional enrollment</li>
+                            <li>Push notifications enabled</li>
+                            <li>Biometric auth allowed</li>
+                        </ul>
+                    </td>
+                    <td>✓ Available</td>
+                </tr>
+                <tr>
+                    <td>Email Authentication</td>
+                    <td>
+                        <ul>
+                            <li>Set as optional</li>
+                            <li>Backup verification method</li>
+                        </ul>
+                    </td>
+                    <td>✓ Optional</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="config-section">
+            <div class="step-header">
+                <h4>Application Integration Summary</h4>
+                <div class="machine-indicator">CL03</div>
+            </div>
+            <table>
+                <tr>
+                    <th>Application</th>
+                    <th>Configuration</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>LinkedIn</td>
+                    <td>
+                        <ul>
+                            <li>SWA Integration</li>
+                            <li>Shared credentials configured</li>
+                            <li>Auto-login disabled</li>
+                        </ul>
+                    </td>
+                    <td>✓ Ready</td>
+                </tr>
+                <tr>
+                    <td>Weather App</td>
+                    <td>
+                        <ul>
+                            <li>Bookmark application</li>
+                            <li>Device assurance ready</li>
+                            <li>URL configured</li>
+                        </ul>
+                    </td>
+                    <td>✓ Ready</td>
+                </tr>
+                <tr>
+                    <td>Flights App</td>
+                    <td>
+                        <ul>
+                            <li>Bookmark application</li>
+                            <li>Phishing resistant ready</li>
+                            <li>URL configured</li>
+                        </ul>
+                    </td>
+                    <td>✓ Ready</td>
+                </tr>
+            </table>
+        </div>
+        <div class="config-section">
+            <h3>Best Practices Summary</h3>
+            
+            <div class="best-practices">
+                <div class="step-header">
+                    <h4>Security Best Practices</h4>
+                    <div class="machine-indicator">All Machines</div>
+                </div>
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Recommendations</th>
+                        <th>Implementation Status</th>
+                    </tr>
+                    <tr>
+                        <td>Authentication</td>
+                        <td>
+                            <ul>
+                                <li>Use multi-factor authentication</li>
+                                <li>Implement strong password policies</li>
+                                <li>Enable security questions as backup</li>
+                                <li>Regular policy reviews</li>
+                            </ul>
+                        </td>
+                        <td>✓ Implemented</td>
+                    </tr>
+                    <tr>
+                        <td>Directory Integration</td>
+                        <td>
+                            <ul>
+                                <li>Regular AD agent updates</li>
+                                <li>Monitor sync status</li>
+                                <li>Review import logs</li>
+                                <li>Backup service account credentials</li>
+                            </ul>
+                        </td>
+                        <td>✓ Configured</td>
+                    </tr>
+                    <tr>
+                        <td>Application Access</td>
+                        <td>
+                            <ul>
+                                <li>Regular access reviews</li>
+                                <li>Group-based assignments</li>
+                                <li>Monitor application usage</li>
+                            </ul>
+                        </td>
+                        <td>✓ Implemented</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="master-checklist">
+                <div class="step-header">
+                    <h4>Complete Configuration Checklist</h4>
+                    <div class="machine-indicator">All Machines</div>
+                </div>
+                
+                <div class="verification-list">
+                    <h5>Initial Setup</h5>
+                    <ul class="checklist">
+                        <li>Okta demo organization created</li>
+                        <li>Admin access configured</li>
+                        <li>Environment details documented</li>
+                    </ul>
+
+                    <h5>AD Integration</h5>
+                    <ul class="checklist">
+                        <li>AD agent installed on DC01</li>
+                        <li>Service account configured</li>
+                        <li>Directory sync active</li>
+                        <li>Import settings verified</li>
+                    </ul>
+
+                    <h5>User & Authentication Setup</h5>
+                    <ul class="checklist">
+                        <li>Security questions configured</li>
+                        <li>JIT provisioning tested</li>
+                        <li>Group memberships verified</li>
+                        <li>Authentication policies active</li>
+                    </ul>
+
+                    <h5>Application Integration</h5>
+                    <ul class="checklist">
+                        <li>LinkedIn SSO configured</li>
+                        <li>Weather bookmark app ready</li>
+                        <li>Flights bookmark app ready</li>
+                        <li>Application access tested</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="troubleshooting-summary">
+                <div class="step-header">
+                    <h4>Common Issues & Solutions</h4>
+                    <div class="machine-indicator">All Machines</div>
+                </div>
+                <table>
+                    <tr>
+                        <th>Issue Area</th>
+                        <th>Common Problems</th>
+                        <th>Solutions</th>
+                    </tr>
+                    <tr>
+                        <td>AD Integration</td>
+                        <td>
+                            <ul>
+                                <li>Sync failures</li>
+                                <li>User import issues</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Verify service account permissions</li>
+                                <li>Check network connectivity</li>
+                                <li>Review agent logs</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Authentication</td>
+                        <td>
+                            <ul>
+                                <li>Login failures</li>
+                                <li>MFA issues</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Verify user activation status</li>
+                                <li>Check policy assignments</li>
+                                <li>Confirm enrollment status</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Applications</td>
+                        <td>
+                            <ul>
+                                <li>Access denied</li>
+                                <li>SSO failures</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Verify group assignments</li>
+                                <li>Check application settings</li>
+                                <li>Test user permissions</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="next-steps">
+                <div class="step-header">
+                    <h4>Moving Forward</h4>
+                    <div class="machine-indicator">All Machines</div>
+                </div>
+                <ul>
+                    <li>Regular maintenance:
+                        <ul>
+                            <li>Monitor AD sync status</li>
+                            <li>Review security logs</li>
+                            <li>Update agent software</li>
+                            <li>Audit user access</li>
+                        </ul>
+                    </li>
+                    <li>Future enhancements:
+                        <ul>
+                            <li>Configure additional applications</li>
+                            <li>Implement advanced security policies</li>
+                            <li>Set up automated user provisioning</li>
+                            <li>Enable advanced MFA features</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="support-resources">
+                <div class="step-header">
+                    <h4>Additional Resources</h4>
+                    <div class="machine-indicator">All Machines</div>
+                </div>
+                <ul>
+                    <li>Okta Documentation: https://help.okta.com/</li>
+                    <li>AD Agent Guide: https://help.okta.com/oag/</li>
+                    <li>Sherpa Guide Repository: https://travisande.github.io/okta-sherpa/</li>
+                    <li>Application Integration Guides: https://help.okta.com/app-integration-guides/</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation-links">
+            <a href="section5.html" class="nav-link">← Back to Authentication</a>
+            <a href="index.html" class="nav-link">Return to Overview →</a>
+        </div>
+    </div>
