@@ -407,15 +407,19 @@
                             <p>Navigate to Security > Global Session Policy</p>
                             <img src="images/section5/global-session-policy.png" alt="Global Session Policy Configuration" class="step-image">
                             <ul>
+                                <li>Create a new rule "Add Rule"</li>
+                                <li>Name it "Session Policy"</li>
                                 <li>Set session lifetime:
                                     <code>
                                     Max session lifetime: 8 hours
+                                    </code>
+                                    <code>
                                     Idle timeout: 30 minutes
                                     </code>
                                 </li>
                                 <li>Configure session persistency settings</li>
-                                <li>Set refresh token lifetime</li>
                             </ul>
+                            <img src="images/section5/session-name.png" alt="Session Settings - Name" class="step-image">
                             <img src="images/section5/session-timeouts.png" alt="Session Timeout Settings" class="step-image">
                             
                             <div class="note">
@@ -424,14 +428,16 @@
                         </li>
 
                         <li class="step">
-                            <div class="step-title">Configure Sign-On Policy</div>
-                            <p>Under Security > Authentication Policies:</p>
+                            <div class="step-title">Configure Password Requirements</div>
+                            <p>Under Security > Authenticators:</p>
                             <ul>
+                                <li>Find Password > Actions > Edit</li>
+                                <li>This is where you would:</li>
                                 <li>Set password complexity requirements</li>
                                 <li>Configure lockout settings</li>
                                 <li>Set password expiry rules</li>
                             </ul>
-                            <img src="images/section5/signon-policy.png" alt="Sign-On Policy Configuration" class="step-image">
+                            <img src="images/section5/authenticator-policy.png" alt="Authenticator Policy Configuration" class="step-image">
                         </li>
                     </ol>
                 </div>
