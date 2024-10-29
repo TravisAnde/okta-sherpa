@@ -443,32 +443,41 @@
                 </div>
 
                 <div class="section-part">
-                    <h3>Part 2: MFA Configuration</h3>
+                    <h3>Part 2: Authenticator Configuration</h3>
                     <ol class="steps">
                         <li class="step">
-                            <div class="step-title">Enable MFA Factors</div>
-                            <p>Navigate to Security > Multifactor:</p>
+                            <div class="step-title">Enable Factors</div>
+                            <p>Navigate to Security > Authenticators:</p>
                             <img src="images/section5/mfa-factors.png" alt="MFA Factors Configuration" class="step-image">
                             <table class="factor-table">
                                 <tr>
                                     <th>Factor</th>
+                                    <th>Used for</th>
                                     <th>Status</th>
-                                    <th>User Groups</th>
                                 </tr>
                                 <tr>
                                     <td>Okta Verify</td>
-                                    <td>Required</td>
-                                    <td>All Users</td>
+                                    <td>Authentication
+Recovery (Push only)</td>
+                                    <td>Active</td>
                                 </tr>
                                 <tr>
-                                    <td>SMS Authentication</td>
-                                    <td>Optional</td>
-                                    <td>General-Users</td>
+                                    <td>Password</td>
+                                    <td>Authentication</td>
+                                    <td>Active</td>
                                 </tr>
                                 <tr>
                                     <td>Security Question</td>
-                                    <td>Required</td>
-                                    <td>All Users</td>
+                                    <td>Authentication
+Recovery</td>
+                                    <td>Active
+</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>Authentication
+Recovery</td>
+                                    <td>Active</td>
                                 </tr>
                             </table>
                         </li>
