@@ -796,166 +796,144 @@
     </li>
 </ol>
 
-            <div class="verification-list">
-                <h4>Group Setup Checklist</h4>
-                <ul class="checklist">
-                    <li>IT-Admins group created successfully</li>
-                    <li>Group description set properly</li>
-                    <li>User added to group</li>
-                    <li>Group assignment verified</li>
-                    <li>User profile updated with group</li>
-                </ul>
-            </div>
+<div class="verification-list">
+    <h4>Group Setup Checklist</h4>
+    <ul class="checklist">
+        <li>IT-Admins group created successfully</li>
+        <li>Group description set properly</li>
+        <li>User added to group</li>
+        <li>Group assignment verified</li>
+        <li>User profile updated with group</li>
+    </ul>
+</div>
 
-            <div class="note">
-                The IT-Admins group will be used in the next section for configuring authentication policies and access controls.
-            </div>
-        </div>
-
-        <div class="troubleshooting">
-            <h4>Common Login Issues</h4>
-            <table>
-                <tr>
-                    <th>Issue</th>
-                    <th>Solution</th>
-                </tr>
-                <tr>
-                    <td>AD credentials not working</td>
-                    <td>Verify credentials in AD first, ensure user is not locked</td>
-                </tr>
-                <tr>
-                    <td>JIT Provisioning failed</td>
-                    <td>Check AD agent status and user permissions</td>
-                </tr>
-                <tr>
-                    <td>Security questions not appearing</td>
-                    <td>Verify enrollment policy is active and properly configured</td>
-                </tr>
-                <tr>
-                    <td>Dashboard access issues</td>
-                    <td>Check user activation status and group assignments</td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="verification-list">
-            <h4>Login and Enrollment Checklist</h4>
-            <ul class="checklist">
-                <li>Successfully logged in with AD credentials</li>
-                <li>JIT Provisioning created Okta account</li>
-                <li>Security questions configured</li>
-                <li>Second login successful</li>
-                <li>Dashboard accessible</li>
-                <li>Profile information correct</li>
-            </ul>
-        </div>
+<div class="note">
+    <div class="step-header">
+        <h4>Next Steps</h4>
+        <div class="machine-indicator">CL03</div>
     </div>
-     <div class="section-part">
-        <h3>Implementation Best Practices</h3>
-        <div class="best-practices">
-            <h4>AD Integration</h4>
-            <ul>
-                <li>Regular monitoring of AD agent status</li>
-                <li>Review import logs weekly</li>
-                <li>Keep AD agent software updated</li>
-                <li>Document any custom attribute mappings</li>
-                <li>Maintain backup of configuration settings</li>
-            </ul>
+    The IT-Admins group will be used in the next section for configuring authentication policies and access controls.
+</div>
 
-            <h4>Authentication Settings</h4>
-            <ul>
-                <li>Regular review of authentication policies</li>
-                <li>Document any policy exceptions</li>
-                <li>Test authentication flows monthly</li>
-                <li>Monitor failed authentication attempts</li>
-                <li>Keep security question guidelines updated</li>
-            </ul>
+<div class="troubleshooting">
+    <h4>Common Login Issues</h4>
+    <table>
+        <tr>
+            <th>Issue</th>
+            <th>Solution</th>
+        </tr>
+        <tr>
+            <td>AD credentials not working</td>
+            <td>Verify credentials in AD first, ensure user is not locked</td>
+        </tr>
+        <tr>
+            <td>JIT Provisioning failed</td>
+            <td>Check AD agent status and user permissions</td>
+        </tr>
+        <tr>
+            <td>Security questions not appearing</td>
+            <td>Verify enrollment policy is active and properly configured</td>
+        </tr>
+        <tr>
+            <td>Dashboard access issues</td>
+            <td>Check user activation status and group assignments</td>
+        </tr>
+    </table>
+</div>
 
-            <h4>User Management</h4>
-            <ul>
-                <li>Regular audit of JIT provisioning</li>
-                <li>Monitor user activation status</li>
-                <li>Review authentication logs</li>
-                <li>Document troubleshooting procedures</li>
-                <li>Maintain user support documentation</li>
-            </ul>
-        </div>
-
-        <div class="important">
-            <h4>Key Takeaways</h4>
-            <ul>
-                <li>JIT Provisioning automatically creates Okta accounts for AD users</li>
-                <li>Security Questions provide a reliable backup authentication method</li>
-                <li>Regular monitoring ensures system health</li>
-                <li>User experience should be balanced with security requirements</li>
-            </ul>
-        </div>
+<h3>Implementation Best Practices</h3>
+<div class="best-practices">
+    <div class="step-header">
+        <h4>AD Integration</h4>
+        <div class="machine-indicator">CL03</div>
     </div>
+    <ul>
+        <li>Regular monitoring of AD agent status</li>
+        <li>Review import logs weekly</li>
+        <li>Keep AD agent software updated</li>
+        <li>Document any custom attribute mappings</li>
+        <li>Maintain backup of configuration settings</li>
+    </ul>
 
-    <div class="verification-list">
-        <h4>Final Section Verification</h4>
-        <ul class="checklist">
-            <h5>AD Integration</h5>
-            <li>AD agent connected and active</li>
-            <li>Import settings configured correctly</li>
-            <li>JIT Provisioning enabled</li>
-            <li>User matching rules set</li>
-
-            <h5>Authentication</h5>
-            <li>Security Questions enabled</li>
-            <li>Enrollment policy configured</li>
-            <li>Authentication flow tested</li>
-            <li>Backup authentication methods available</li>
-
-            <h5>Testing</h5>
-            <li>Test user login successful</li>
-            <li>Security questions enrolled</li>
-            <li>Profile information accurate</li>
-            <li>Dashboard accessible</li>
-        </ul>
+    <div class="step-header">
+        <h4>Authentication Settings</h4>
+        <div class="machine-indicator">CL03</div>
     </div>
+    <ul>
+        <li>Regular review of authentication policies</li>
+        <li>Document any policy exceptions</li>
+        <li>Test authentication flows monthly</li>
+        <li>Monitor failed authentication attempts</li>
+        <li>Keep security question guidelines updated</li>
+    </ul>
 
-    <div class="troubleshooting">
-        <h4>Section Support Resources</h4>
-        <table>
-            <tr>
-                <th>Resource</th>
-                <th>Purpose</th>
-            </tr>
-            <tr>
-                <td>Okta Documentation</td>
-                <td>Detailed configuration guides and troubleshooting</td>
-            </tr>
-            <tr>
-                <td>AD Agent Logs</td>
-                <td>Troubleshooting AD integration issues</td>
-            </tr>
-            <tr>
-                <td>System Log</td>
-                <td>Monitoring authentication and user activity</td>
-            </tr>
-            <tr>
-                <td>Support Contact</td>
-                <td>Escalation for unresolved issues</td>
-            </tr>
-        </table>
+    <div class="step-header">
+        <h4>User Management</h4>
+        <div class="machine-indicator">CL03</div>
     </div>
+    <ul>
+        <li>Regular audit of JIT provisioning</li>
+        <li>Monitor user activation status</li>
+        <li>Review authentication logs</li>
+        <li>Document troubleshooting procedures</li>
+        <li>Maintain user support documentation</li>
+    </ul>
+</div>
 
-    <div class="next-steps">
+<div class="important">
+    <div class="step-header">
+        <h4>Key Takeaways</h4>
+        <div class="machine-indicator">All Machines</div>
+    </div>
+    <ul>
+        <li>JIT Provisioning automatically creates Okta accounts for AD users</li>
+        <li>Security Questions provide a reliable backup authentication method</li>
+        <li>Regular monitoring ensures system health</li>
+        <li>User experience should be balanced with security requirements</li>
+    </ul>
+</div>
+
+<div class="verification-list">
+    <h4>Final Section Verification</h4>
+    <ul class="checklist">
+        <h5>AD Integration</h5>
+        <li>AD agent connected and active</li>
+        <li>Import settings configured correctly</li>
+        <li>JIT Provisioning enabled</li>
+        <li>User matching rules set</li>
+
+        <h5>Authentication</h5>
+        <li>Security Questions enabled</li>
+        <li>Enrollment policy configured</li>
+        <li>Authentication flow tested</li>
+        <li>Backup authentication methods available</li>
+
+        <h5>Testing</h5>
+        <li>Test user login successful</li>
+        <li>Security questions enrolled</li>
+        <li>Profile information accurate</li>
+        <li>Dashboard accessible</li>
+    </ul>
+</div>
+
+<div class="next-steps">
+    <div class="step-header">
         <h4>Preparing for Next Section</h4>
-        <p>Before moving to Application Integration, ensure:</p>
-        <ul>
-            <li>All users can successfully authenticate</li>
-            <li>AD synchronization is working properly</li>
-            <li>Authentication policies are tested</li>
-            <li>Any issues are documented and resolved</li>
-        </ul>
+        <div class="machine-indicator">CL03</div>
     </div>
+    <p>Before moving to Application Integration, ensure:</p>
+    <ul>
+        <li>All users can successfully authenticate</li>
+        <li>AD synchronization is working properly</li>
+        <li>Authentication policies are tested</li>
+        <li>Any issues are documented and resolved</li>
+    </ul>
+</div>
 
-    <div class="navigation-links">
-        <a href="section2.html" class="nav-link">← Back to AD Integration</a>
-        <a href="section4.html" class="nav-link">Next: Application Integration →</a>
-    </div>
+<div class="navigation-links">
+    <a href="section2.html" class="nav-link">← Back to AD Integration</a>
+    <a href="section4.html" class="nav-link">Next: Application Integration →</a>
+</div>
 </div>
 
         </main>
