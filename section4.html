@@ -475,15 +475,18 @@
             <li class="step">
                 <div class="step-title">Configure LinkedIn SSO</div>
                 <ol>
-                    <li>On the General Settings page:
+                    <li>On the Applications > Applications Section of the Okta Admin Console:
                         <ul>
-                            <li>Uncheck "Automatically log in when user lands on login page"</li>
-                            <li>Click Next</li>
+                            <li>Click on "Browse App Catalog"</li>
+                            <li>Search for "LinkedIn"</li>
+                            <li>Select LinkedIn SWA</li>
+                            <li>Click "Add Integration"</li>
                         </ul>
                     </li>
-                    <li>Select Authentication Method:
+                    <li>LinkedIn Application Settings:
                         <ul>
-                            <li>Choose "Secure Web Authentication"</li>
+                            <li>Deselect "Automatically log in when user lands on login page"</li>
+                            <li>Click "Next"</li>
                             <li>Select "Users share a single username and password set by administrator"</li>
                         </ul>
                     </li>
@@ -503,7 +506,7 @@
                     <li>Assign the application:
                         <ul>
                             <li>Navigate to Directory > People</li>
-                            <li>Search for your admin user</li>
+                            <li>Search for your user "Adam Wally"</li>
                             <li>Click "Assign Applications"</li>
                             <li>Select LinkedIn</li>
                             <li>Click "Save and go back"</li>
@@ -511,8 +514,7 @@
                     </li>
                     <li>Test the integration:
                         <ul>
-                            <li>Click the "My Apps" icon (four squares)</li>
-                            <li>Select "My end user dashboard"</li>
+                            <li>Switch to CL03 and Navagate to your Okta Dashboard for Adam Wally</li>
                             <li>Click the LinkedIn tile</li>
                             <li>Verify successful LinkedIn login</li>
                         </ul>
@@ -550,6 +552,7 @@
                     <li>Navigate to Applications > Applications</li>
                     <li>Click "Browse App Catalog"</li>
                     <li>Search for "Bookmark"</li>
+                    <li>Click "Bookmark App"</li>
                     <li>Click "Add Integration"</li>
                     <li>Configure the following:
                         <ul>
@@ -561,9 +564,6 @@
                     </li>
                     <li>Click Done</li>
                 </ol>
-                <div class="tip">
-                    This app will be used to demonstrate Device Assurance policies in later sections.
-                </div>
                 <img src="images/section4/weather-bookmark.png" alt="Weather Bookmark Configuration" class="step-image">
             </li>
 
@@ -573,6 +573,7 @@
                     <li>Navigate to Applications > Applications</li>
                     <li>Click "Browse App Catalog"</li>
                     <li>Search for "Bookmark"</li>
+                    <li>Click "Bookmark App"</li>
                     <li>Click "Add Integration"</li>
                     <li>Configure the following:
                         <ul>
@@ -584,9 +585,6 @@
                     </li>
                     <li>Click Done</li>
                 </ol>
-                <div class="tip">
-                    This app will be used to demonstrate Phishing Resistant authentication policies in later sections.
-                </div>
                 <img src="images/section4/flights-bookmark.png" alt="Flights Bookmark Configuration" class="step-image">
             </li>
         </ol>
