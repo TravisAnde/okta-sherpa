@@ -657,6 +657,81 @@
             </li>
         </ol>
 
+         <div class="section-part">
+            <h3>Part 4: Create IT-Admins Group</h3>
+            <ol class="steps">
+                <li class="step">
+                    <div class="step-title">Access Group Management</div>
+                    <ol>
+                        <li>In the Okta Admin Console</li>
+                        <li>Navigate to Directory > Groups</li>
+                        <li>Click "Add Group"</li>
+                    </ol>
+                    <img src="images/section3/groups-menu.png" alt="Groups Menu" class="step-image">
+                </li>
+
+                <li class="step">
+                    <div class="step-title">Create IT-Admins Group</div>
+                    <ol>
+                        <li>Configure group settings:
+                            <ul>
+                                <li>Name: IT-Admins</li>
+                                <li>Description: IT Administration team with elevated access</li>
+                                <li>Group Type: Okta Group</li>
+                            </ul>
+                        </li>
+                        <li>Click "Save"</li>
+                    </ol>
+                    <div class="tip">
+                        Use clear, descriptive names for groups to make management easier.
+                    </div>
+                    <img src="images/section3/create-group.png" alt="Create IT-Admins Group" class="step-image">
+                </li>
+
+                <li class="step">
+                    <div class="step-title">Add User to IT-Admins Group</div>
+                    <ol>
+                        <li>Click on the new IT-Admins group</li>
+                        <li>Select "Manage People"</li>
+                        <li>In the search field, enter: adam.wally@cyberlab-au.com</li>
+                        <li>Click the (+) icon next to the user</li>
+                        <li>Click "Save"</li>
+                    </ol>
+                    <div class="important">
+                        This user will now have access to resources restricted to IT-Admins group.
+                    </div>
+                    <img src="images/section3/assign-user.png" alt="Assign User to Group" class="step-image">
+                </li>
+
+                <li class="step">
+                    <div class="step-title">Verify Group Assignment</div>
+                    <ol>
+                        <li>Navigate to Directory > People</li>
+                        <li>Search for adam.wally@cyberlab-au.com</li>
+                        <li>Click on the user profile</li>
+                        <li>Check the Groups tab</li>
+                        <li>Verify IT-Admins group is listed</li>
+                    </ol>
+                    <img src="images/section3/verify-group.png" alt="Verify Group Assignment" class="step-image">
+                </li>
+            </ol>
+
+            <div class="verification-list">
+                <h4>Group Setup Checklist</h4>
+                <ul class="checklist">
+                    <li>IT-Admins group created successfully</li>
+                    <li>Group description set properly</li>
+                    <li>Test user added to group</li>
+                    <li>Group assignment verified</li>
+                    <li>User profile updated with group</li>
+                </ul>
+            </div>
+
+            <div class="note">
+                The IT-Admins group will be used in the next section for configuring authentication policies and access controls.
+            </div>
+        </div>
+
         <div class="troubleshooting">
             <h4>Common Login Issues</h4>
             <table>
