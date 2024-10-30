@@ -458,8 +458,8 @@
                     <li>In the Import Settings area:
                         <ul>
                             <li>Verify "User OUs connected to Okta" includes cyberlab-au.com</li>
-                            <li>Keep default User Filter settings</li>
                             <li>Verify Group OUs are correctly set</li>
+                            <li>Ensure Delegated Authentication is checked</li>
                         </ul>
                     </li>
                 </ol>
@@ -478,9 +478,10 @@
                     <li>Click Edit in the General area</li>
                     <li>Configure the following settings:
                         <ul>
-                            <li>Schedule Import: Daily</li>
+                            <li>Schedule Import: Once a day</li>
                             <li>Username format: User Principal Name (UPN)</li>
                             <li>Enable "Create and update users on login"</li>
+                            <li>Click "Save"</li>
                         </ul>
                     </li>
                 </ol>
@@ -499,9 +500,10 @@
                     <li>In User Creation & Matching section, click Edit</li>
                     <li>Configure these settings:
                         <ul>
-                            <li>Select "Match by Okta username format"</li>
+                            <li>Select "Okta username format matches"</li>
                             <li>Enable "Auto-confirm exact matches"</li>
                             <li>Leave other settings as default</li>
+                            <li>Click "Save"</li>
                         </ul>
                     </li>
                 </ol>
@@ -520,7 +522,7 @@
                     <li>Navigate to the Import tab</li>
                     <li>Click "Import Now"</li>
                     <li>Select "Full Import" when prompted</li>
-                    <li>Wait for import to complete</li>
+                    <li>Wait for import to complete (this can take up to 5 minutes)</li>
                     <li>Verify users appear in Directory > People</li>
                 </ol>
                 <div class="note">
