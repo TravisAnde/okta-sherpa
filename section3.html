@@ -626,6 +626,38 @@
             </li>
         </ol>
 
+         <li class="step">
+                <div class="step-header">
+        <div class="step-title">Configure Authentication Policy for Dashboard App</div>
+        <div class="machine-indicator">DC01</div>
+    </div>
+                <ol>
+                    <li>Select the "Authentication Policies" tab under Security</li>
+                    <li>Click on "Okta Dashboard"</li>
+                    <li>Click Actions > Edit - For the "Catch-All Rule"</li>
+                    <li>Change the following (and press "Save" twice):</li>
+                </ol>
+                <table>
+                    <tr>
+                        <th>Setting</th>
+                        <th>Option</th>
+                    </tr>
+                    <tr>
+                        <td>AND Authentication methods</td>
+                        <td>Allow any method that can be used to meet the requirement</td>
+                    </tr>
+                    <tr>
+                        <td>AND User must authenticate with</td>
+                        <td>Any 1 factor type</td>
+                    </tr>
+                </table>
+                <img src="images/section3/enrollment-policy.png" alt="Enrollment Policy Configuration" class="step-image">
+                <div class="important">
+                    These settings are not recommended, however for this demo it makes testing with our test users a little easier.
+                </div>
+            </li>
+        </ol>
+
         <div class="verification-list">
             <h4>Authenticator Configuration Checklist</h4>
             <ul class="checklist">
